@@ -7,6 +7,15 @@ module.exports = {
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER
+    },
+    user_name:{
+      type: Sequelize.STRING
+    },
+    user_email:{
+      type: Sequelize.STRING
+    },
+    user_mobile:{
+      type: Sequelize.STRING
     }})
   },
 

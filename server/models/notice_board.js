@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.Notice_Board.belongsTo(models.User, {foreignKey: 'user_id'})
+      models.Notice_Board.hasMany(models.user_applicant,{foreignKey:'title'})
     }
   }
   Notice_Board.init({

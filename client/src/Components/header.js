@@ -8,6 +8,7 @@ function Header({ hadleLoginVerification, isLogin }) {
     navigate('/');
   }
 
+
   return (
     <div>
       <div className="main_header">

@@ -35,7 +35,7 @@ export const Body = styled.body`
   align-items: center;
   background-color: white;
   width: 80%;
-  height: 85vh;
+  height: 90vh;
   @media screen and (max-width: 1080px){
       width: 80%;
       height: 80%;
@@ -50,10 +50,10 @@ export const SectorWrapper = styled.div`
 
 export const TitleDiv = styled.div`
   font-weight: bold;
-  padding-left: 10px;
   font-size: 30px;
   color: black;
   margin-top: 1rem;
+  
 `;
 
 export const TitleInput = styled.input`
@@ -82,6 +82,7 @@ export const RTitleInput = styled.input`
 `;
 
 export const IndexDiv = styled.div`
+  width: 40rem;
   font-weight: bold;
   font-size: 20px;
   padding-left: 0.2rem;
@@ -106,6 +107,7 @@ export const RContentTextarea = styled.textarea`
   height: 20rem;
   padding-top: 10px;
   padding-left: 10px;
+  margin-top: 5px;
   margin-bottom: 1rem;
   font-size: 20px;
   color: black;
@@ -132,22 +134,8 @@ export const CompleteButton = styled.button`
 `;
 
 
-export const RCompleteButton = styled.button`
-  width: 20rem;
-  text-align: center;
-  background-color: white;
-  color: black;
-  padding: 1rem 3rem;
-  font-weight: bold;
-  font-size: 20px;
-  border: 2px solid #006fff;
-  border-radius: 100px;
-  cursor: pointer;
-  &:hover{
-      background-color: #006fff;
-      color: white;
-  }
-`;
+
+
 
 
 // 셀렉트 박스 Styled Component

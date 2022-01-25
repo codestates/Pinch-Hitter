@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { 
-  SelectBoxLocation, 
-  SelectBoxJob, 
-  SelectBoxPay, 
+import React, { useState } from 'react';
+
+import Header from '../Components/Header';
+
+import {
+  SelectBoxLocation,
+  SelectBoxJob,
+  SelectBoxPay,
   Calenda,
   WrapperDiv,
   Head,
@@ -12,51 +15,46 @@ import {
   TitleInput,
   IndexDiv,
   ContentTextarea,
-  CompleteButton
-} from "../Components/CreatePostComponents";
+  CompleteButton,
+} from '../Components/CreatePostComponents';
 
- // 이거뭐지 ?
+// 이거뭐지 ?
 // axios.defaults.withCredentials = true;
 
 // let url = "https://abcdef"
 
 export const CreatPost = (props) => {
-  
-  const [ inputTitle, setInputTitle ] = useState("");
-  const [ selectLocation, setSelectLocation ] = useState("");
-  const [ pickerDate, setPickerDate ] = useState("");
-  const [ selectJob, setSelectJob ] = useState("");
-  const [ selectPay, setSelectPay ] = useState("");
-  const [ textareaContent, setTextareaContent ] = useState("");
+  const [inputTitle, setInputTitle] = useState('');
+  const [selectLocation, setSelectLocation] = useState('');
+  const [pickerDate, setPickerDate] = useState('');
+  const [selectJob, setSelectJob] = useState('');
+  const [selectPay, setSelectPay] = useState('');
+  const [textareaContent, setTextareaContent] = useState('');
 
-
-
-// 입력되는 제목, 지역, 날짜, 직종, 급여, 내용
+  // 입력되는 제목, 지역, 날짜, 직종, 급여, 내용
   const handleInputValue = (e) => {
-    setInputTitle(e.target.value)
-  }
+    setInputTitle(e.target.value);
+  };
 
   const handleSelectValue = (e) => {
-    if (e.target.name === "location") {
-      setSelectLocation(e.target.value)
-    } else if (e.target.name === "job") {
-      setSelectJob(e.target.value)
-    } else if (e.target.name === "pay") {
-      setSelectPay(e.target.value)
-    } 
-  }
-    
+    if (e.target.name === 'location') {
+      setSelectLocation(e.target.value);
+    } else if (e.target.name === 'job') {
+      setSelectJob(e.target.value);
+    } else if (e.target.name === 'pay') {
+      setSelectPay(e.target.value);
+    }
+  };
+
   const handlePikerValue = (e) => {
-    setPickerDate(e.target.value)
-  }
+    setPickerDate(e.target.value);
+  };
 
   const handleTextareaValue = (e) => {
-    setTextareaContent(e.target.value)
-  }
+    setTextareaContent(e.target.value);
+  };
 
-  const postCompleteButton = () => {
-
-  }
+  const postCompleteButton = () => {};
 
   // const postCompleteButton = () => {
   //   if (inputTitle.length > 0 &&
@@ -90,52 +88,43 @@ export const CreatPost = (props) => {
   //       }
   // }
 
-
   return (
-    <WrapperDiv>
-      <Head>헤드 컴포넌트 자리(로고, 마이페이지 등)</Head>
-      <Body>
-        <TitleDiv>게시글 작성</TitleDiv>
-        <SectorWrapper>
+    <>
+      <Header />
+      <WrapperDiv>
+        <Body>
+          <TitleDiv>게시글 작성</TitleDiv>
+          <SectorWrapper>
             <IndexDiv>제목</IndexDiv>
-            <TitleInput 
+            <TitleInput
               placeholder="간략하게 나타내 주세요!"
               type="text"
               name="title"
               onChange={handleInputValue}
-            />   
+            />
             <IndexDiv>지역</IndexDiv>
-            <SelectBoxLocation 
-              name="location"
-              onChange={handleSelectValue}/>                   
+            <SelectBoxLocation name="location" onChange={handleSelectValue} />
             <IndexDiv>날짜</IndexDiv>
-            <Calenda 
-              name="date"
-              onChange={handlePikerValue}
-            />          
+            <Calenda name="date" onChange={handlePikerValue} />
             <IndexDiv>직종</IndexDiv>
-            <SelectBoxJob
-              name="job"
-              onChange={handleSelectValue} 
-            />           
+            <SelectBoxJob name="job" onChange={handleSelectValue} />
             <IndexDiv>시급</IndexDiv>
-            <SelectBoxPay 
-              name="pay"
-              onChange={handleSelectValue}
-            />
-        </SectorWrapper>           
-            <IndexDiv>내용</IndexDiv>
-            <ContentTextarea 
-              placeholder="근무시간 및 주요사항에 대해 설명해 주세요!"
-              type="text"
-              name="content"
-              onChange={handleTextareaValue} 
-            />
-          <CompleteButton onClick={postCompleteButton}>작 성 완 료</CompleteButton>
-          
-      </Body> 
-    </WrapperDiv>
+            <SelectBoxPay name="pay" onChange={handleSelectValue} />
+          </SectorWrapper>
+          <IndexDiv>내용</IndexDiv>
+          <ContentTextarea
+            placeholder="근무시간 및 주요사항에 대해 설명해 주세요!"
+            type="text"
+            name="content"
+            onChange={handleTextareaValue}
+          />
+          <CompleteButton onClick={postCompleteButton}>
+            작 성 완 료
+          </CompleteButton>
+        </Body>
+      </WrapperDiv>
+    </>
   );
-}
+};
 
 export default CreatPost;

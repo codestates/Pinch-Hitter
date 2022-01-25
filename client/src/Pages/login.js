@@ -1,10 +1,17 @@
+import axios from 'axios';
 import { useState } from 'react';
 import '../App.css';
 
-function Login(props) {
+function Login({ hadleLoginVerification, clickSignup }) {
   //임시 더미 test 데이타
-  const userInfo = { id: 'yunho', password: '1234' };
-  //아이디 비밀번호 서버로 전달해주기 위해 state로 관리
+  const dummy = {
+    user_id: 'test1',
+    password: '1234abc',
+    name: 'kimcoding1',
+    email: 'test1@codingjoa.com',
+    mobile: '01012345678',
+  };
+
   const [loginInfo, setLoginInfo] = useState({ id: '', password: '' });
   //아이디 비번 틀릴경우 메세지
 
@@ -12,33 +19,47 @@ function Login(props) {
 
   const inputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
-    //console.log(loginInfo);
+
     //타이핑을 치면 loginInfo로 정보가 전달
   };
 
-  //! 아이디 비밀번호 둘다 확인시 번거로워짐
   const handleLogin = () => {
-    console.log('로그인 버튼 눌러 실행했니?');
     if (!(loginInfo.id, loginInfo.password)) {
       setFailureLoginMsg('아이디와 비밀번호를 입력해 주세요.');
+    } else if (
+      dummy.user_id === loginInfo.id &&
+      dummy.password === loginInfo.password
+    ) {
+      // 성공 시 axios 해서 성공 답변 올때
+      hadleLoginVerification();
     } else {
-      if (
-        loginInfo.password !== userInfo.password ||
-        loginInfo.id !== userInfo.id
-      ) {
-        setFailureLoginMsg('입력하신 아이디 또는 비밀번호가 틀립니다.');
-      } else {
-        setFailureLoginMsg('로그인 성공');
-      }
+      /*
+      axios.post('https://localhost:80/login', loginInfo, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      })
+      .then((res) => {
+        // hadleLoginVerification() 유저정보가 있으면 검증 함수 실행
+      }).catch((err) =>{
+      setFailureLoginMsg('입력하신 아이디 또는 비밀번호가 틀립니다.')
+      console.log('로그인 중 err')});
+      */
+      // if (
+      //   loginInfo.password !== userInfo.password ||
+      //   loginInfo.id !== userInfo.id
+      // ) {
+      // } else {
+      //   setFailureLoginMsg('로그인 성공');
+      // }
     }
+
     //axios.post 요청
     //아이디와 비밀번호를 입력을 했다면 서버로 그정보를 보내 db존재하는
     //정보인지 확인(검증 하는 함수 실행)
     //handleLoginSuccess() 함수 실행
   };
-  const test777 = () => {
-    console.log('회원가입 버튼 눌렀네?');
-    props.clickSignup();
+  const handleSignupPage = () => {
+    clickSignup();
   };
 
   return (
@@ -64,7 +85,7 @@ function Login(props) {
               placeholder="비밀번호"
               onChange={inputValue('password')}
             />
-            <div className="failureLoginMsg">{failureLoginMsg}</div>
+            <div className="faileMsg">{failureLoginMsg}</div>
           </div>
         </div>
       </div>
@@ -74,7 +95,7 @@ function Login(props) {
         </div>
       </div>
       <div>
-        <div className="loginBtn" onClick={test777}>
+        <div className="loginBtn" onClick={handleSignupPage}>
           회원가입
         </div>
       </div>

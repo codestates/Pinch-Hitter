@@ -6,7 +6,8 @@ import {
   Route, 
   Link,
   useNavigate} from "react-router-dom";
-import { 
+import Header from '../Components/Header';
+import {
   WrapperDiv,
   Head,
   Body,
@@ -113,15 +114,17 @@ export const ReadPost = (props) => {
     
 
 
-    return (
+  return (
+    <>
+      <Header />
       <WrapperDiv>
-        <Head>헤드 컴포넌트 자리(로고, 마이페이지 등)</Head>
         <Body>
           <TitleWrapper>
             <TitleDiv>게시글 보기</TitleDiv>
             <IdDiv float="right">작성자 ID: {props.nowPost.user_id}</IdDiv>
           </TitleWrapper>
           <SectorWrapper>
+
               <IndexDiv>제목</IndexDiv>
               <RTitleInput
                 readOnly 
@@ -179,6 +182,7 @@ export const ReadPost = (props) => {
             
         </Body> 
       </WrapperDiv>
+     </>
     );
   }
   

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
+import { RouteBtn } from './RouteBtn';
+
 
 export const ModalBack = styled.div`
   position: fixed;
@@ -31,6 +33,9 @@ export const ModalButton = styled.button`
   width: 100px;
   height: 30px;
   box-shadow: 2px 1px 3px 1px #dadce0;
+  &:hover {
+    background-color: #637a8a;
+  }
 `;
 
 //Login 모달창 open 시
@@ -65,17 +70,18 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   border-radius: 3px;
   background-color: #ffffff;
   width: 400px;
-  height: 540px;
+  height: 640px;
   box-shadow: 1px 1px 1px 1px #dadce0;
   position: relative;
 
   > span.close-modal {
-    position: absolute;
-    top: 0px;
-    right: 5px;
+    z-index: 1000;
     cursor: pointer;
     font-size: 30px;
     color: rgb(150, 150, 150);
+    position: absolute;
+    top: 0px;
+    right: 5px;
   }
 
   > div.login {
@@ -83,7 +89,7 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   }
 `;
 
-export const Modal = () => {
+export const Modal = ({ hadleLoginVerification, isLogin }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -97,6 +103,7 @@ export const Modal = () => {
     setShowModal(false);
     setIsModal(!isModal);
   };
+
   return (
     <>
       {isModal ? (
@@ -107,21 +114,29 @@ export const Modal = () => {
               <span onClick={clickSignup} className="close-modal">
                 &times;
               </span>
-              <Signup />
+              <Signup openModal={openModal} />
             </ModalSignupView>
           </ModalBack>
         </SideBarModal>
       ) : (
         <SideBarModal>
-          <ModalButton onClick={openModal}>로그인</ModalButton>
-          {showModal === true ? (
+          {isLogin ? (
+            <RouteBtn />
+          ) : (
+            <ModalButton onClick={openModal}>로그인</ModalButton>
+          )}
+
+          {showModal === true && isLogin === false ? (
             <ModalBack onClick={openModal}>
               <ModalView onClick={(e) => e.stopPropagation()}>
                 <span onClick={openModal} className="close-modal">
                   &times;
                 </span>
 
-                <Login clickSignup={clickSignup} />
+                <Login
+                  clickSignup={clickSignup}
+                  hadleLoginVerification={hadleLoginVerification}
+                />
               </ModalView>
             </ModalBack>
           ) : null}

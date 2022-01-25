@@ -1,0 +1,104 @@
+body {
+    margin: 0px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+  }
+
+  
+  .loginBtn {
+    margin-top: 15px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.5rem;
+    width: 343px;
+    margin-left: 30px;
+  
+    background: #778899;
+    color: white;
+  
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+  
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s all;
+    box-shadow: 1px 1px 1px 1px #dadce0;
+  }
+  .loginBtn:hover {
+    background-color: #5b6875;
+  }
+  
+  .failureLoginMsg {
+    font-size: 15px;
+    color: red;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-left: 30px;
+  }
+  
+  .inputBox {
+    width: 330px;
+    height: 40px;
+    outline: none;
+    padding-left: 10px;
+  
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  
+    border-radius: 2px;
+  
+    font-size: 1.2rem;
+  }
+  
+  .loginLogo {
+    text-align: left;
+    margin-left: 30px;
+    font-size: 27px;
+  }
+  
+  .main_header {
+    background-color: #d3dedc;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid rgb(212, 211, 211);
+    box-shadow: 0px 0px 1px 0px #dadce0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .header_logo {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+  }
+  
+  .test_posts {
+    margin: 13px;
+    float: left;
+    width: 220px;
+    height: 200px;
+    border: 1px solid;
+    background-color: #ffefef;
+  }
+  
+  .signupBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .signupBtn {
+    margin-bottom: 30px;
+  }
+  
+  .checkSignupMsg {
+    text-align: left;
+    margin-left: 10px;
+    zoom: 0.85;
+  }
+  .checkboxSignup {
+    margin-left: 30px;
+    margin-right: 5px;
+  }

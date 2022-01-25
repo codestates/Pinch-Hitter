@@ -27,7 +27,7 @@ import {
 
 let url = "http://localhost:4000/";
 
-export const CreatPost = (props) => {
+export const EidtPost = (props) => {
   const navigate = useNavigate();
   
   const [ inputTitle, setInputTitle ] = useState("");
@@ -107,48 +107,52 @@ export const CreatPost = (props) => {
       <Head>헤드 컴포넌트 자리(로고, 마이페이지 등)</Head>
       
       <Body>
-        <TitleDiv>게시글 작성</TitleDiv>
+        <TitleDiv>게시글 수정</TitleDiv>
         <SectorWrapper>
             <IndexDiv>제목</IndexDiv>
             <TitleInput 
-              placeholder="간략하게 나타내 주세요!"
+              text={props.nowPost.title}
               type="text"
               name="title"
               onChange={handleInputValue}
             />   
             <IndexDiv>지역</IndexDiv>
-            <SelectBoxLocation 
+            <SelectBoxLocation
+              text={props.nowPost.work_place} 
               name="location"
               onChange={handleSelectValue}/>                   
             <IndexDiv>날짜</IndexDiv>
-            <Calenda 
+            <Calenda
+              text={props.nowPost.work_date} 
               name="date"
               onChange={handlePikerValue}
             />          
             <IndexDiv>직종</IndexDiv>
             <SelectBoxJob
+              text={props.nowPost.occupation}
               name="job"
               onChange={handleSelectValue} 
             />           
             <IndexDiv>시급</IndexDiv>
-            <SelectBoxPay 
+            <SelectBoxPay
+              text={props.nowPost.wage} 
               name="pay"
               onChange={handleSelectValue}
             />
         </SectorWrapper>      
             <IndexDiv>내용</IndexDiv>
             <ContentTextarea 
-              placeholder="근무시간 및 주요사항에 대해 설명해 주세요!"
+              text={props.nowPost.content}
               type="text"
               name="content"
               onChange={handleTextareaValue} 
             />
           <CompleteButton 
             onClick={postCompleteButton}
-          >작 성 완 료</CompleteButton>
+          >수 정 완 료</CompleteButton>
       </Body> 
     </WrapperDiv>
   );
 }
 
-export default CreatPost;
+export default EidtPost;

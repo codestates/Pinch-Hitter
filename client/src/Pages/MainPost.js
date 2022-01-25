@@ -1,3 +1,9 @@
+import { 
+  BrowserRouter,
+  Routes, 
+  Route, 
+  Link,
+  useNavigate} from "react-router-dom"
 import styled from 'styled-components';
 
 export const PostBackground = styled.div`
@@ -33,16 +39,21 @@ export const PostContents = styled.div`
   border: 1px solid rgb(0, 0, 0);
 `;
 export const MainPosts = () => {
+  const navigate = useNavigate();
   // 함수, 직종 = 맞는 직종 이미지
   // 게시판아이디 직종 제목
   //   const handelPost = () => {
   //     setNowPost(props.post)
   //   };
 
+  const postClick = () => {
+  navigate("/readpost")
+} 
+
   return (
     <>
       <PostBackground>
-        <Post>
+        <Post onClick={postClick}>
           {/* <img className="work_img" src={`img/${das}`} /> */}
           <img className="work_img" src="img/pinchLog_remove.png" />
 

@@ -104,7 +104,7 @@ export const CreatPost = (props) => {
 
   }
 
-  return 
+  return (
     <>
       <Header />
       <WrapperDiv>

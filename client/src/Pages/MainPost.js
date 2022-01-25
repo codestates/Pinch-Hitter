@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 export const PostBackground = styled.div`
   margin: 30px;
@@ -39,10 +40,16 @@ export const MainPosts = () => {
   //     setNowPost(props.post)
   //   };
 
+  let navigate = useNavigate();
+
+  const postClick = () => {
+    navigate('/readpost');
+  };
+
   return (
     <>
       <PostBackground>
-        <Post>
+        <Post onClick={postClick}>
           {/* <img className="work_img" src={`img/${das}`} /> */}
           <img className="work_img" src="img/pinchLog_remove.png" />
 

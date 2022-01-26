@@ -25,6 +25,10 @@ import {
 } from '../Components/CreatePostComponents';
 
 
+<<<<<<< HEAD
+let url = "https://localhost:4000/";
+=======
+>>>>>>> 32f61f3d8c78d57628dfd35f89bd4ec7c16ecbb8
 
 let url = "https://localhost:4000/";
 
@@ -68,6 +72,42 @@ export const CreatPost = (props) => {
   // 작성 완료 버튼
   // 작성한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
+<<<<<<< HEAD
+    console.log("작성완료 버튼 클릭");
+    navigate("/");
+  
+
+    if (inputTitle.length > 0 &&
+        selectLocation.length > 0 &&
+        pickerDate.length > 0 &&
+        selectJob.length > 0 &&
+        selectPay.length > 0 &&
+        textareaContent.length > 0
+    ) {
+        axios({
+          url: url + "/notice_board",
+          method: "post",
+          data: {
+            user_id: props.userinfo.user_id,
+            title: inputTitle,
+            occupation: selectJob,
+            wage: selectPay,
+            work_date: pickerDate,
+            work_place:selectLocation,
+            content: textareaContent,
+          },
+          withCredentials: true,
+        })
+          .then(() => {
+            alert("작성을 완료하셨습니다.")
+            navigate.push("/")
+          })
+          .catch((err) => console.log(err))
+        } else {
+            alert("제목과 내용을 모두 입력해주세요.")
+        }
+=======
+>>>>>>> 32f61f3d8c78d57628dfd35f89bd4ec7c16ecbb8
 
     console.log("작성완료 버튼 클릭");
 

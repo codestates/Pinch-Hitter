@@ -16,8 +16,13 @@ app.use(
     methods: ['GET', 'POST', 'OPTIONS']
   })
 );
+
+app.get('/',(req,res)=>{
+  res.status(200).send("hello world")
+})
 app.use(cookieParser());
 app.get('/auth', controllers.auth)
+app.get('/notice_board', controllers.notice_board_read)
 // app.get('/userinfo', controllers.userinfo);
 // app.post('/signup', controllers.signup);
 app.post('/login', controllers.login);
@@ -38,8 +43,8 @@ if (fs.existsSync('./key.pem') && fs.existsSync('./cert.pem')) {
   const credentials = { key: privateKey, cert: certificate };
 
   server = https.createServer(credentials, app);
-  server.listen(HTTPS_PORT, () => console.log('https server runnning'));
+  server.listen(HTTPS_PORT, () => console.log('https server runnning',HTTPS_PORT));
 } else {
-  server = app.listen(HTTPS_PORT, () => console.log('http server runnning'));
+  server = app.listen(HTTPS_PORT, () => console.log('http server runnning' , HTTPS_PORT));
 }
 module.exports = server;

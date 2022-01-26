@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { user } = require('../../models');
-const { generateAccessToken, sendAccessToken, isAuthorized } = require('../functions/user');
+const { generateAccessToken, sendAccessToken } = require('../functions/user');
 
 module.exports =  async (req, res)=> {
         const { user_id, password } = req.body;

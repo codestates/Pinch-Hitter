@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { user } = require('../../models');
+const { User } = require('../../models');
 const { isAuthorized } = require('../functions/user')
 
 module.exports = async (req,res)=>{
@@ -7,11 +7,11 @@ module.exports = async (req,res)=>{
         res.status(401).send({ data: null, message: 'not authorized' });
     }
     const checkedToken = isAuthorized(req);
-    const userInfo = await user.findOne({
+    const userInfo = await User.findOne({
         where: {user_id : checkedToken.user_id}
     })
     if (!userInfo) {
-        return res.json({ success: false, loginId: null, message: '로그아웃 상태입니다' });
+        return res.json({ success: false, message: '로그아웃 상태입니다' });
     }
     if(userInfo.dataValues.user_id === checkedToken.user_id){
         const payload = {
@@ -21,7 +21,7 @@ module.exports = async (req,res)=>{
             email: checkedToken.email,
             mobile: checkedToken.mobile
         }
-        return res.json({ data:{userInfo: payload},success: true, loginId: loginId, message: '로그인 상태입니다' });
+        return res.json({ data:{userInfo: payload},success: true, message: '로그인 상태입니다' });
     }
 
 }

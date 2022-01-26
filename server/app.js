@@ -11,9 +11,9 @@ const controllers = require('./controller')
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['https://localhost:3001'],
+    origin: ['https://localhost:3000'],
     credentials: true,
-    methods: ['GET', 'POST', 'OPTIONS']
+    methods: ['GET', 'POST', 'PATCH', 'OPTIONS']
   })
 );
 

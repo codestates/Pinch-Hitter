@@ -13,13 +13,13 @@ module.exports = {
       maxAge: 86400}).json({message: 'ok'});
   },
   isAuthorized: (token) => {
-    try {
-      const cookie = token.cookie.jwt
-      return verify(cookie, process.env.ACCESS_SECRET);
-    } catch (err) {
-      return null;
-    }
-  },
+
+    const cookie = token.cookies.jwt
+    return verify(cookie, process.env.ACCESS_SECRET,(err,decode)=>{ 
+      if(err) throw err
+      else return decode});
+
+},
   updateEmail: async(req) => {
     const resObject = {};
     const accessToken = authorized(req.cookies.accessToken);

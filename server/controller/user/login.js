@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { user } = require('../../models');
+const { User } = require('../../models');
 const { generateAccessToken, sendAccessToken } = require('../functions/user');
 
 module.exports =  async (req, res)=> {
@@ -11,13 +11,13 @@ module.exports =  async (req, res)=> {
 
           
           try {
-            const userInfo = await user.findOne({ where: { user_id } });
+            const userInfo = await User.findOne({ where: { user_id } });
             if (!userInfo) {
-              return res.json({ success: false, message: '아이디 또는 비밀번호가 잘못되었습니다' });
+              return res.json({ success: false, message: '아이디가 잘못되었습니다' });
             }
             const match = await bcrypt.compare(password, userInfo.dataValues.password);
             if (!match) {
-              return res.json({ success: false, message: '아이디 또는 비밀번호가 잘못되었습니다' });
+              return res.json({ success: false, message: '비밀번호가 잘못되었습니다' });
             }
             delete userInfo.password;
             

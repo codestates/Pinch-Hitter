@@ -26,7 +26,7 @@ import {
 // 이거뭐지 ?
 // axios.defaults.withCredentials = true;
 
-let url = "http://localhost:4000/";
+let url = "https://localhost:4000/";
 
 export const CreatPost = (props) => {
 
@@ -71,35 +71,35 @@ export const CreatPost = (props) => {
     navigate("/");
   
 
-    // if (inputTitle.length > 0 &&
-    //     selectLocation.length > 0 &&
-    //     pickerDate.length > 0 &&
-    //     selectJob.length > 0 &&
-    //     selectPay.length > 0 &&
-    //     textareaContent.length > 0
-    // ) {
-    //     axios({
-    //       url: url + "/notice-board",
-    //       method: "post",
-    //       data: {
-    //         user_id: props.userinfo.user_id,
-    //         title: inputTitle,
-    //         occupation: selectJob,
-    //         wage: selectPay,
-    //         work_date: pickerDate,
-    //         work_place:selectLocation,
-    //         content: textareaContent,
-    //       },
-    //       withCredentials: true,
-    //     })
-    //       .then(() => {
-    //         alert("작성을 완료하셨습니다.")
-    //         navigate.push("/")
-    //       })
-    //       .catch((err) => console.log(err))
-    //     } else {
-    //         alert("제목과 내용을 모두 입력해주세요.")
-    //     }
+    if (inputTitle.length > 0 &&
+        selectLocation.length > 0 &&
+        pickerDate.length > 0 &&
+        selectJob.length > 0 &&
+        selectPay.length > 0 &&
+        textareaContent.length > 0
+    ) {
+        axios({
+          url: url + "/notice_board",
+          method: "post",
+          data: {
+            user_id: props.userinfo.user_id,
+            title: inputTitle,
+            occupation: selectJob,
+            wage: selectPay,
+            work_date: pickerDate,
+            work_place:selectLocation,
+            content: textareaContent,
+          },
+          withCredentials: true,
+        })
+          .then(() => {
+            alert("작성을 완료하셨습니다.")
+            navigate.push("/")
+          })
+          .catch((err) => console.log(err))
+        } else {
+            alert("제목과 내용을 모두 입력해주세요.")
+        }
 
 
   }

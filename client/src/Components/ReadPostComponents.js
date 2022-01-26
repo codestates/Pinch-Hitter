@@ -1,9 +1,57 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
-import { RouteBtn } from './RouteBtn';
 
+export const TitleWrapper = styled.div`
+  width: 90%;
+  text-align: center;
+  color: gray;
+`;
+
+export const IdDiv = styled.div`
+  float: right;
+`;
+
+export const FixButton = styled.button`
+  width: 10rem;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 1rem 3rem;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid #006fff;
+  border-radius: 100px;
+  cursor: pointer;
+  float: left;
+  &:hover{
+      background-color: #006fff;
+      color: white;
+  }
+`;
+
+export const DeleteButton = styled.button`
+  width: 10rem;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 1rem 3rem;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid orangered;
+  border-radius: 100px;
+  cursor: pointer;
+  float: right;
+  &:hover{
+      background-color: orangered;
+      color: white;
+  }
+`;
+
+export const ButtonDiv = styled.div`
+  width: 350px;
+`;
 
 export const ModalBack = styled.div`
   position: fixed;
@@ -23,18 +71,19 @@ export const SideBarModal = styled.div`
 `;
 //모달 로그인 버튼
 export const ModalButton = styled.button`
-  margin-right: 10px;
-  margin-top: 60px;
-  background-color: #7c99ac;
-  border: none;
-  color: white;
-  border-radius: 10px;
-  cursor: grab;
-  width: 100px;
-  height: 30px;
-  box-shadow: 2px 1px 3px 1px #dadce0;
-  &:hover {
-    background-color: #637a8a;
+  width: 20rem;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 1rem 3rem;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid #006fff;
+  border-radius: 100px;
+  cursor: pointer;
+  &:hover{
+      background-color: #006fff;
+      color: white;
   }
 `;
 
@@ -70,18 +119,17 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   border-radius: 3px;
   background-color: #ffffff;
   width: 400px;
-  height: 640px;
+  height: 540px;
   box-shadow: 1px 1px 1px 1px #dadce0;
   position: relative;
 
   > span.close-modal {
-    z-index: 1000;
-    cursor: pointer;
-    font-size: 30px;
-    color: rgb(150, 150, 150);
     position: absolute;
     top: 0px;
     right: 5px;
+    cursor: pointer;
+    font-size: 30px;
+    color: rgb(150, 150, 150);
   }
 
   > div.login {
@@ -89,7 +137,7 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   }
 `;
 
-export const Modal = ({ hadleLoginVerification, isLogin }) => {
+export const RModal = () => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -103,7 +151,6 @@ export const Modal = ({ hadleLoginVerification, isLogin }) => {
     setShowModal(false);
     setIsModal(!isModal);
   };
-
   return (
     <>
       {isModal ? (
@@ -114,29 +161,21 @@ export const Modal = ({ hadleLoginVerification, isLogin }) => {
               <span onClick={clickSignup} className="close-modal">
                 &times;
               </span>
-              <Signup openModal={openModal} />
+              <Signup />
             </ModalSignupView>
           </ModalBack>
         </SideBarModal>
       ) : (
         <SideBarModal>
-          {isLogin ? (
-            <RouteBtn />
-          ) : (
-            <ModalButton onClick={openModal}>로그인</ModalButton>
-          )}
-
-          {showModal === true && isLogin === false ? (
+          <ModalButton onClick={openModal}>지원을 위해 로그인하기</ModalButton>
+          {showModal === true ? (
             <ModalBack onClick={openModal}>
               <ModalView onClick={(e) => e.stopPropagation()}>
                 <span onClick={openModal} className="close-modal">
                   &times;
                 </span>
 
-                <Login
-                  clickSignup={clickSignup}
-                  hadleLoginVerification={hadleLoginVerification}
-                />
+                <Login clickSignup={clickSignup} />
               </ModalView>
             </ModalBack>
           ) : null}
@@ -145,3 +184,4 @@ export const Modal = ({ hadleLoginVerification, isLogin }) => {
     </>
   );
 };
+

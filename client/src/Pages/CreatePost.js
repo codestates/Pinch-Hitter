@@ -23,13 +23,10 @@ import {
   CompleteButton,
 } from '../Components/CreatePostComponents';
 
-// 이거뭐지 ?
-// axios.defaults.withCredentials = true;
 
-let url = "http://localhost:4000/";
+let url = "https://localhost:4000/";
 
 export const CreatPost = (props) => {
-
   const navigate = useNavigate();
   
   const [ inputTitle, setInputTitle ] = useState("");
@@ -60,53 +57,47 @@ export const CreatPost = (props) => {
   };
 
   const handleTextareaValue = (e) => {
-
-    setTextareaContent(e.target.value)
+    setTextareaContent(e.target.value);
   }
+
 
   // 작성 완료 버튼
   // 작성한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
     console.log("작성완료 버튼 클릭");
-    navigate("/");
-  
 
-    // if (inputTitle.length > 0 &&
-    //     selectLocation.length > 0 &&
-    //     pickerDate.length > 0 &&
-    //     selectJob.length > 0 &&
-    //     selectPay.length > 0 &&
-    //     textareaContent.length > 0
-    // ) {
-    //     axios({
-    //       url: url + "/notice-board",
-    //       method: "post",
-    //       data: {
-    //         user_id: props.userinfo.user_id,
-    //         title: inputTitle,
-    //         occupation: selectJob,
-    //         wage: selectPay,
-    //         work_date: pickerDate,
-    //         work_place:selectLocation,
-    //         content: textareaContent,
-    //       },
-    //       withCredentials: true,
-    //     })
-    //       .then(() => {
-    //         alert("작성을 완료하셨습니다.")
-    //         navigate.push("/")
-    //       })
-    //       .catch((err) => console.log(err))
-    //     } else {
-    //         alert("제목과 내용을 모두 입력해주세요.")
-    //     }
-
-
+    if (inputTitle.length > 0 &&
+        textareaContent.length > 0
+    ) {
+        axios({
+          url: url + "/notice-board",
+          method: "post",
+          data: {
+            user_id: props.userinfo.user_id,
+            title: inputTitle,
+            occupation: selectJob,
+            wage: selectPay,
+            work_date: pickerDate,
+            work_place: selectLocation,
+            content: textareaContent,
+          },
+          withCredentials: true,
+        })
+          .then(() => {
+            alert("작성을 완료하셨습니다.")
+            navigate("/")
+          })
+          .catch((err) => console.log(err))
+        } else {
+            alert("제목과 내용을 모두 입력해주세요.")
+        }
   }
 
   return (
     <>
-      <Header />
+      <Header 
+        hadleLoginVerification={props.hadleLoginVerification}
+        isLogin={props.isLogin}/>
       <WrapperDiv>
         <Body>
           <TitleDiv>게시글 작성</TitleDiv>

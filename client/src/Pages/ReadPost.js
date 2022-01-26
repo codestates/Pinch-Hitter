@@ -16,7 +16,7 @@ import {
   RTitleInput,
   IndexDiv,
   RContentTextarea,
-  CompleteButton
+  CompleteButton,
 } from "../Components/CreatePostComponents";
 import { 
   RModal,
@@ -26,97 +26,65 @@ import {
   ButtonDiv,
   TitleWrapper
 } from "../Components/ReadPostComponents";
+import { Modal } from "../Components/Modal"
 
-let url = "http://localhost:4000/";
+
+let url = "https://localhost:4000/";
 
 export const ReadPost = (props) => {
-  //props.nowPost.user_id
-  //props.userinfo.user_id
-
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   axios({
-  //     url: url + ""
-  //   })
-  // })
-
-
-
-
-
-
-  //props활용 로그인 상태 및 토큰 보유 여부 확인
-
-  let isLogin = true;
-
-  let isMine = true;
-   // 서버에서 가져온 작성자 id와 현재 앱사용자 userInfo와
-   // 같다면 true
-   // userInfo_user_id === props.nowPost.userId와 같다면 true 아니면 false
-   
-      // 1. Login 상태에서 다른 사람이 쓴 게시글 보기
-      // 2. Login 상태에서 내가 쓴 게시글 보기
-      // 3. Logout 상태에서 게시글 보기 - 완료
-      // 4. 수정 버튼 누르면 게시글 작성 페이지 보여주고(수정완료 표시 patch)
-      // 5. 삭제 버튼 누르면 삭제되고 홈페이지로 ?
-  
 
   // 지원하기 버튼 누르면 지원자 정보 post요청
   const applyButton = () => {
     console.log("지원하기 버튼 클릭");
     
-    // axios({
-    //   url: url + "/applicant",
-    //   method: "post",
-    //   data: {
-    //     user_id: props.userInfo.user_id,
-    //     email: props.userInfo.email,
-    //     mobile: props.mobile,
-    //   },
-    //   withCredentials: true,
-    // })
-    // .then(() => {
-    //   alert("지원을 완료하셨습니다.");
-    //   navigate("/");
-    // })
-    // .catch((err) => console.log(err))
-
+    axios({
+      url: url + "/applicant",
+      method: "post",
+      data: {
+        user_id: props.userinfo.user_id,
+        email: props.userinfo.email,
+        mobile: props.userinfo.mobile,
+      },
+      withCredentials: true,
+    })
+    .then(() => {
+      alert("지원을 완료하셨습니다.");
+      navigate("/");
+    })
+    .catch((err) => console.log(err))
   }
   
-
+  // 게시물 수정페이지로 이동
   const fixPostButton = () => {
     console.log("수정 버튼 클릭");
-    navigate("/editpost")
-    
 
+    navigate("/editpost");
   }
   
+  // 게시물 삭제 요청
   const deletePostButton = () => {
     console.log("삭제 버튼 클릭");
-    navigate("/")
     
-    // const token = 정의해줘야함;
-    // axios({
-    //   url: url + "/notice-board",
-    //   method: "delete",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `token ${token}`,
-    //   },
-    //   data: { title: props.curPost.title},
-    //   withCredentials: true,
-    // }).then((res) => {
-    //      console.log("서버로 부터 삭제 응답이 옴");
-    //      navigate.push("/")
-    // })
+    axios({
+      url: url + "/notice-board",
+      method: "delete",
+      data: { id: props.curPost.id},
+      withCredentials: true,
+    }).then((res) => {
+         alert(res.data)
+         navigate("/")
+    })
+    .catch((err) => console.log(err))
   }
     
-
 
   return (
     <>
-      <Header />
+      <Header 
+        hadleLoginVerification={props.hadleLoginVerification}
+        isLogin={props.isLogin}/>
       <WrapperDiv>
         <Body>
           <TitleWrapper>
@@ -157,9 +125,9 @@ export const ReadPost = (props) => {
                 value={props.nowPost.content}
               />
 {/* 로그인 상태인 경우(내가 작성한 글인지 여부), 로그아웃 상태인 경우 3가지 경우 */}
-           {isLogin === true ? (
+           {props.isLogin === true ? (
               <>
-              {isMine === true ? (
+              {(props.userinfo.user_id === props.nowPost.user_id) === true ? (
                 <ButtonDiv>
                   <FixButton
                     onClick={fixPostButton}
@@ -177,9 +145,10 @@ export const ReadPost = (props) => {
               </> 
             ) 
             :
-            <RModal />
+            <RModal
+            hadleLoginVerification={props.hadleLoginVerification}
+            isLogin={props.isLogin} />
             }
-            
         </Body> 
       </WrapperDiv>
      </>

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   BrowserRouter,
   Routes, 
   Route, 
   Link,
-  useNavigate} from "react-router-dom"
+  useNavigate } from "react-router-dom"
   import axios from "axios";
 import { 
   SelectBoxLocation, 
@@ -12,7 +12,6 @@ import {
   SelectBoxPay, 
   Calenda,
   WrapperDiv,
-  Head,
   Body,
   SectorWrapper,
   TitleDiv,
@@ -21,11 +20,11 @@ import {
   ContentTextarea,
   CompleteButton
 } from "../Components/CreatePostComponents";
+import Header from "../Components/Header";
 
- // 이거뭐지 ?
-// axios.defaults.withCredentials = true;
 
-let url = "http://localhost:4000/";
+
+let url = "https://localhost:4000/";
 
 export const EidtPost = (props) => {
   const navigate = useNavigate();
@@ -37,6 +36,16 @@ export const EidtPost = (props) => {
   const [ selectPay, setSelectPay ] = useState("");
   const [ textareaContent, setTextareaContent ] = useState("");
 
+// 기존 게시물 내용이 수정 페이지에서 보일 수 있게
+// 셀렉트 박스랑 달력은 구현이 안됨!!(공부필요)
+  useEffect(() => {
+    setInputTitle(props.nowPost.title)
+    setSelectLocation(props.nowPost.work_place)
+    setPickerDate(props.nowPost.work_date)
+    setSelectJob(props.nowPost.occupation)
+    setSelectPay(props.nowPost.selectPay)
+    setTextareaContent(props.nowPost.content)
+}, [])
 
 
 // 입력되는 제목, 지역, 날짜, 직종, 급여, 내용
@@ -62,87 +71,83 @@ export const EidtPost = (props) => {
     setTextareaContent(e.target.value)
   }
 
-  // 작성 완료 버튼
-  // 작성한 게시물 정보 -> 서버로
+
+  // 수정 완료 버튼
+  // 수정한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
     console.log("작성완료 버튼 클릭");
-    navigate("/");
   
-
-    // if (inputTitle.length > 0 &&
-    //     selectLocation.length > 0 &&
-    //     pickerDate.length > 0 &&
-    //     selectJob.length > 0 &&
-    //     selectPay.length > 0 &&
-    //     textareaContent.length > 0
-    // ) {
-    //     axios({
-    //       url: url + "/notice-board",
-    //       method: "post",
-    //       data: {
-    //         user_id: props.userinfo.user_id,
-    //         title: inputTitle,
-    //         occupation: selectJob,
-    //         wage: selectPay,
-    //         work_date: pickerDate,
-    //         work_place:selectLocation,
-    //         content: textareaContent,
-    //       },
-    //       withCredentials: true,
-    //     })
-    //       .then(() => {
-    //         alert("작성을 완료하셨습니다.")
-    //         navigate.push("/")
-    //       })
-    //       .catch((err) => console.log(err))
-    //     } else {
-    //         alert("제목과 내용을 모두 입력해주세요.")
-    //     }
-
+    if (inputTitle.length > 0 &&
+        textareaContent.length > 0
+    ) {
+        axios({
+          url: url + "/notice-board/update",
+          method: "patch",
+          data: {
+            user_id: props.userinfo.user_id,
+            title: inputTitle,
+            occupation: selectJob,
+            wage: selectPay,
+            work_date: pickerDate,
+            work_place: selectLocation,
+            content: textareaContent,
+          },
+          withCredentials: true,
+        })
+          .then(() => {
+            alert("수정을 완료하셨습니다.")
+            navigate("/")
+          })
+          .catch((err) => console.log(err))
+        } else {
+            alert("제목과 내용을 모두 입력해주세요.")
+        }
   }
 
 
   return (
+    <>
+    <Header 
+        hadleLoginVerification={props.hadleLoginVerification}
+        isLogin={props.isLogin}/>
     <WrapperDiv>
-      <Head>헤드 컴포넌트 자리(로고, 마이페이지 등)</Head>
-      
       <Body>
         <TitleDiv>게시글 수정</TitleDiv>
         <SectorWrapper>
             <IndexDiv>제목</IndexDiv>
             <TitleInput 
-              text={props.nowPost.title}
+              value={inputTitle}
               type="text"
               name="title"
               onChange={handleInputValue}
             />   
             <IndexDiv>지역</IndexDiv>
             <SelectBoxLocation
-              text={props.nowPost.work_place} 
+              key={selectLocation} 
               name="location"
               onChange={handleSelectValue}/>                   
             <IndexDiv>날짜</IndexDiv>
             <Calenda
-              text={props.nowPost.work_date} 
+              value={pickerDate} 
               name="date"
               onChange={handlePikerValue}
             />          
             <IndexDiv>직종</IndexDiv>
             <SelectBoxJob
-              text={props.nowPost.occupation}
+              value={selectJob}
               name="job"
               onChange={handleSelectValue} 
             />           
             <IndexDiv>시급</IndexDiv>
             <SelectBoxPay
-              text={props.nowPost.wage} 
+              value={selectPay} 
               name="pay"
               onChange={handleSelectValue}
             />
         </SectorWrapper>      
             <IndexDiv>내용</IndexDiv>
             <ContentTextarea 
-              text={props.nowPost.content}
+              value={textareaContent}
               type="text"
               name="content"
               onChange={handleTextareaValue} 
@@ -152,6 +157,7 @@ export const EidtPost = (props) => {
           >수 정 완 료</CompleteButton>
       </Body> 
     </WrapperDiv>
+   </>
   );
 }
 

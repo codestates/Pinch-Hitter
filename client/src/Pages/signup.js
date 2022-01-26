@@ -121,7 +121,7 @@ function Signup({ openModal }) {
           serverSuccessSignup();
         })
         .catch((err) => {
-          console.log('err');
+          console.log(err);
         });
     }
   };

@@ -4,7 +4,6 @@ import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
 import { RouteBtn } from './RouteBtn';
 
-
 export const ModalBack = styled.div`
   position: fixed;
   z-index: 999;
@@ -89,7 +88,7 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   }
 `;
 
-export const Modal = ({ hadleLoginVerification, isLogin }) => {
+export const Modal = ({ hadleLoginVerification, isLogin, handleLogout }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -121,7 +120,7 @@ export const Modal = ({ hadleLoginVerification, isLogin }) => {
       ) : (
         <SideBarModal>
           {isLogin ? (
-            <RouteBtn />
+            <RouteBtn handleLogout={handleLogout} />
           ) : (
             <ModalButton onClick={openModal}>로그인</ModalButton>
           )}
@@ -136,6 +135,7 @@ export const Modal = ({ hadleLoginVerification, isLogin }) => {
                 <Login
                   clickSignup={clickSignup}
                   hadleLoginVerification={hadleLoginVerification}
+                  openModal={openModal}
                 />
               </ModalView>
             </ModalBack>

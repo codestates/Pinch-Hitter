@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { sign, verify } = require('jsonwebtoken');
-const { user } = require('../models');
+const { user } = require('../../models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -14,7 +14,8 @@ module.exports = {
   },
   isAuthorized: (token) => {
     try {
-      return verify(token, process.env.ACCESS_SECRET);
+      const cookie = token.cookie.jwt
+      return verify(cookie, process.env.ACCESS_SECRET);
     } catch (err) {
       return null;
     }

@@ -4,7 +4,7 @@ import '../App.css';
 
 function Signup({ openModal }) {
   const [signupInfo, setSignupInfo] = useState({
-    id: '',
+    user_id: '',
     password: '',
     passwordConfirm: '',
     name: '',
@@ -155,8 +155,8 @@ function Signup({ openModal }) {
           className="inputBox"
           type="id"
           placeholder="아이디"
-          value={signupInfo.id}
-          onChange={inputValueId('id')}
+          value={signupInfo.user_id}
+          onChange={inputValueId('user_id')}
         />
         <input
           className="inputBox"

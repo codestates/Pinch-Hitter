@@ -13,8 +13,6 @@ import ReadPost from './Pages/ReadPost';
 import EditPost from './Pages/EditPost';
 import Mypage from './Pages/Mypage';
 
-function App() {
-  //   let url = "http://localhost:4000/"
 
 
 let url = "https://localhost:4000/"

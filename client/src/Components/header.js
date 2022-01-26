@@ -1,13 +1,12 @@
 import { Modal } from './Modal';
 import { useNavigate } from 'react-router-dom';
 
-function Header({ hadleLoginVerification, isLogin }) {
+function Header({ hadleLoginVerification, isLogin, handleLogout }) {
   let navigate = useNavigate();
 
   function handleGoHom() {
     navigate('/');
   }
-
 
   return (
     <div>
@@ -21,6 +20,7 @@ function Header({ hadleLoginVerification, isLogin }) {
         <Modal
           hadleLoginVerification={hadleLoginVerification}
           isLogin={isLogin}
+          handleLogout={handleLogout}
         />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import '../App.css';
 
@@ -110,11 +111,18 @@ function Signup({ openModal }) {
     ) {
       setIsSignupModal(true);
     } else {
-      setIsSignupModal(false);
-      console.log(
-        '가입하기 누르면 1. 모든 입력창 작성 했는지 2. 비밀번호 확인 true인지 3. 이메일 형식 맞는지 4. 핸드폰 번호 8자리인지 5.이름 형식 맞는지'
-      );
-      serverSuccessSignup();
+      axios
+        .post('https://localhost:4000/signup', signupInfo, {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true,
+        })
+        .then((res) => {
+          setIsSignupModal(false);
+          serverSuccessSignup();
+        })
+        .catch((err) => {
+          console.log('err');
+        });
     }
   };
   const [isSignupModal, setIsSignupModal] = useState(false);

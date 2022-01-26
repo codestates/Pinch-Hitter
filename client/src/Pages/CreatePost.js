@@ -25,14 +25,7 @@ import {
 } from '../Components/CreatePostComponents';
 
 
-<<<<<<< HEAD
 let url = "https://localhost:4000/";
-=======
->>>>>>> 32f61f3d8c78d57628dfd35f89bd4ec7c16ecbb8
-
-let url = "https://localhost:4000/";
-
-
 
 export const CreatPost = (props) => {
   const navigate = useNavigate();
@@ -72,7 +65,6 @@ export const CreatPost = (props) => {
   // 작성 완료 버튼
   // 작성한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
-<<<<<<< HEAD
     console.log("작성완료 버튼 클릭");
     navigate("/");
   
@@ -106,8 +98,6 @@ export const CreatPost = (props) => {
         } else {
             alert("제목과 내용을 모두 입력해주세요.")
         }
-=======
->>>>>>> 32f61f3d8c78d57628dfd35f89bd4ec7c16ecbb8
 
     console.log("작성완료 버튼 클릭");
 

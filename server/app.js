@@ -23,8 +23,8 @@ app.get('/',(req,res)=>{
 app.use(cookieParser());
 app.get('/auth', controllers.auth)
 app.get('/notice_board', controllers.notice_board_read)
-// app.get('/userinfo', controllers.userinfo);
-// app.post('/signup', controllers.signup);
+app.get('/userinfo', controllers.userinfo);
+app.post('/signup', controllers.signup);
 app.post('/login', controllers.login);
 app.post('/logout', controllers.logout);
 app.post('/notice_board', controllers.notice_board)

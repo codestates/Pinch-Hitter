@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.User.hasMany(models.Notice_Board, {foreignKey: "user_id"})
-      models.User.hasMany(models.user_applicant, {foreignKey: "applicant_id"})
     }
   }
   User.init({

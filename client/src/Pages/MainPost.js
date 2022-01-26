@@ -1,9 +1,10 @@
-import { 
+import {
   BrowserRouter,
-  Routes, 
-  Route, 
+  Routes,
+  Route,
   Link,
-  useNavigate} from "react-router-dom"
+  useNavigate,
+} from 'react-router-dom';
 import styled from 'styled-components';
 
 export const PostBackground = styled.div`
@@ -38,60 +39,29 @@ export const PostContents = styled.div`
   margin-bottom: 50px;
   border: 1px solid rgb(0, 0, 0);
 `;
-export const MainPosts = () => {
-  const navigate = useNavigate();
+export const MainPosts = ({ allPost, setNowPost }) => {
   // 함수, 직종 = 맞는 직종 이미지
   // 게시판아이디 직종 제목
-  //   const handelPost = () => {
-  //     setNowPost(props.post)
-  //   };
-
-  const postClick = () => {
-  navigate("/readpost")
-} 
+    const navigate = useNavigate();
+    const handelPost = (post) => {
+      setNowPost(post)
+      navigate("/readpost")
+    };
 
   return (
     <>
       <PostBackground>
-        <Post onClick={postClick}>
-          {/* <img className="work_img" src={`img/${das}`} /> */}
-          <img className="work_img" src="img/pinchLog_remove.png" />
+        {allPost.map((post) => (
+          <Post onClick={() => handelPost(post)}>
+            <img
+              className="work_img"
+              src={`img/img_work/${post.occupation}.jpeg`}
+            />
+            <PostContents>{post.title}</PostContents>
+          </Post>
+        ))}
 
-          <PostContents></PostContents>
-        </Post>
-
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
-        <Post>
-          <img className="work_img" src="img/pinchLog_remove.png" />
-          <PostContents />
-        </Post>
+        {/* <img className="work_img" src={`img/${das}`} /> */}
       </PostBackground>
     </>
   );

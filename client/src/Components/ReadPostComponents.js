@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
+import { RouteBtn } from './RouteBtn';
 
 export const TitleWrapper = styled.div`
   width: 90%;
@@ -137,7 +138,7 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   }
 `;
 
-export const RModal = () => {
+export const RModal = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -151,6 +152,8 @@ export const RModal = () => {
     setShowModal(false);
     setIsModal(!isModal);
   };
+
+  
   return (
     <>
       {isModal ? (
@@ -161,21 +164,29 @@ export const RModal = () => {
               <span onClick={clickSignup} className="close-modal">
                 &times;
               </span>
-              <Signup />
+              <Signup openModal={openModal} />
             </ModalSignupView>
           </ModalBack>
         </SideBarModal>
       ) : (
         <SideBarModal>
-          <ModalButton onClick={openModal}>지원을 위해 로그인하기</ModalButton>
-          {showModal === true ? (
+          {props.isLogin ? (
+            <RouteBtn />
+          ) : (
+            <ModalButton onClick={openModal}>로그인하고 지원하기</ModalButton>
+          )}
+
+          {showModal === true && props.isLogin === false ? (
             <ModalBack onClick={openModal}>
               <ModalView onClick={(e) => e.stopPropagation()}>
                 <span onClick={openModal} className="close-modal">
                   &times;
                 </span>
 
-                <Login clickSignup={clickSignup} />
+                <Login
+                  clickSignup={clickSignup}
+                  hadleLoginVerification={props.hadleLoginVerification}
+                />
               </ModalView>
             </ModalBack>
           ) : null}

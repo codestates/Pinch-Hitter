@@ -7,9 +7,11 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },      
+      }, 
+      user_id: {
+        type: Sequelize.INTEGER
+      },
       title: {
-        unique: true,
         type: Sequelize.STRING
       },
       occupation:{
@@ -38,6 +40,16 @@ module.exports = {
         defaultValue: Sequelize.fn("now")
       }
     });
+    await queryInterface.addConstraint('Notice_Boards',{
+      fields:["user_id"],
+      type: "foreign key",
+      references:{
+        table: "Users",
+        field: "id",
+      },
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    })
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Notice_Boards');

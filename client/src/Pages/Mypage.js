@@ -4,7 +4,7 @@ export const Mypage = (props) => {
   
 
   return (
-   <div>작업중</div>
+   <h1>마이페이지는 준비중입니다.</h1>
   );
 }
 

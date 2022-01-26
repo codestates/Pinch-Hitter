@@ -3,21 +3,24 @@ import Header from '../Components/Header';
 import { useEffect } from 'react';
 import axios from 'axios';
 
+let url = "https://localhost:4000/"
+
 function HomePage({
   hadleLoginVerification,
   isLogin,
   handleLogout,
   postClickNav,
   allPost,
-  setAllpost,
+  setAllPost,
+  setNowPost
 }) {
   useEffect(() => {
     axios
-      .get('url + notice_board', {
+      .get(url + '/notice_board', {
         withCredentials: true,
       })
       .then((res) => {
-        setAllpost(res.data);
+        setAllPost(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +34,9 @@ function HomePage({
         isLogin={isLogin}
         handleLogout={handleLogout}
       />
-      <MainPosts postClickNav={postClickNav} allPost={allPost} />
+      <MainPosts 
+        allPost={allPost}
+        setNowPost={setNowPost}/>
     </>
   );
 }

@@ -39,18 +39,20 @@ export const PostContents = styled.div`
   margin-bottom: 50px;
   border: 1px solid rgb(0, 0, 0);
 `;
-export const MainPosts = ({ allPost, postClickNav }) => {
+export const MainPosts = ({ allPost, setNowPost }) => {
   // 함수, 직종 = 맞는 직종 이미지
   // 게시판아이디 직종 제목
-  //   const handelPost = () => {
-  //     setNowPost(props.post)
-  //   };
+    const navigate = useNavigate();
+    const handelPost = (post) => {
+      setNowPost(post)
+      navigate("/readpost")
+    };
 
   return (
     <>
       <PostBackground>
         {allPost.map((post) => (
-          <Post onClick={() => postClickNav(post)}>
+          <Post onClick={() => handelPost(post)}>
             <img
               className="work_img"
               src={`img/img_work/${post.occupation}.jpeg`}

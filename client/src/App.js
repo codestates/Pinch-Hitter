@@ -19,15 +19,16 @@ let url = "https://localhost:4000/"
 
 function App() {
   
- const [isLogin, setIsLogin] = useState(false)
- const [userinfo, setUserinfo] = useState("")
- const [allPost, setAllpost] = useState([])
- const [nowPost, setNowPost] = useState("")
-  
+
+  const [isLogin, setIsLogin] = useState(false)
+  const [userinfo, setUserinfo] = useState("")
+  const [allPost, setAllPost] = useState([])
+  const [nowPost, setNowPost] = useState("")
+   
+   
   
  
-
-
+ 
   //로그인 성공시 이함수 실행
   const handleIsLogin = () => {
     console.log('로그인?');
@@ -57,13 +58,8 @@ function App() {
       })
       .catch((err) => console.log('err'));
   };
-  //!let navigate = useNavigate();
 
-  const postClickNav = (post) => {
-    //!setNowPost(post);
-    console.log(post);
-    //!navigate('/readpost');
-  };
+
 
   return (
     <BrowserRouter>
@@ -75,8 +71,8 @@ function App() {
               hadleLoginVerification={hadleLoginVerification}
               isLogin={isLogin}
               handleLogout={handleLogout}
-              postClickNav={postClickNav}
               allPost={allPost}
+              setNowPost={setNowPost}
             />
             }
           />

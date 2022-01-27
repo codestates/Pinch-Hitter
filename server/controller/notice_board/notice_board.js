@@ -33,14 +33,5 @@ module.exports = async (req,res) =>{
             return res.status(400).json({message : '모든 정보를 입력해주세요'})
         }
 
-    // notice_board.create({
-    //     user_id: req.body.user_id,
-    //     title: req.body.title,
-    //     occupation: req.body.occupation,
-    //     wage: req.body.wage,
-    //     work_date: req.body.work_date,
-    //     work_place: req.body.work_place,
-    //     content: req.body.content
-    // })
 
 }

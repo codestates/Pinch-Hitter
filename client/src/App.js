@@ -22,7 +22,24 @@ function App() {
 
   const [isLogin, setIsLogin] = useState(false)
   const [userinfo, setUserinfo] = useState("")
-  const [allPost, setAllPost] = useState([])
+  const [allPost, setAllPost] = useState([{
+    user_id: 1,
+    occupation: '편의점',
+    title:'GS편의점 대타 구합니다',
+    wage:'10,000원 이상',
+    work_date:'2022-01-01',
+    work_place:'강북',
+    content:'1월 1일 강북 미아동에서 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.'
+  },
+  {
+    user_id: 2,
+    occupation: '편의점',
+    title:'CU편의점 대타 구합니다',
+    wage:'10,000원 이상',
+    work_date:'2022-01-02',
+    work_place:'강북',
+    content:'1월 2일 도붕구 쌍문동 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.'
+  }])
   const [nowPost, setNowPost] = useState("")
    
    

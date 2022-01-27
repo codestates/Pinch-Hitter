@@ -7,7 +7,6 @@ module.exports = async (req,res)=>{
         res.status(401).send({ data: null, message: 'not authorized' });
     }
     const checkedToken = isAuthorized(req);
-    console.log(checkedToken)
     const userInfo = await User.findOne({
         where: {user_id : checkedToken.user_id}
     })
@@ -22,7 +21,7 @@ module.exports = async (req,res)=>{
             email: checkedToken.email,
             mobile: checkedToken.mobile
         }
-        return res.json({ data:{userInfo: payload},success: true,message: '로그인 상태입니다' });
+        return res.json({ data:{userInfo: payload},success: true, message: '로그인 상태입니다' });
     }
 
 }

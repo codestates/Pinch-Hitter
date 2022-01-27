@@ -48,20 +48,22 @@ export const MainPosts = ({ allPost, setNowPost }) => {
       navigate("/readpost")
     };
 
+    console.log(allPost)
   return (
     <>
       <PostBackground>
-        {allPost.map((post) => (
-          <Post onClick={() => handelPost(post)}>
+        {allPost.map((post) => {
+          
+        return(
+          <Post onClick={() => handelPost(post)} key={post.id} >
             <img
               className="work_img"
               src={`img/img_work/${post.occupation}.jpeg`}
             />
             <PostContents>{post.title}</PostContents>
           </Post>
-        ))}
-
-        {/* <img className="work_img" src={`img/${das}`} /> */}
+        ) 
+        })}
       </PostBackground>
     </>
   );

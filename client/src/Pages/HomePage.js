@@ -14,18 +14,20 @@ function HomePage({
   setAllPost,
   setNowPost
 }) {
+
+  
   useEffect(() => {
     axios
-      .get(url + '/notice_board', {
+      .get(url + 'notice_board', {
         withCredentials: true,
       })
       .then((res) => {
-        setAllPost(res.data);
+        setAllPost(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[]);
 
   return (
     <>

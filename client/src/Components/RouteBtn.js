@@ -9,11 +9,10 @@ export const RouteBtn = ({ handleLogout }) => {
   }
 
   const handleLogoutBtnClick = () => {
-    handleLogout();
-
-    // axios.post('https://localhost:4000/signout').then((res) => {
-    //   handleLogout();
-    // });
+  
+    axios.post('https://localhost:4000/signout').then((res) => {
+      handleLogout();
+    });
   };
 
   return (

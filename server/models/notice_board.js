@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Notice_Board.init({
-    user_id: DataTypes.INTEGER,
+    user_id: DataTypes.STRING,
     title: DataTypes.STRING,
     occupation: DataTypes.STRING,
     wage: DataTypes.STRING,

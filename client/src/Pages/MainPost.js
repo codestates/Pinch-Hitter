@@ -44,24 +44,27 @@ export const MainPosts = ({ allPost, setNowPost }) => {
   // 게시판아이디 직종 제목
     const navigate = useNavigate();
     const handelPost = (post) => {
+      
+      console.log(post)
       setNowPost(post)
       navigate("/readpost")
     };
 
   return (
     <>
-      <PostBackground>
-        {allPost.map((post) => (
-          <Post onClick={() => handelPost(post)}>
+      <PostBackground >
+        {allPost.map((post) => {
+          
+        return(
+          <Post onClick={() => handelPost(post)} key={post.id} >
             <img
               className="work_img"
               src={`img/img_work/${post.occupation}.jpeg`}
             />
             <PostContents>{post.title}</PostContents>
           </Post>
-        ))}
-
-        {/* <img className="work_img" src={`img/${das}`} /> */}
+        ) 
+        })}
       </PostBackground>
     </>
   );

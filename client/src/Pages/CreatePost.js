@@ -39,10 +39,12 @@ export const CreatPost = (props) => {
 
   // 입력되는 제목, 지역, 날짜, 직종, 급여, 내용
   const handleInputValue = (e) => {
+    console.log("제목 실행")
     setInputTitle(e.target.value);
   };
 
   const handleSelectValue = (e) => {
+    console.log("셀렉트 실행")
     if (e.target.name === 'location') {
       setSelectLocation(e.target.value);
     } else if (e.target.name === 'job') {
@@ -52,11 +54,14 @@ export const CreatPost = (props) => {
     }
   };
 
-  const handlePikerValue = (e) => {
-    setPickerDate(e.target.value);
+  const handlePikerValue = (date) => {
+    console.log("날짜 실행")
+    console.log(date)
+    setPickerDate(date);
   };
 
   const handleTextareaValue = (e) => {
+    console.log("내용 실행")
     setTextareaContent(e.target.value);
   };
 
@@ -66,46 +71,13 @@ export const CreatPost = (props) => {
   // 작성한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
     console.log("작성완료 버튼 클릭");
-    navigate("/");
-  
-
-    if (inputTitle.length > 0 &&
-        selectLocation.length > 0 &&
-        pickerDate.length > 0 &&
-        selectJob.length > 0 &&
-        selectPay.length > 0 &&
-        textareaContent.length > 0
-    ) {
-        axios({
-          url: url + "/notice_board",
-          method: "post",
-          data: {
-            user_id: props.userinfo.user_id,
-            title: inputTitle,
-            occupation: selectJob,
-            wage: selectPay,
-            work_date: pickerDate,
-            work_place:selectLocation,
-            content: textareaContent,
-          },
-          withCredentials: true,
-        })
-          .then(() => {
-            alert("작성을 완료하셨습니다.")
-            navigate.push("/")
-          })
-          .catch((err) => console.log(err))
-        } else {
-            alert("제목과 내용을 모두 입력해주세요.")
-        }
-
-    console.log("작성완료 버튼 클릭");
+    console.log(props.isLogin)
 
     if (inputTitle.length > 0 &&
         textareaContent.length > 0
     ) {
         axios({
-          url: url + "/notice-board",
+          url: url + '/notice_board',
           method: "post",
           data: {
             user_id: props.userinfo.user_id,

@@ -29,25 +29,27 @@ function App() {
   const handleIsLogin = () => {
     console.log('로그인?');
     setIsLogin(!isLogin);
+    console.log(userinfo)
   };
   //로그인페이지에서 요청 성공시 이함수 실행
   const hadleLoginVerification = () => {
     axios
-      .get('https://localhost:4000/auth', {
+      .get( url + '/auth', {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       })
       .then((res) => {
         //유저 데이타
-        setUserinfo(res.data);
+        console.log(res.data.data.userInfo)
+        setUserinfo(res.data.data.userInfo);
         handleIsLogin();
       })
-      .catch((err) => console.log('err'));
+      .catch((err) => console.log(err));
   };
 
   const handleLogout = () => {
     axios
-      .post('https://localhost:4000/logout')
+      .post( url + '/logout')
       .then((res) => {
         setIsLogin(!isLogin);
         setUserinfo('');
@@ -75,7 +77,9 @@ function App() {
           />
         <Route path="/createpost" 
                element={<CreatePost
-                          hadleLoginVerification={hadleLoginVerification} />} />
+                          hadleLoginVerification={hadleLoginVerification}
+                          userinfo={userinfo}
+                          isLogin={isLogin} />} />
         <Route path="/readpost" 
                element={<ReadPost
                           hadleLoginVerification={hadleLoginVerification}

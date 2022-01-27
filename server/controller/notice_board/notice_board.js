@@ -1,4 +1,4 @@
-const { notice_board } = require('../../models')
+const { Notice_Board } = require('../../models')
 
 
 module.exports = async (req,res) =>{
@@ -19,7 +19,7 @@ module.exports = async (req,res) =>{
         work_date &&
         work_place &&
         content) {
-            const notice_board = await notice_board.create({
+            const Notice_Board2 = await Notice_Board.create({
                 user_id,
                 title,
                 occupation,
@@ -28,7 +28,7 @@ module.exports = async (req,res) =>{
                 work_place,
                 content
             })
-            return res.status(201).json(notice_board);
+            return res.status(201).json(Notice_Board2);
         } else {
             return res.status(400).json({message : '모든 정보를 입력해주세요'})
         }

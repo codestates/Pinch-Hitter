@@ -44,6 +44,4 @@ module.exports = async (req, res) => {
 
 
 
-            res.status(400).json({ message: '모든 항목은 필수입니다' });
-
-    }
+            res.status(400).json({ message: '모든 항목은 필수입니다' });}

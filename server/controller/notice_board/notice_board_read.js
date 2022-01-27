@@ -1,9 +1,9 @@
-const { notice_board } = require('../../models')
+const { Notice_Board } = require('../../models')
 
 module.exports = (req,res) =>{
     if(req.path === '/notice_board'){
-        const noticeAll = notice_board.findAll()
+        const noticeAll = Notice_Board.findAll()
 
-        return res.status(200).json({data:{notice_board:noticeAll},message:'ok'})
+        return res.status(200).json({data:{Notice_Board:noticeAll},message:'ok'})
     }
 }

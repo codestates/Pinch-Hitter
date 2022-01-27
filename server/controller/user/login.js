@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { user } = require('../../models');
+const { User } = require('../../models');
 const { generateAccessToken, sendAccessToken } = require('../functions/user');
 
 module.exports =  async (req, res)=> {
@@ -11,7 +11,7 @@ module.exports =  async (req, res)=> {
 
           
           try {
-            const userInfo = await user.findOne({ where: { user_id } });
+            const userInfo = await User.findOne({ where: { user_id } });
             if (!userInfo) {
               return res.json({ success: false, message: '아이디가 잘못되었습니다' });
             }

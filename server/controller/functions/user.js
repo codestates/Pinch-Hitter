@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { sign, verify } = require('jsonwebtoken');
-const { user } = require('../../models');
+const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -8,9 +8,11 @@ module.exports = {
     return sign(data, process.env.ACCESS_SECRET, { expiresIn: "24h" });
   },
   sendAccessToken: (res, accessToken) => {
-    res.status(200).cookie("jwt", accessToken, {
+    res.cookie("jwt", accessToken, {
       httpOnly: true,
-      maxAge: 86400}).json({message: 'ok'});
+      ameSite:'none',secure:true,
+      maxAge: 86400})
+      res.status(200).json({message: 'ok'});
   },
   isAuthorized: (token) => {
 
@@ -31,7 +33,7 @@ module.exports = {
       return resObject;
     }
     if (req.body.email) {
-      const userFindOne = await user.findOne({
+      const userFindOne = await User.findOne({
         where: { email: req.body.email },
       });
 
@@ -46,7 +48,7 @@ module.exports = {
       }
     }
     
-    await user
+    await User
       .update(req.body, {
         where: { userId: accessToken.userId },
       })

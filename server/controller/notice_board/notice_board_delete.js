@@ -6,7 +6,7 @@ module.exports =  (req,res) =>{
 
         Notice_Board.destroy({
             where: {
-                title: title,
+                id: id,
             },
         })
          res.status(200).send({message: '게시글이 삭제되었습니다'})

@@ -21,7 +21,13 @@ function App() {
   
 
   const [isLogin, setIsLogin] = useState(false)
-  const [userinfo, setUserinfo] = useState("")
+  const [userinfo, setUserinfo] = useState({
+    id:0,
+    user_id:'',
+    name:'',
+    email:'',
+    mobile:''
+  })
   const [allPost, setAllPost] = useState([])
   const [nowPost, setNowPost] = useState("")
 

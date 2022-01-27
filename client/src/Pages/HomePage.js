@@ -3,9 +3,9 @@ import Header from '../Components/Header';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-let url = "https://localhost:4000/"
+let url = "https://localhost:4000"
 
-function HomePage({
+function HomePage({ 
   hadleLoginVerification,
   isLogin,
   handleLogout,
@@ -15,17 +15,19 @@ function HomePage({
   setNowPost
 }) {
   useEffect(() => {
+    console.log('?')
     axios
-      .get(url + '/notice_board', {
+      .get('https://localhost:4000/notice_board', {
         withCredentials: true,
       })
-      .then((res) => {
-        setAllPost(res.data);
+      .then(function(res){
+        console.log(res)
+        setAllPost(res.data.data.Notice_Board);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[]);
 
   return (
     <>

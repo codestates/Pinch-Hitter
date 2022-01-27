@@ -17,10 +17,10 @@ module.exports = {
   isAuthorized: (token) => {
 
     const cookie = token.cookies.jwt
-    return verify(cookie, process.env.ACCESS_SECRET,(err,decode)=>{ 
+    return verify(cookie,process.env.ACCESS_SECRET,(err,decode)=>{
       if(err) throw err
-      else return decode});
-
+      else return decode
+    })
 },
   updateEmail: async(req) => {
     const resObject = {};

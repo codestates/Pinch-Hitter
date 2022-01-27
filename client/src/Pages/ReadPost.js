@@ -29,7 +29,7 @@ import {
 import { Modal } from "../Components/Modal"
 
 
-let url = "https://localhost:4000/";
+let url = "https://localhost:4000";
 
 export const ReadPost = (props) => {
   const navigate = useNavigate();
@@ -68,9 +68,9 @@ export const ReadPost = (props) => {
     console.log("삭제 버튼 클릭");
     
     axios({
-      url: url + "/notice-board",
+      url: url + "/notice_board",
       method: "delete",
-      data: { id: props.curPost.id},
+      data: { title: props.nowPost.title},
       withCredentials: true,
     }).then((res) => {
          alert(res.data)
@@ -79,7 +79,8 @@ export const ReadPost = (props) => {
     .catch((err) => console.log(err))
   }
     
-
+  // console.log(props.userinfo)
+  // console.log(String(props.nowPost.user_id))
   return (
     <>
       <Header 
@@ -127,7 +128,7 @@ export const ReadPost = (props) => {
 {/* 로그인 상태인 경우(내가 작성한 글인지 여부), 로그아웃 상태인 경우 3가지 경우 */}
            {props.isLogin === true ? (
               <>
-              {(props.userinfo.user_id === props.nowPost.user_id) === true ? (
+              {(props.userinfo.user_id === String(props.nowPost.user_id)) === true ? (
                 <ButtonDiv>
                   <FixButton
                     onClick={fixPostButton}

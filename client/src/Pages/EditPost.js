@@ -24,7 +24,7 @@ import Header from "../Components/Header";
 
 
 
-let url = "https://localhost:4000/";
+let url = "https://localhost:4000";
 
 export const EidtPost = (props) => {
   const navigate = useNavigate();
@@ -63,8 +63,8 @@ export const EidtPost = (props) => {
     } 
   }
     
-  const handlePikerValue = (e) => {
-    setPickerDate(e.target.value)
+  const handlePikerValue = (date) => {
+    setPickerDate(date)
   }
 
   const handleTextareaValue = (e) => {
@@ -81,7 +81,7 @@ export const EidtPost = (props) => {
         textareaContent.length > 0
     ) {
         axios({
-          url: url + "/notice-board/update",
+          url: url + "/notice_board",
           method: "patch",
           data: {
             user_id: props.userinfo.user_id,

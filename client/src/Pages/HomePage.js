@@ -14,8 +14,10 @@ function HomePage({
   setAllPost,
   setNowPost
 }) {
+
+  
   useEffect(() => {
-    console.log('?')
+    console.log('hompage 20번줄')
     axios
       .get('https://localhost:4000/notice_board', {
         withCredentials: true,

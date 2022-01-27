@@ -10,18 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.Notice_Board.belongsTo(models.User, {foreignKey: 'user_id'})
-      models.Notice_Board.hasMany(models.user_applicant,{foreignKey:'title'})
+      // define association here
     }
   }
   Notice_Board.init({
-    occupation: DataTypes.STRING,
+    user_id: DataTypes.STRING,
     title: DataTypes.STRING,
+    occupation: DataTypes.STRING,
     wage: DataTypes.STRING,
     work_date: DataTypes.STRING,
     work_place: DataTypes.STRING,
-    content: DataTypes.STRING,
-    image: DataTypes.STRING
+    content: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Notice_Board',

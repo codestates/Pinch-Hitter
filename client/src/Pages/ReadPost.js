@@ -1,5 +1,13 @@
+import axios from "axios";
 import React from "react";
 import { 
+  BrowserRouter,
+  Routes, 
+  Route, 
+  Link,
+  useNavigate} from "react-router-dom";
+import Header from '../Components/Header';
+import {
   WrapperDiv,
   Head,
   Body,
@@ -8,57 +16,144 @@ import {
   RTitleInput,
   IndexDiv,
   RContentTextarea,
-  RCompleteButton
+  CompleteButton,
 } from "../Components/CreatePostComponents";
+import { 
+  RModal,
+  FixButton,
+  IdDiv,
+  DeleteButton,
+  ButtonDiv,
+  TitleWrapper
+} from "../Components/ReadPostComponents";
+import { Modal } from "../Components/Modal"
 
-export const CreatPost = () => {
-  
+
+let url = "https://localhost:4000";
+
+export const ReadPost = (props) => {
+  const navigate = useNavigate();
+
+
+  // 지원하기 버튼 누르면 지원자 정보 post요청
+  const applyButton = () => {
+    console.log("지원하기 버튼 클릭");
     
+    axios({
+      url: url + "/applicant",
+      method: "post",
+      data: {
+        user_id: props.userinfo.user_id,
+        email: props.userinfo.email,
+        mobile: props.userinfo.mobile,
+      },
+      withCredentials: true,
+    })
+    .then(() => {
+      alert("지원을 완료하셨습니다.");
+      navigate("/");
+    })
+    .catch((err) => console.log(err))
+  }
   
-    return (
+  // 게시물 수정페이지로 이동
+  const fixPostButton = () => {
+    console.log("수정 버튼 클릭");
+
+    navigate("/editpost");
+  }
+  
+  // 게시물 삭제 요청
+  const deletePostButton = () => {
+    console.log("삭제 버튼 클릭");
+    
+    axios({
+      url: url + "/notice_board",
+      method: "delete",
+      data: { title: props.nowPost.title},
+      withCredentials: true,
+    }).then((res) => {
+         alert(res.data)
+         navigate("/")
+    })
+    .catch((err) => console.log(err))
+  }
+    
+  // console.log(props.userinfo)
+  // console.log(String(props.nowPost.user_id))
+  return (
+    <>
+      <Header 
+        hadleLoginVerification={props.hadleLoginVerification}
+        isLogin={props.isLogin}/>
       <WrapperDiv>
-        <Head>헤드 컴포넌트 자리(로고, 마이페이지 등)</Head>
         <Body>
-          <TitleDiv>게시글 보기</TitleDiv>
+          <TitleWrapper>
+            <TitleDiv>게시글 보기</TitleDiv>
+            <IdDiv float="right">작성자 ID: {props.nowPost.user_id}</IdDiv>
+          </TitleWrapper>
           <SectorWrapper>
+
               <IndexDiv>제목</IndexDiv>
               <RTitleInput
                 readOnly 
-                value="강남 CU편의점 대타해주실분 구해요!"
+                value={props.nowPost.title}
               />   
               <IndexDiv>지역</IndexDiv>
               <RTitleInput
                 readOnly 
-                value="강남"
+                value={props.nowPost.work_place}
               />     
               <IndexDiv>날짜</IndexDiv>
               <RTitleInput
                 readOnly 
-                value="2022-05-20"
+                value={props.nowPost.work_date}
               /> 
               <IndexDiv>직종</IndexDiv>
               <RTitleInput
                 readOnly 
-                value="편의점"
+                value={props.nowPost.occupation}
               />        
               <IndexDiv>시급</IndexDiv>
               <RTitleInput
                 readOnly 
-                value="10,000원 이상"
+                value={props.nowPost.wage}
               />         
           </SectorWrapper>   
               <IndexDiv>내용</IndexDiv>
               <RContentTextarea 
                 readOnly
-                value="안녕하세요! 강남 교보타워 건물 뒤쪽에 있는 큰 편의점입니다. 시간은 10:00 ~ 18:00 이구요.
-                8시간 정도 대타해주실 수 있는분 구하고 있습니다.
-                일은 어렵지 않고 편의점에서 일해 본 분이 신청해주셨으면 좋겠어요!!"
+                value={props.nowPost.content}
               />
-            <RCompleteButton>신 청 하 기</RCompleteButton>
-           
+{/* 로그인 상태인 경우(내가 작성한 글인지 여부), 로그아웃 상태인 경우 3가지 경우 */}
+           {props.isLogin === true ? (
+              <>
+              {(props.userinfo.user_id === String(props.nowPost.user_id)) === true ? (
+                <ButtonDiv>
+                  <FixButton
+                    onClick={fixPostButton}
+                  >수정</FixButton>
+                  <DeleteButton
+                    onClick={deletePostButton}
+                  >삭제</DeleteButton>
+                </ButtonDiv>
+              )
+              :     
+                  <CompleteButton
+                    onClick={applyButton}
+                  >지 원 하 기</CompleteButton>
+              }
+              </> 
+            ) 
+            :
+            <RModal
+            hadleLoginVerification={props.hadleLoginVerification}
+            isLogin={props.isLogin} />
+            }
         </Body> 
       </WrapperDiv>
+     </>
     );
   }
   
-  export default CreatPost;
+  export default ReadPost;

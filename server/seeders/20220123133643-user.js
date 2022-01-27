@@ -1,4 +1,3 @@
-'use strict';
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -70,7 +69,7 @@ module.exports = {
   password:'1234abc',
   name:'kimcoding9',
   email:'test9@codingjoa.com',
-  mobile:'01099990000'
+  mobile:'01000001111'
 }, {
   user_id:'test10',
   password:'1234abc',

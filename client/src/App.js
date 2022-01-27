@@ -24,15 +24,12 @@ function App() {
   const [userinfo, setUserinfo] = useState("")
   const [allPost, setAllPost] = useState([])
   const [nowPost, setNowPost] = useState("")
-   
-   
-  
- 
- 
+
   //로그인 성공시 이함수 실행
   const handleIsLogin = () => {
     console.log('로그인?');
     setIsLogin(!isLogin);
+    console.log(userinfo)
   };
   //로그인페이지에서 요청 성공시 이함수 실행
   const hadleLoginVerification = () => {
@@ -43,10 +40,11 @@ function App() {
       })
       .then((res) => {
         //유저 데이타
-        setUserinfo(res.data);
+        console.log(res.data.data.userInfo)
+        setUserinfo(res.data.data.userInfo);
         handleIsLogin();
       })
-      .catch((err) => console.log('err'));
+      .catch((err) => console.log(err));
   };
 
   const handleLogout = () => {
@@ -80,7 +78,8 @@ function App() {
         <Route path="/createpost" 
                element={<CreatePost
                           hadleLoginVerification={hadleLoginVerification}
-                          userinfo={userinfo} />} />
+                          userinfo={userinfo}
+                          isLogin={isLogin} />} />
         <Route path="/readpost" 
                element={<ReadPost
                           hadleLoginVerification={hadleLoginVerification}
@@ -100,3 +99,25 @@ function App() {
 }
 
 export default App;
+
+
+/**
+ * {
+    user_id: 1,
+    occupation: '편의점',
+    title:'GS편의점 대타 구합니다',
+    wage:'10,000원 이상',
+    work_date:'2022-01-01',
+    work_place:'강북',
+    content:'1월 1일 강북 미아동에서 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.'
+  },
+  {
+    user_id: 2,
+    occupation: '편의점',
+    title:'CU편의점 대타 구합니다',
+    wage:'10,000원 이상',
+    work_date:'2022-01-02',
+    work_place:'강북',
+    content:'1월 2일 도붕구 쌍문동 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.'
+  }
+ */

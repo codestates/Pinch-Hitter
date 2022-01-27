@@ -44,14 +44,15 @@ export const MainPosts = ({ allPost, setNowPost }) => {
   // 게시판아이디 직종 제목
     const navigate = useNavigate();
     const handelPost = (post) => {
+      
+      console.log(post)
       setNowPost(post)
       navigate("/readpost")
     };
 
-    console.log(allPost)
   return (
     <>
-      <PostBackground>
+      <PostBackground >
         {allPost.map((post) => {
           
         return(

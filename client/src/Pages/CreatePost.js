@@ -39,10 +39,12 @@ export const CreatPost = (props) => {
 
   // 입력되는 제목, 지역, 날짜, 직종, 급여, 내용
   const handleInputValue = (e) => {
+    console.log("제목 실행")
     setInputTitle(e.target.value);
   };
 
   const handleSelectValue = (e) => {
+    console.log("셀렉트 실행")
     if (e.target.name === 'location') {
       setSelectLocation(e.target.value);
     } else if (e.target.name === 'job') {
@@ -52,11 +54,14 @@ export const CreatPost = (props) => {
     }
   };
 
-  const handlePikerValue = (e) => {
-    setPickerDate(e.target.value);
+  const handlePikerValue = (date) => {
+    console.log("날짜 실행")
+    console.log(date)
+    setPickerDate(date);
   };
 
   const handleTextareaValue = (e) => {
+    console.log("내용 실행")
     setTextareaContent(e.target.value);
   };
 
@@ -66,6 +71,7 @@ export const CreatPost = (props) => {
   // 작성한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
     console.log("작성완료 버튼 클릭");
+    console.log(props.isLogin)
 
     if (inputTitle.length > 0 &&
         textareaContent.length > 0

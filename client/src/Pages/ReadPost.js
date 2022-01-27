@@ -79,7 +79,8 @@ export const ReadPost = (props) => {
     .catch((err) => console.log(err))
   }
     
-
+  console.log(props.userinfo)
+  console.log(String(props.nowPost.user_id))
   return (
     <>
       <Header 
@@ -127,7 +128,7 @@ export const ReadPost = (props) => {
 {/* 로그인 상태인 경우(내가 작성한 글인지 여부), 로그아웃 상태인 경우 3가지 경우 */}
            {props.isLogin === true ? (
               <>
-              {(props.userinfo.user_id === props.nowPost.user_id) === true ? (
+              {(props.userinfo.user_id === String(props.nowPost.user_id)) === true ? (
                 <ButtonDiv>
                   <FixButton
                     onClick={fixPostButton}

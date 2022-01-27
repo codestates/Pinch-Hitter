@@ -181,9 +181,10 @@ const StyleDatePicker = styled(DatePicker)`
 
 
 // 셀렉트박스 지역
-export const SelectBoxLocation = () => {
+export const SelectBoxLocation = (props) => {
   return (
-    <Select>
+    <Select name={props.name} onChange={props.onChange}>
+      <Option value="none">- 선 택 -</Option>
       <Option key="강남" value="강남">
         강남
       </Option>
@@ -200,9 +201,10 @@ export const SelectBoxLocation = () => {
   );
 };
 // 셀렉트박스 직종
-export const SelectBoxJob = () => {
+export const SelectBoxJob = (props) => {
   return (
-    <Select>
+    <Select name={props.name} onChange={props.onChange}>
+      <Option value="none">- 선 택 -</Option>
       <Option key="카페" value="카페">
         카페
       </Option>
@@ -231,9 +233,10 @@ export const SelectBoxJob = () => {
   );
 };
 // 셀렉트박스 시급
-export const SelectBoxPay = () => {
+export const SelectBoxPay = (props) => {
   return (
-    <Select>
+    <Select name={props.name} onChange={props.onChange}>
+      <Option value="none">- 선 택 -</Option>
       <Option key="9,160원(최저시급) 이상" value="9,160원(최저시급) 이상">
         9,160원(최저시급) 이상
       </Option>
@@ -254,14 +257,18 @@ export const SelectBoxPay = () => {
 };
 
 // 달력에서 날짜선택
-export const Calenda = () => {
-    const [startDate, setStartDate] = useState(new Date());
+export const Calenda = (props) => {
+    const [startDate, setStartDate] = useState("");
+   
     return (
       <StyleDatePicker
         dateFormat="yyyy-MM-dd"
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        placeholderText="연도-월-일"
+        onChange={(date) => {
+          setStartDate(date)
+          props.onChange(date)}
+        }
+        placeholderText="- 선 택 -"
         locale={ko}
       />
     );

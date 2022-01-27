@@ -25,7 +25,7 @@ import {
 } from '../Components/CreatePostComponents';
 
 
-let url = "https://localhost:4000/";
+let url = "https://localhost:4000";
 
 export const CreatPost = (props) => {
   const navigate = useNavigate();

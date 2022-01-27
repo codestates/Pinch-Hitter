@@ -1,15 +1,12 @@
-const Notice_Board = require("../../models");
+const { Notice_Board } = require('../../models');
 
-module.exports =  (req,res) =>{
-    const { title } = req.body
+module.exports = async (req,res) =>{
+    const { id } = req.body
     console.log(req.body)
 
-        Notice_Board.destroy({
-            where: {
-                title: title,
-            },
+    await Notice_Board.destroy({where: {id: id}
         })
-         res.status(200).send({message: '게시글이 삭제되었습니다'})
+         res.send("삭제완료")
 
 }
 

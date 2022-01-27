@@ -17,27 +17,27 @@ export const PostBackground = styled.div`
 `;
 
 export const Post = styled.div`
-  width: 260px;
+width: 260px;
   height: 350px;
 
   margin: 15px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #ffc0cb;
   align-items: center;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
+  border-radius: 3px;
+  cursor: pointer;
 
   &:hover {
-    border: 1px solid rgb(207, 57, 57);
+    border: 3px solid #006fff;
   }
 `;
 
 export const PostContents = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 95%;
+  height: 150px;
   background-color: white;
-  margin-bottom: 50px;
-  border: 1px solid rgb(0, 0, 0);
 `;
 export const MainPosts = ({ allPost, setNowPost }) => {
   // 함수, 직종 = 맞는 직종 이미지

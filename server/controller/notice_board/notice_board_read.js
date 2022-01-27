@@ -1,7 +1,7 @@
 const { Notice_Board } = require('../../models')
 
 module.exports = async (req,res) =>{
-    console.log(req)
+    // console.log(req)
     if(req.path === '/notice_board'){
 
         const noticeAll = await Notice_Board.findAll()

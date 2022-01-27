@@ -21,7 +21,13 @@ function App() {
   
 
   const [isLogin, setIsLogin] = useState(false)
-  const [userinfo, setUserinfo] = useState("")
+  const [userinfo, setUserinfo] = useState({
+    id:0,
+    user_id:'',
+    name:'',
+    email:'',
+    mobile:''
+  })
   const [allPost, setAllPost] = useState([])
   const [nowPost, setNowPost] = useState("")
 
@@ -39,7 +45,8 @@ function App() {
       })
       .then((res) => {
         //유저 데이타
-        setUserinfo(res.data);
+        console.log(res.data.data.userInfo)
+        setUserinfo(res.data.data.userInfo);
         handleIsLogin();
       })
       .catch((err) => console.log('err'));
@@ -75,7 +82,7 @@ function App() {
           />
         <Route path="/createpost" 
                element={<CreatePost
-                          hadleLoginVerification={hadleLoginVerification} />} />
+                          userinfo={userinfo} />} />
         <Route path="/readpost" 
                element={<ReadPost
                           hadleLoginVerification={hadleLoginVerification}

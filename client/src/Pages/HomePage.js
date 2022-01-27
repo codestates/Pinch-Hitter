@@ -21,8 +21,7 @@ function HomePage({
         withCredentials: true,
       })
       .then(function(res){
-        console.log(res)
-        setAllPost(res.data.data.Notice_Board);
+        setAllPost(res.data.data);
       })
       .catch((err) => {
         console.log(err);

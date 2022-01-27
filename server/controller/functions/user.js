@@ -15,7 +15,6 @@ module.exports = {
       res.status(200).json({message: 'ok'});
   },
   isAuthorized: (token) => {
-
     const cookie = token.cookies.jwt
     return verify(cookie,process.env.ACCESS_SECRET,(err,decode)=>{
       if(err) throw err

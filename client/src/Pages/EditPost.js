@@ -81,7 +81,7 @@ export const EidtPost = (props) => {
         textareaContent.length > 0
     ) {
         axios({
-          url: url + "/notice_board/update",
+          url: url + "/notice_board",
           method: "patch",
           data: {
             user_id: props.userinfo.user_id,

@@ -28,8 +28,8 @@ app.post('/signup', controllers.signup);
 app.post('/login', controllers.login);
 app.post('/logout', controllers.logout);
 app.post('/notice_board', controllers.notice_board)
-
-
+app.patch('/notice_board', controllers.notice_board_edit)
+app.delete('/notice_board', controllers.notice_board_delete)
 // 인증서 파일들이 존재하는 경우에만 https 프로토콜을 사용하는 서버를 실행합니다.
 // 만약 인증서 파일이 존재하지 않는경우, http 프로토콜을 사용하는 서버를 실행합니다.
 // 파일 존재여부를 확인하는 폴더는 서버 폴더의 package.json이 위치한 곳입니다.

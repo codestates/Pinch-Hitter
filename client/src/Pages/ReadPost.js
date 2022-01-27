@@ -29,7 +29,7 @@ import {
 import { Modal } from "../Components/Modal"
 
 
-let url = "https://localhost:4000/";
+let url = "https://localhost:4000";
 
 export const ReadPost = (props) => {
   const navigate = useNavigate();
@@ -68,9 +68,9 @@ export const ReadPost = (props) => {
     console.log("삭제 버튼 클릭");
     
     axios({
-      url: url + "/notice-board",
+      url: url + "/notice_board",
       method: "delete",
-      data: { id: props.curPost.id},
+      data: { title: props.nowPost.title},
       withCredentials: true,
     }).then((res) => {
          alert(res.data)
@@ -79,8 +79,8 @@ export const ReadPost = (props) => {
     .catch((err) => console.log(err))
   }
     
-  console.log(props.userinfo)
-  console.log(String(props.nowPost.user_id))
+  // console.log(props.userinfo)
+  // console.log(String(props.nowPost.user_id))
   return (
     <>
       <Header 

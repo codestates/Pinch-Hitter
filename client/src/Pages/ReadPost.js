@@ -70,7 +70,7 @@ export const ReadPost = (props) => {
     axios({
       url: url + "/notice_board",
       method: "delete",
-      data: { title: props.nowPost.title},
+      data: { id: props.nowPost.id},
       withCredentials: true,
     }).then((res) => {
          alert(res.data)

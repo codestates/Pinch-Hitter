@@ -21,11 +21,9 @@ export const RouteBtn = ({ handleLogout }) => {
         <div className="headerBtn">마이페이지</div>
         <div className="headerBtn" onClick={handleGoCreatePost}>
           게시글작성
-        </div>
-      </div>
-      <div>
+        </div> 
         <div
-          className="headerBtn headerBtnLogout"
+          className="headerBtn"
           onClick={handleLogoutBtnClick}
         >
           로그아웃

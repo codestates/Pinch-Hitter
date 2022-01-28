@@ -2,6 +2,7 @@ const { Notice_Board } = require('../../models')
 
 
 module.exports = async (req,res) =>{
+    console.log(req)
     const {
         user_id,
         title,

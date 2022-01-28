@@ -29,7 +29,6 @@ let url = "https://localhost:4000";
 
 export const CreatPost = (props) => {
   const navigate = useNavigate();
-
   const [inputTitle, setInputTitle] = useState('');
   const [selectLocation, setSelectLocation] = useState('');
   const [pickerDate, setPickerDate] = useState('');
@@ -80,7 +79,7 @@ export const CreatPost = (props) => {
           url: url + '/notice_board',
           method: "post",
           data: {
-            user_id: props.userinfo.user_id,
+            user_id: props.userinfo.id,
             title: inputTitle,
             occupation: selectJob,
             wage: selectPay,

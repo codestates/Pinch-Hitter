@@ -4,6 +4,7 @@ module.exports = async (req,res) =>{
     const { id } = req.body
     console.log(req.body)
 
+
     await Notice_Board.destroy({where: {id: id}
         })
          res.send("삭제완료")

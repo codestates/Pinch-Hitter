@@ -27,7 +27,7 @@ import {
   ButtonDiv,
   TitleWrapper,
 } from "../Components/ReadPostComponents";
-import { Modal } from "../Components/Modal";
+// import { Modal } from "../Components/Modal";
 
 let url = "https://localhost:4000";
 

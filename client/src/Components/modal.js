@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import Login from '../Pages/Login';
-import Signup from '../Pages/Signup';
-import { RouteBtn } from './RouteBtn';
+import { useState } from "react";
+import styled from "styled-components";
+import Login from "../Pages/login";
+import Signup from "../Pages/signup";
+import { RouteBtn } from "./RouteBtn";
 
 export const ModalBack = styled.div`
   position: fixed;
@@ -39,7 +39,7 @@ export const ModalButton = styled.button`
 
 //Login 모달창 open 시
 export const ModalView = styled.div.attrs((props) => ({
-  role: 'dialog',
+  role: "dialog",
 }))`
   border-radius: 3px;
   background-color: #ffffff;
@@ -64,7 +64,7 @@ export const ModalView = styled.div.attrs((props) => ({
 
 //Signup 모달창 open 시
 export const ModalSignupView = styled.div.attrs((props) => ({
-  role: 'dialog',
+  role: "dialog",
 }))`
   border-radius: 3px;
   background-color: #ffffff;

@@ -1,11 +1,11 @@
-import { Modal } from './Modal';
-import { useNavigate } from 'react-router-dom';
+import { Modal } from "./modal";
+import { useNavigate } from "react-router-dom";
 
 function Header({ hadleLoginVerification, isLogin, handleLogout }) {
   let navigate = useNavigate();
 
   function handleGoHom() {
-    navigate('/');
+    navigate("/");
   }
 
   return (

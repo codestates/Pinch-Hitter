@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Login from '../Pages/Login';
-import Signup from '../Pages/Signup';
-import { RouteBtn } from './RouteBtn';
+import Login from "../Pages/login";
+import Signup from "../Pages/signup";
+import { RouteBtn } from "./RouteBtn";
 
 export const TitleWrapper = styled.div`
   width: 90%;
@@ -26,9 +26,9 @@ export const FixButton = styled.button`
   border-radius: 100px;
   cursor: pointer;
   float: left;
-  &:hover{
-      background-color: #006fff;
-      color: white;
+  &:hover {
+    background-color: #006fff;
+    color: white;
   }
 `;
 
@@ -44,9 +44,9 @@ export const DeleteButton = styled.button`
   border-radius: 100px;
   cursor: pointer;
   float: right;
-  &:hover{
-      background-color: orangered;
-      color: white;
+  &:hover {
+    background-color: orangered;
+    color: white;
   }
 `;
 
@@ -82,15 +82,15 @@ export const ModalButton = styled.button`
   border: 2px solid #006fff;
   border-radius: 100px;
   cursor: pointer;
-  &:hover{
-      background-color: #006fff;
-      color: white;
+  &:hover {
+    background-color: #006fff;
+    color: white;
   }
 `;
 
 //Login 모달창 open 시
 export const ModalView = styled.div.attrs((props) => ({
-  role: 'dialog',
+  role: "dialog",
 }))`
   border-radius: 3px;
   background-color: #ffffff;
@@ -115,7 +115,7 @@ export const ModalView = styled.div.attrs((props) => ({
 
 //Signup 모달창 open 시
 export const ModalSignupView = styled.div.attrs((props) => ({
-  role: 'dialog',
+  role: "dialog",
 }))`
   border-radius: 3px;
   background-color: #ffffff;
@@ -153,7 +153,6 @@ export const RModal = (props) => {
     setIsModal(!isModal);
   };
 
-  
   return (
     <>
       {isModal ? (
@@ -195,4 +194,3 @@ export const RModal = (props) => {
     </>
   );
 };
-

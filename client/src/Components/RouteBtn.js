@@ -1,16 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const RouteBtn = ({ handleLogout }) => {
   let navigate = useNavigate();
 
   function handleGoCreatePost() {
-    navigate('/createpost');
+    navigate("/createpost");
   }
 
   const handleLogoutBtnClick = () => {
-  
-    axios.post('https://localhost:4000/signout').then((res) => {
+    axios.post("https://localhost:4000/signout").then((res) => {
       handleLogout();
     });
   };

@@ -117,7 +117,7 @@ function Signup({ openModal }) {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
           setIsSignupModal(false);
           serverSuccessSignup();
         })

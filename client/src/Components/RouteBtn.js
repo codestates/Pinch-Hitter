@@ -9,7 +9,6 @@ export const RouteBtn = ({ handleLogout }) => {
   }
 
   const handleLogoutBtnClick = () => {
-  
     axios.post('https://localhost:4000/signout').then((res) => {
       handleLogout();
     });
@@ -21,11 +20,8 @@ export const RouteBtn = ({ handleLogout }) => {
         <div className="headerBtn">마이페이지</div>
         <div className="headerBtn" onClick={handleGoCreatePost}>
           게시글작성
-        </div> 
-        <div
-          className="headerBtn"
-          onClick={handleLogoutBtnClick}
-        >
+        </div>
+        <div className="headerBtn" onClick={handleLogoutBtnClick}>
           로그아웃
         </div>
       </div>

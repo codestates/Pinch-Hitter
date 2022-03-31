@@ -17,7 +17,7 @@ export const PostBackground = styled.div`
 `;
 
 export const Post = styled.div`
-width: 260px;
+  width: 260px;
   height: 350px;
 
   margin: 15px;
@@ -42,28 +42,26 @@ export const PostContents = styled.div`
 export const MainPosts = ({ allPost, setNowPost }) => {
   // 함수, 직종 = 맞는 직종 이미지
   // 게시판아이디 직종 제목
-    const navigate = useNavigate();
-    const handelPost = (post) => {
-      
-      console.log(post)
-      setNowPost(post)
-      navigate("/readpost")
-    };
+  const navigate = useNavigate();
+  const handelPost = (post) => {
+    console.log(post);
+    setNowPost(post);
+    navigate('/readpost');
+  };
 
   return (
     <>
-      <PostBackground >
+      <PostBackground>
         {allPost.map((post) => {
-          
-        return(
-          <Post onClick={() => handelPost(post)} key={post.id} >
-            <img
-              className="work_img"
-              src={`img/img_work/${post.occupation}.jpeg`}
-            />
-            <PostContents>{post.title}</PostContents>
-          </Post>
-        ) 
+          return (
+            <Post onClick={() => handelPost(post)} key={post.id}>
+              <img
+                className="work_img"
+                src={`img/img_work/${post.occupation}.jpeg`}
+              />
+              <PostContents>{post.title}</PostContents>
+            </Post>
+          );
         })}
       </PostBackground>
     </>

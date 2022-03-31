@@ -23,8 +23,6 @@ import {
 } from '../Components/CreatePostComponents';
 import Header from '../Components/Header';
 
-let url = 'https://localhost:4000';
-
 export const EidtPost = (props) => {
   const navigate = useNavigate();
 
@@ -76,7 +74,7 @@ export const EidtPost = (props) => {
 
     if (inputTitle.length > 0 && textareaContent.length > 0) {
       axios({
-        url: url + '/boards',
+        url: `${process.env.REACT_APP_SERVER_URI}/boards`,
         method: 'patch',
         data: {
           id: props.currentPost.id,

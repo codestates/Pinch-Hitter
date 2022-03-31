@@ -165,6 +165,13 @@ const StyleDatePicker = styled(DatePicker)`
   font-size: 25px;
   color: #006fff;
   cursor: pointer;
+  &.main {
+    position: relative;
+    color: black;
+    font-size: 18.5px;
+    width: 100px;
+    height: 30px;
+  }
 `;
 
 // 셀렉트박스 지역
@@ -255,6 +262,26 @@ export const Calenda = (props) => {
         setStartDate(date);
         props.onChange(date);
       }}
+      placeholderText="- 선 택 -"
+      locale={ko}
+    />
+  );
+};
+
+export const CalendaMain = (props) => {
+  const [startDate, setStartDate] = useState('');
+
+  return (
+    <StyleDatePicker
+      className="main"
+      dateFormat="yyyy-MM-dd"
+      selected={startDate}
+      onChange={(date) => {
+        setStartDate(date);
+        props.onChange(date);
+      }}
+      timeFormat="HH:mm"
+      timeCaption="time"
       placeholderText="- 선 택 -"
       locale={ko}
     />

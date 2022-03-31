@@ -24,8 +24,6 @@ import {
   CompleteButton,
 } from '../Components/CreatePostComponents';
 
-let url = 'https://localhost:4000';
-
 export const CreatPost = (props) => {
   const navigate = useNavigate();
   const [inputTitle, setInputTitle] = useState('');
@@ -71,7 +69,7 @@ export const CreatPost = (props) => {
 
     if (inputTitle.length > 0 && textareaContent.length > 0) {
       axios({
-        url: url + '/boards',
+        url: `${process.env.REACT_APP_SERVER_URI}/boards`,
         method: 'post',
         data: {
           title: inputTitle,

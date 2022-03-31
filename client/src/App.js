@@ -12,6 +12,8 @@ import CreatePost from './Pages/CreatePost';
 import ReadPost from './Pages/ReadPost';
 import EditPost from './Pages/EditPost';
 import Mypage from './Pages/Mypage';
+import OAuthKakao from './Components/oauth/OAuthKakao';
+import OAuthGoogle from './Components/oauth/OAuthGoogle';
 
 let url = 'https://localhost:4000';
 
@@ -24,74 +26,21 @@ function App() {
     email: 'kimcoding1@naver.com',
     mobile: '01012341234',
   });
-  const [allPost, setAllPost] = useState([
-    {
-      id: 1,
-      user_id: 'kimcoding1',
-      occupation: '편의점',
-      title: 'GS편의점 대타 구합니다!',
-      wage: '10,000원 이상',
-      work_date: '2022-02-15',
-      work_place: '강북',
-      content:
-        '1월 1일 강북 미아동에서 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.',
-    },
-    {
-      id: 2,
-      user_id: 'kimcoding2',
-      occupation: '패스트푸드점',
-      title: '햄버거 패스트 푸드점 대타 구합니다!',
-      wage: '10,000원 이상',
-      work_date: '2022-02-03',
-      work_place: '강북',
-      content:
-        '1월 2일 도붕구 쌍문동 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.',
-    },
-    {
-      id: 3,
-      user_id: 'kimcoding3',
-      occupation: '카페',
-      title: '동네 카페에서 대타 구합니다!',
-      wage: '10,000원 이상',
-      work_date: '2022-02-08',
-      work_place: '강북',
-      content:
-        '1월 3일 도봉구 방학동에서 아침 9시에서 저녁 6시까지 pc방 대타 구합니다.',
-    },
-  ]);
   const [currentPost, setCurrentPost] = useState('');
 
-  //로그인 성공시 이함수 실행
-  const handleIsLogin = () => {
-    console.log('로그인?');
-    setIsLogin(!isLogin);
-    console.log(userInfo);
-  };
-
-  //로그인페이지에서 요청 성공시 이함수 실행
-  const hadleLoginVerification = () => {
+  // 로그인 성공 후 유저정보 불러오기
+  const getUserInfo = () => {
     axios
-      .get(url + '/auth', {
+      .get(url + '/users', {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       })
       .then((res) => {
         //유저 데이타
-        console.log(res.data.data.userInfo);
-        setUserInfo(res.data.data.userInfo);
-        handleIsLogin();
+        console.log(res.data);
+        setUserInfo(res.data);
       })
       .catch((err) => console.log(err));
-  };
-
-  const handleLogout = () => {
-    axios
-      .post(url + '/logout')
-      .then((res) => {
-        setIsLogin(!isLogin);
-        setUserInfo('');
-      })
-      .catch((err) => console.log('err'));
   };
 
   return (
@@ -101,12 +50,9 @@ function App() {
           path="/"
           element={
             <HomePage
-              hadleLoginVerification={hadleLoginVerification}
+              getUserInfo={getUserInfo}
               isLogin={isLogin}
-              handleLogout={handleLogout}
-              allPost={allPost}
               setCurrentPost={setCurrentPost}
-              setAllPost={setAllPost}
             />
           }
         />
@@ -114,7 +60,7 @@ function App() {
           path="/createpost"
           element={
             <CreatePost
-              hadleLoginVerification={hadleLoginVerification}
+              getUserInfo={getUserInfo}
               userInfo={userInfo}
               isLogin={isLogin}
             />
@@ -124,7 +70,7 @@ function App() {
           path="/readpost"
           element={
             <ReadPost
-              hadleLoginVerification={hadleLoginVerification}
+              getUserInfo={getUserInfo}
               isLogin={isLogin}
               userInfo={userInfo}
               currentPost={currentPost}
@@ -135,7 +81,7 @@ function App() {
           path="/editpost"
           element={
             <EditPost
-              hadleLoginVerification={hadleLoginVerification}
+              getUserInfo={getUserInfo}
               isLogin={isLogin}
               userInfo={userInfo}
               currentPost={currentPost}
@@ -146,7 +92,7 @@ function App() {
           path="/mypage"
           element={
             <Mypage
-              hadleLoginVerification={hadleLoginVerification}
+              getUserInfo={getUserInfo}
               isLogin={isLogin}
               userInfo={userInfo}
               setUserInfo={setUserInfo}
@@ -155,45 +101,21 @@ function App() {
             />
           }
         />
+        <Route
+          path="/oauth/kakao"
+          element={
+            <OAuthKakao getUserInfo={getUserInfo} setIsLogin={setIsLogin} />
+          }
+        />
+        <Route
+          path="/oauth/google"
+          element={
+            <OAuthGoogle getUserInfo={getUserInfo} setIsLogin={setIsLogin} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-// 아래는 allPost 더미데이터
-
-// {
-//   id: 1,
-//   user_id: 'kimcoding1',
-//   occupation: '편의점',
-//   title: 'GS편의점 대타 구합니다!',
-//   wage: '10,000원 이상',
-//   work_date: '2022-02-15',
-//   work_place: '강북',
-//   content:
-//     '1월 1일 강북 미아동에서 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.',
-// },
-// {
-//   id: 2,
-//   user_id: 'kimcoding2',
-//   occupation: '패스트푸드점',
-//   title: '햄버거 패스트 푸드점 대타 구합니다!',
-//   wage: '10,000원 이상',
-//   work_date: '2022-02-03',
-//   work_place: '강북',
-//   content:
-//     '1월 2일 도붕구 쌍문동 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.',
-// },
-// {
-//   id: 3,
-//   user_id: 'kimcoding3',
-//   occupation: '카페',
-//   title: '동네 카페에서 대타 구합니다!',
-//   wage: '10,000원 이상',
-//   work_date: '2022-02-08',
-//   work_place: '강북',
-//   content:
-//     '1월 3일 도봉구 방학동에서 아침 9시에서 저녁 6시까지 pc방 대타 구합니다.',
-// },

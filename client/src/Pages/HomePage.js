@@ -1,23 +1,23 @@
-import { MainPosts } from "./MainPost";
-import Header from "../Components/header";
-import { useEffect } from "react";
-import axios from "axios";
+import { MainPosts } from './MainPost';
+import { useEffect } from 'react';
+import axios from 'axios';
 
-let url = "https://localhost:4000";
+import Header from '../Components/Headers';
+
+let url = 'https://localhost:4000';
 
 function HomePage({
-  hadleLoginVerification,
+  setIsLogin,
   isLogin,
-  handleLogout,
   postClickNav,
+  setUserinfo,
   allPost,
   setAllPost,
   setNowPost,
 }) {
   useEffect(() => {
-    console.log("hompage 20번줄");
     axios
-      .get("https://localhost:4000/notice_board", {
+      .get('https://localhost:4000/notice_board', {
         withCredentials: true,
       })
       .then(function (res) {
@@ -30,11 +30,7 @@ function HomePage({
 
   return (
     <>
-      <Header
-        hadleLoginVerification={hadleLoginVerification}
-        isLogin={isLogin}
-        handleLogout={handleLogout}
-      />
+      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <MainPosts allPost={allPost} setNowPost={setNowPost} />
     </>
   );

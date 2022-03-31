@@ -12,100 +12,68 @@ import CreatePost from './Pages/CreatePost';
 import ReadPost from './Pages/ReadPost';
 import EditPost from './Pages/EditPost';
 import Mypage from './Pages/Mypage';
-
-
-
-let url = "https://localhost:4000"
+import OAuthKakao from './Components/oauth/OAuthKakao';
+import OAuthGoogle from './Components/oauth/OAuthGoogle';
 
 function App() {
-  
-
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
   const [userinfo, setUserinfo] = useState({
-    id:0,
-    user_id:'',
-    name:'',
-    email:'',
-    mobile:''
-  })
-  const [allPost, setAllPost] = useState([])
-  const [nowPost, setNowPost] = useState("")
-
-  //로그인 성공시 이함수 실행
-  const handleIsLogin = () => {
-    console.log('로그인?');
-    setIsLogin(!isLogin);
-    console.log(userinfo)
-  };
-  //로그인페이지에서 요청 성공시 이함수 실행
-  const hadleLoginVerification = () => {
-    axios
-      .get( url + '/auth', {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,
-      })
-      .then((res) => {
-        //유저 데이타
-        console.log(res.data.data.userInfo)
-        setUserinfo(res.data.data.userInfo);
-        handleIsLogin();
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleLogout = () => {
-    axios
-      .post( url + '/logout')
-      .then((res) => {
-        setIsLogin(!isLogin);
-        setUserinfo('');
-      })
-      .catch((err) => console.log('err'));
-  };
-
-
+    id: 0,
+    user_id: '',
+    name: '',
+    email: '',
+    mobile: '',
+  });
+  const [allPost, setAllPost] = useState([]);
+  const [nowPost, setNowPost] = useState('');
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
-            path="/"
-            element={
-              <HomePage
-              hadleLoginVerification={hadleLoginVerification}
+          path="/"
+          element={
+            <HomePage
               isLogin={isLogin}
-              handleLogout={handleLogout}
+              setUserinfo={setUserinfo}
               allPost={allPost}
               setNowPost={setNowPost}
               setAllPost={setAllPost}
+              setIsLogin={setIsLogin}
             />
-            }
-          />
-        <Route path="/createpost" 
-               element={<CreatePost
-                          hadleLoginVerification={hadleLoginVerification}
-                          userinfo={userinfo}
-                          isLogin={isLogin} />} />
-        <Route path="/readpost" 
-               element={<ReadPost
-                          hadleLoginVerification={hadleLoginVerification}
-                          isLogin={isLogin}
-                          userinfo={userinfo}
-                          nowPost={nowPost}/>} />
-        <Route path="/editpost" 
-               element={<EditPost
-                          hadleLoginVerification={hadleLoginVerification}
-                          isLogin={isLogin}
-                          userinfo={userinfo}
-                          nowPost={nowPost}/>} />
+          }
+        />
+        <Route
+          path="/createpost"
+          element={<CreatePost userinfo={userinfo} isLogin={isLogin} />}
+        />
+        <Route
+          path="/readpost"
+          element={
+            <ReadPost isLogin={isLogin} userinfo={userinfo} nowPost={nowPost} />
+          }
+        />
+        <Route
+          path="/editpost"
+          element={
+            <EditPost isLogin={isLogin} userinfo={userinfo} nowPost={nowPost} />
+          }
+        />
         <Route path="/mypage" element={<Mypage />} />
+        <Route
+          path="/oauth/kakao"
+          element={<OAuthKakao setIsLogin={setIsLogin} />}
+        />
+        <Route
+          path="/oauth/google"
+          element={<OAuthGoogle setIsLogin={setIsLogin} />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
 
 /**
  * {

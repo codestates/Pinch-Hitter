@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter,
   Routes,
   Route,
   Link,
   useNavigate,
-} from "react-router-dom";
-import axios from "axios";
+} from 'react-router-dom';
+import axios from 'axios';
 import {
   SelectBoxLocation,
   SelectBoxJob,
@@ -20,20 +20,20 @@ import {
   IndexDiv,
   ContentTextarea,
   CompleteButton,
-} from "../Components/CreatePostComponents";
-import Header from "../Components/header";
+} from '../Components/CreatePostComponents';
+import Header from '../Components/Headers';
 
-let url = "https://localhost:4000";
+let url = 'https://localhost:4000';
 
 export const EidtPost = (props) => {
   const navigate = useNavigate();
 
-  const [inputTitle, setInputTitle] = useState("");
-  const [selectLocation, setSelectLocation] = useState("");
-  const [pickerDate, setPickerDate] = useState("");
-  const [selectJob, setSelectJob] = useState("");
-  const [selectPay, setSelectPay] = useState("");
-  const [textareaContent, setTextareaContent] = useState("");
+  const [inputTitle, setInputTitle] = useState('');
+  const [selectLocation, setSelectLocation] = useState('');
+  const [pickerDate, setPickerDate] = useState('');
+  const [selectJob, setSelectJob] = useState('');
+  const [selectPay, setSelectPay] = useState('');
+  const [textareaContent, setTextareaContent] = useState('');
 
   // 기존 게시물 내용이 수정 페이지에서 보일 수 있게
   // 셀렉트 박스랑 달력은 구현이 안됨!!(공부필요)
@@ -52,11 +52,11 @@ export const EidtPost = (props) => {
   };
 
   const handleSelectValue = (e) => {
-    if (e.target.name === "location") {
+    if (e.target.name === 'location') {
       setSelectLocation(e.target.value);
-    } else if (e.target.name === "job") {
+    } else if (e.target.name === 'job') {
       setSelectJob(e.target.value);
-    } else if (e.target.name === "pay") {
+    } else if (e.target.name === 'pay') {
       setSelectPay(e.target.value);
     }
   };
@@ -72,12 +72,12 @@ export const EidtPost = (props) => {
   // 수정 완료 버튼
   // 수정한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
-    console.log("작성완료 버튼 클릭");
+    console.log('작성완료 버튼 클릭');
 
     if (inputTitle.length > 0 && textareaContent.length > 0) {
       axios({
-        url: url + "/notice_board",
-        method: "patch",
+        url: url + '/notice_board',
+        method: 'patch',
         data: {
           user_id: props.userinfo.user_id,
           title: inputTitle,
@@ -90,12 +90,12 @@ export const EidtPost = (props) => {
         withCredentials: true,
       })
         .then(() => {
-          alert("수정을 완료하셨습니다.");
-          navigate("/");
+          alert('수정을 완료하셨습니다.');
+          navigate('/');
         })
         .catch((err) => console.log(err));
     } else {
-      alert("제목과 내용을 모두 입력해주세요.");
+      alert('제목과 내용을 모두 입력해주세요.');
     }
   };
 

@@ -1,13 +1,13 @@
-import axios from "axios";
-import React from "react";
+import axios from 'axios';
+import React from 'react';
 import {
   BrowserRouter,
   Routes,
   Route,
   Link,
   useNavigate,
-} from "react-router-dom";
-import Header from "../Components/header";
+} from 'react-router-dom';
+import Header from '../Components/Headers';
 import {
   WrapperDiv,
   Head,
@@ -18,7 +18,7 @@ import {
   IndexDiv,
   RContentTextarea,
   CompleteButton,
-} from "../Components/CreatePostComponents";
+} from '../Components/CreatePostComponents';
 import {
   RModal,
   FixButton,
@@ -26,21 +26,21 @@ import {
   DeleteButton,
   ButtonDiv,
   TitleWrapper,
-} from "../Components/ReadPostComponents";
+} from '../Components/ReadPostComponents';
 // import { Modal } from "../Components/Modal";
 
-let url = "https://localhost:4000";
+let url = 'https://localhost:4000';
 
 export const ReadPost = (props) => {
   const navigate = useNavigate();
 
   // 지원하기 버튼 누르면 지원자 정보 post요청
   const applyButton = () => {
-    console.log("지원하기 버튼 클릭");
+    console.log('지원하기 버튼 클릭');
 
     axios({
-      url: url + "/applicant",
-      method: "post",
+      url: url + '/applicant',
+      method: 'post',
       data: {
         user_id: props.userinfo.user_id,
         email: props.userinfo.email,
@@ -49,32 +49,32 @@ export const ReadPost = (props) => {
       withCredentials: true,
     })
       .then(() => {
-        alert("지원을 완료하셨습니다.");
-        navigate("/");
+        alert('지원을 완료하셨습니다.');
+        navigate('/');
       })
       .catch((err) => console.log(err));
   };
 
   // 게시물 수정페이지로 이동
   const fixPostButton = () => {
-    console.log("수정 버튼 클릭");
+    console.log('수정 버튼 클릭');
 
-    navigate("/editpost");
+    navigate('/editpost');
   };
 
   // 게시물 삭제 요청
   const deletePostButton = () => {
-    console.log("삭제 버튼 클릭");
+    console.log('삭제 버튼 클릭');
 
     axios({
-      url: url + "/notice_board",
-      method: "delete",
+      url: url + '/notice_board',
+      method: 'delete',
       data: { title: props.nowPost.title },
       withCredentials: true,
     })
       .then((res) => {
         alert(res.data);
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => console.log(err));
   };

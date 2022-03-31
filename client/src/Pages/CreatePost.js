@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   BrowserRouter,
   Routes,
   Route,
   Link,
   useNavigate,
-} from "react-router-dom";
-import axios from "axios";
-import Header from "../Components/header";
+} from 'react-router-dom';
+import axios from 'axios';
+
 import {
   SelectBoxLocation,
   SelectBoxJob,
@@ -22,57 +22,58 @@ import {
   IndexDiv,
   ContentTextarea,
   CompleteButton,
-} from "../Components/CreatePostComponents";
+} from '../Components/CreatePostComponents';
+import Header from '../Components/Headers';
 
-let url = "https://localhost:4000";
+let url = 'https://localhost:4000';
 
 export const CreatPost = (props) => {
   const navigate = useNavigate();
-  const [inputTitle, setInputTitle] = useState("");
-  const [selectLocation, setSelectLocation] = useState("");
-  const [pickerDate, setPickerDate] = useState("");
-  const [selectJob, setSelectJob] = useState("");
-  const [selectPay, setSelectPay] = useState("");
-  const [textareaContent, setTextareaContent] = useState("");
+  const [inputTitle, setInputTitle] = useState('');
+  const [selectLocation, setSelectLocation] = useState('');
+  const [pickerDate, setPickerDate] = useState('');
+  const [selectJob, setSelectJob] = useState('');
+  const [selectPay, setSelectPay] = useState('');
+  const [textareaContent, setTextareaContent] = useState('');
 
   // 입력되는 제목, 지역, 날짜, 직종, 급여, 내용
   const handleInputValue = (e) => {
-    console.log("제목 실행");
+    console.log('제목 실행');
     setInputTitle(e.target.value);
   };
 
   const handleSelectValue = (e) => {
-    console.log("셀렉트 실행");
-    if (e.target.name === "location") {
+    console.log('셀렉트 실행');
+    if (e.target.name === 'location') {
       setSelectLocation(e.target.value);
-    } else if (e.target.name === "job") {
+    } else if (e.target.name === 'job') {
       setSelectJob(e.target.value);
-    } else if (e.target.name === "pay") {
+    } else if (e.target.name === 'pay') {
       setSelectPay(e.target.value);
     }
   };
 
   const handlePikerValue = (date) => {
-    console.log("날짜 실행");
+    console.log('날짜 실행');
     console.log(date);
     setPickerDate(date);
   };
 
   const handleTextareaValue = (e) => {
-    console.log("내용 실행");
+    console.log('내용 실행');
     setTextareaContent(e.target.value);
   };
 
   // 작성 완료 버튼
   // 작성한 게시물 정보 -> 서버로
   const postCompleteButton = () => {
-    console.log("작성완료 버튼 클릭");
+    console.log('작성완료 버튼 클릭');
     console.log(props.isLogin);
 
     if (inputTitle.length > 0 && textareaContent.length > 0) {
       axios({
-        url: url + "/notice_board",
-        method: "post",
+        url: url + '/notice_board',
+        method: 'post',
         data: {
           user_id: props.userinfo.id,
           title: inputTitle,
@@ -85,12 +86,12 @@ export const CreatPost = (props) => {
         withCredentials: true,
       })
         .then(() => {
-          alert("작성을 완료하셨습니다.");
-          navigate("/");
+          alert('작성을 완료하셨습니다.');
+          navigate('/');
         })
         .catch((err) => console.log(err));
     } else {
-      alert("제목과 내용을 모두 입력해주세요.");
+      alert('제목과 내용을 모두 입력해주세요.');
     }
   };
 

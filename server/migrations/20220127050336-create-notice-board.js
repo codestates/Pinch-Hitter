@@ -42,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Boards");
+    await queryInterface.dropTable("Notice_Boards");
   },
 };

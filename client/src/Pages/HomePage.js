@@ -3,8 +3,6 @@ import Header from "../Components/header";
 import { useEffect } from "react";
 import axios from "axios";
 
-let url = "https://localhost:4000";
-
 function HomePage({
   hadleLoginVerification,
   isLogin,
@@ -17,7 +15,7 @@ function HomePage({
   useEffect(() => {
     console.log("hompage 20번줄");
     axios
-      .get("https://localhost:4000/notice_board", {
+      .get(`${process.env.PinchHitterUrl}/notice_board`, {
         withCredentials: true,
       })
       .then(function (res) {

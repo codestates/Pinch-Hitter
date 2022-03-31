@@ -1,52 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
   Route,
   Link,
   useNavigate,
-} from 'react-router-dom';
-import axios from 'axios';
-import HomePage from './Pages/HomePage';
-import CreatePost from './Pages/CreatePost';
-import ReadPost from './Pages/ReadPost';
-import EditPost from './Pages/EditPost';
-import Mypage from './Pages/Mypage';
+} from "react-router-dom";
+import axios from "axios";
+import HomePage from "./Pages/HomePage";
+import CreatePost from "./Pages/CreatePost";
+import ReadPost from "./Pages/ReadPost";
+import EditPost from "./Pages/EditPost";
+import Mypage from "./Pages/Mypage";
 
-
-
-let url = "https://localhost:4000"
+let url = "https://localhost:4000";
 
 function App() {
-  
-
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
   const [userinfo, setUserinfo] = useState({
-    id:0,
-    user_id:'',
-    name:'',
-    email:'',
-    mobile:''
-  })
-  const [allPost, setAllPost] = useState([])
-  const [nowPost, setNowPost] = useState("")
+    id: 0,
+    user_id: "",
+    name: "",
+    email: "",
+    mobile: "",
+  });
+  const [allPost, setAllPost] = useState([]);
+  const [nowPost, setNowPost] = useState("");
 
   //로그인 성공시 이함수 실행
   const handleIsLogin = () => {
-    console.log('로그인?');
+    console.log("로그인?");
     setIsLogin(!isLogin);
-    console.log(userinfo)
+    console.log(userinfo);
   };
   //로그인페이지에서 요청 성공시 이함수 실행
   const hadleLoginVerification = () => {
     axios
-      .get( url + '/auth', {
-        headers: { 'Content-Type': 'application/json' },
+      .get(`${process.env.PinchHitterUrl}/auth`, {
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
       .then((res) => {
         //유저 데이타
-        console.log(res.data.data.userInfo)
+        console.log(res.data.data.userInfo);
         setUserinfo(res.data.data.userInfo);
         handleIsLogin();
       })
@@ -55,23 +51,21 @@ function App() {
 
   const handleLogout = () => {
     axios
-      .post( url + '/logout')
+      .post(`${process.env.PinchHitterUrl}/logout`)
       .then((res) => {
         setIsLogin(!isLogin);
-        setUserinfo('');
+        setUserinfo("");
       })
-      .catch((err) => console.log('err'));
+      .catch((err) => console.log("err"));
   };
-
-
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
-            path="/"
-            element={
-              <HomePage
+          path="/"
+          element={
+            <HomePage
               hadleLoginVerification={hadleLoginVerification}
               isLogin={isLogin}
               handleLogout={handleLogout}
@@ -79,25 +73,40 @@ function App() {
               setNowPost={setNowPost}
               setAllPost={setAllPost}
             />
-            }
-          />
-        <Route path="/createpost" 
-               element={<CreatePost
-                          hadleLoginVerification={hadleLoginVerification}
-                          userinfo={userinfo}
-                          isLogin={isLogin} />} />
-        <Route path="/readpost" 
-               element={<ReadPost
-                          hadleLoginVerification={hadleLoginVerification}
-                          isLogin={isLogin}
-                          userinfo={userinfo}
-                          nowPost={nowPost}/>} />
-        <Route path="/editpost" 
-               element={<EditPost
-                          hadleLoginVerification={hadleLoginVerification}
-                          isLogin={isLogin}
-                          userinfo={userinfo}
-                          nowPost={nowPost}/>} />
+          }
+        />
+        <Route
+          path="/createpost"
+          element={
+            <CreatePost
+              hadleLoginVerification={hadleLoginVerification}
+              userinfo={userinfo}
+              isLogin={isLogin}
+            />
+          }
+        />
+        <Route
+          path="/readpost"
+          element={
+            <ReadPost
+              hadleLoginVerification={hadleLoginVerification}
+              isLogin={isLogin}
+              userinfo={userinfo}
+              nowPost={nowPost}
+            />
+          }
+        />
+        <Route
+          path="/editpost"
+          element={
+            <EditPost
+              hadleLoginVerification={hadleLoginVerification}
+              isLogin={isLogin}
+              userinfo={userinfo}
+              nowPost={nowPost}
+            />
+          }
+        />
         <Route path="/mypage" element={<Mypage />} />
       </Routes>
     </BrowserRouter>
@@ -105,7 +114,6 @@ function App() {
 }
 
 export default App;
-
 
 /**
  * {

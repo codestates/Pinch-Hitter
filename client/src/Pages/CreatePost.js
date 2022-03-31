@@ -71,7 +71,7 @@ export const CreatPost = (props) => {
 
     if (inputTitle.length > 0 && textareaContent.length > 0) {
       axios({
-        url: url + "/notice_board",
+        url: `${process.env.PinchHitterUrl}/notice_board`,
         method: "post",
         data: {
           user_id: props.userinfo.id,

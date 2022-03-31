@@ -76,7 +76,7 @@ export const EidtPost = (props) => {
 
     if (inputTitle.length > 0 && textareaContent.length > 0) {
       axios({
-        url: url + "/notice_board",
+        url: `${process.env.PinchHitterUrl}/notice_board`,
         method: "patch",
         data: {
           user_id: props.userinfo.user_id,

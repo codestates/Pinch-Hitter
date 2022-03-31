@@ -9,7 +9,7 @@ export const RouteBtn = ({ handleLogout }) => {
   }
 
   const handleLogoutBtnClick = () => {
-    axios.post("https://localhost:4000/signout").then((res) => {
+    axios.post(`${process.env.PinchHitterUrl}/signout`).then((res) => {
       handleLogout();
     });
   };

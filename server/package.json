@@ -4,7 +4,6 @@
   "description": "server",
   "main": "app.js",
   "scripts": {
-    "prestart": "npx sequelize-cli db:migrate",
     "start": "node app.js",
     "prod": "NODE_ENV=production node app.js",
     "pretest": "npx sequelize-cli db:migrate"

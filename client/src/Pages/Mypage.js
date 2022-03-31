@@ -216,7 +216,7 @@ export const Mypage = (props) => {
   // 내가 쓴 게시물 리스트 불러오기
   useEffect(() => {
     axios({
-      url: url + '/boards/' + props.userInfo.id,
+      url: `${process.env.REACT_APP_SERVER_URI}/boards/${props.userInfo.id}`,
       method: 'get',
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -236,7 +236,7 @@ export const Mypage = (props) => {
   // 내가 신청한 게시물 리스트 불러오기
   useEffect(() => {
     axios({
-      url: url + '/applicants/' + props.userInfo.id,
+      url: `${process.env.REACT_APP_SERVER_URI}/applicants/${props.userInfo.id}`,
       method: 'get',
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -256,7 +256,7 @@ export const Mypage = (props) => {
   // 전체 신청자 리스트 불러오기
   useEffect(() => {
     axios({
-      url: url + '/applicants',
+      url: `${process.env.REACT_APP_SERVER_URI}/applicants`,
       method: 'get',
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -424,7 +424,7 @@ export const Mypage = (props) => {
     console.log('내가 신청한 게시물 클릭');
 
     axios({
-      url: url + '/boards/' + board.id,
+      url: `${process.env.REACT_APP_SERVER_URI}/boards/${board.id}`,
       method: 'get',
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -453,7 +453,7 @@ export const Mypage = (props) => {
 
     if (inputNickname.length > 0) {
       axios({
-        url: url + '/nickname',
+        url: `${process.env.REACT_APP_SERVER_URI}/nickname`,
         method: 'patch',
         headers: {
           // Authorization: `Bearer ${props.accessToken}`,
@@ -484,7 +484,7 @@ export const Mypage = (props) => {
 
     if (inputMobile.length > 0) {
       axios({
-        url: url + '/mobile',
+        url: `${process.env.REACT_APP_SERVER_URI}/mobile`,
         method: 'patch',
         headers: {
           // Authorization: `Bearer ${props.accessToken}`,
@@ -514,7 +514,7 @@ export const Mypage = (props) => {
     console.log('비밀번호 변경 완료 버튼 클릭');
 
     axios({
-      url: url + '/password',
+      url: `${process.env.REACT_APP_SERVER_URI}/password`,
       method: 'patch',
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -543,7 +543,7 @@ export const Mypage = (props) => {
     console.log('탈퇴확인 모달창에서 탈퇴버튼 눌림');
 
     axios({
-      url: url + '/signout',
+      url: `${process.env.REACT_APP_SERVER_URI}/signout`,
       method: 'delete',
       withCredentials: true,
     })

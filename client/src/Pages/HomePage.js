@@ -12,22 +12,8 @@ function HomePage({
   postClickNav,
   allPost,
   setAllPost,
-  setNowPost,
+  setCurrentPost,
 }) {
-  useEffect(() => {
-    console.log('hompage 20번줄');
-    axios
-      .get('https://localhost:4000/notice_board', {
-        withCredentials: true,
-      })
-      .then(function (res) {
-        setAllPost(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   return (
     <>
       <Header
@@ -35,7 +21,7 @@ function HomePage({
         isLogin={isLogin}
         handleLogout={handleLogout}
       />
-      <MainPosts allPost={allPost} setNowPost={setNowPost} />
+      <MainPosts allPost={allPost} setCurrentPost={setCurrentPost} />
     </>
   );
 }

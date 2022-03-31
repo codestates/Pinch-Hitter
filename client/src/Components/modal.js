@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
 import { RouteBtn } from './RouteBtn';
+import { BiLogIn } from 'react-icons/bi';
 
 export const ModalBack = styled.div`
   position: fixed;
@@ -21,40 +22,45 @@ export const SideBarModal = styled.div`
   margin: right;
 `;
 //모달 로그인 버튼
-export const ModalButton = styled.button`
-  margin-right: 10px;
-  margin-top: 60px;
-  background-color: #7c99ac;
-  border: none;
-  color: white;
-  border-radius: 10px;
+export const ModalButton = styled.div`
+  margin-right: 30px;
+  margin-top: 13px;
+  font-size: 17px;
   cursor: grab;
   width: 100px;
   height: 30px;
-  box-shadow: 2px 1px 3px 1px #dadce0;
+  position: relative;
+
+  > svg {
+    top: 4px;
+    left: 8px;
+    position: absolute;
+  }
   &:hover {
-    background-color: #637a8a;
+    transform: scale(1.1);
   }
 `;
 
 //Login 모달창 open 시
-export const ModalView = styled.div.attrs((props) => ({
-  role: 'dialog',
-}))`
-  border-radius: 3px;
+export const ModalView = styled.div`
+  border-radius: 10px;
   background-color: #ffffff;
-  width: 400px;
-  height: 440px;
-  box-shadow: 1px 1px 1px 1px #dadce0;
+  width: 350px;
+  height: 320px;
+
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 
   > span.close-modal {
     position: absolute;
-    top: 0px;
+    top: -40px;
     right: 5px;
     cursor: pointer;
     font-size: 30px;
-    color: rgb(150, 150, 150);
+    color: white;
   }
 
   > div.login {
@@ -63,13 +69,11 @@ export const ModalView = styled.div.attrs((props) => ({
 `;
 
 //Signup 모달창 open 시
-export const ModalSignupView = styled.div.attrs((props) => ({
-  role: 'dialog',
-}))`
-  border-radius: 3px;
+export const ModalSignupView = styled.div`
+  border-radius: 15px;
   background-color: #ffffff;
-  width: 400px;
-  height: 640px;
+  width: 300px;
+  height: 500px;
   box-shadow: 1px 1px 1px 1px #dadce0;
   position: relative;
 
@@ -77,9 +81,9 @@ export const ModalSignupView = styled.div.attrs((props) => ({
     z-index: 1000;
     cursor: pointer;
     font-size: 30px;
-    color: rgb(150, 150, 150);
+    color: white;
     position: absolute;
-    top: 0px;
+    top: -35px;
     right: 5px;
   }
 
@@ -88,7 +92,7 @@ export const ModalSignupView = styled.div.attrs((props) => ({
   }
 `;
 
-export const Modal = ({ hadleLoginVerification, isLogin, handleLogout }) => {
+export const Modal = ({ setIsLogin, isLogin }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -107,22 +111,28 @@ export const Modal = ({ hadleLoginVerification, isLogin, handleLogout }) => {
     <>
       {isModal ? (
         <SideBarModal>
-          <ModalButton>로그인</ModalButton>
+          <ModalButton>
+            <BiLogIn size={18} />
+            로그인
+          </ModalButton>
           <ModalBack>
             <ModalSignupView>
               <span onClick={clickSignup} className="close-modal">
                 &times;
               </span>
-              <Signup openModal={openModal} />
+              <Signup openModal={openModal} setShowModal={setShowModal} />
             </ModalSignupView>
           </ModalBack>
         </SideBarModal>
       ) : (
         <SideBarModal>
           {isLogin ? (
-            <RouteBtn handleLogout={handleLogout} />
+            <RouteBtn setIsLogin={setIsLogin} />
           ) : (
-            <ModalButton onClick={openModal}>로그인</ModalButton>
+            <ModalButton onClick={openModal}>
+              <BiLogIn size={18} />
+              로그인
+            </ModalButton>
           )}
 
           {showModal === true && isLogin === false ? (
@@ -134,8 +144,9 @@ export const Modal = ({ hadleLoginVerification, isLogin, handleLogout }) => {
 
                 <Login
                   clickSignup={clickSignup}
-                  hadleLoginVerification={hadleLoginVerification}
+                  setIsLogin={setIsLogin}
                   openModal={openModal}
+                  setShowModal={setShowModal}
                 />
               </ModalView>
             </ModalBack>

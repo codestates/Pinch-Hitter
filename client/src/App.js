@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   useNavigate,
+<<<<<<< HEAD
 } from "react-router-dom";
 import axios from "axios";
 import HomePage from "./Pages/HomePage";
@@ -38,17 +39,53 @@ function App() {
     axios
       .get(`${process.env.PinchHitterUrl}/auth`, {
         headers: { "Content-Type": "application/json" },
+=======
+} from 'react-router-dom';
+import axios from 'axios';
+import HomePage from './Pages/HomePage';
+import CreatePost from './Pages/CreatePost';
+import ReadPost from './Pages/ReadPost';
+import EditPost from './Pages/EditPost';
+import Mypage from './Pages/Mypage';
+import OAuthKakao from './Components/oauth/OAuthKakao';
+import OAuthGoogle from './Components/oauth/OAuthGoogle';
+
+let url = 'https://localhost:4000';
+
+function App() {
+  const [isLogin, setIsLogin] = useState(true);
+  const [userInfo, setUserInfo] = useState({
+    id: 1,
+    user_id: 'kimcoding1',
+    name: '김코딩',
+    email: 'kimcoding1@naver.com',
+    mobile: '01012341234',
+  });
+  const [currentPost, setCurrentPost] = useState('');
+
+  // 로그인 성공 후 유저정보 불러오기
+  const getUserInfo = () => {
+    axios
+      .get(url + '/users', {
+        headers: { 'Content-Type': 'application/json' },
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
         withCredentials: true,
       })
       .then((res) => {
         //유저 데이타
+<<<<<<< HEAD
         console.log(res.data.data.userInfo);
         setUserinfo(res.data.data.userInfo);
         handleIsLogin();
+=======
+        console.log(res.data);
+        setUserInfo(res.data);
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
       })
       .catch((err) => console.log(err));
   };
 
+<<<<<<< HEAD
   const handleLogout = () => {
     axios
       .post(`${process.env.PinchHitterUrl}/logout`)
@@ -59,6 +96,8 @@ function App() {
       .catch((err) => console.log("err"));
   };
 
+=======
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
   return (
     <BrowserRouter>
       <Routes>
@@ -66,12 +105,12 @@ function App() {
           path="/"
           element={
             <HomePage
+<<<<<<< HEAD
               hadleLoginVerification={hadleLoginVerification}
+=======
+              getUserInfo={getUserInfo}
               isLogin={isLogin}
-              handleLogout={handleLogout}
-              allPost={allPost}
-              setNowPost={setNowPost}
-              setAllPost={setAllPost}
+              setCurrentPost={setCurrentPost}
             />
           }
         />
@@ -79,13 +118,35 @@ function App() {
           path="/createpost"
           element={
             <CreatePost
-              hadleLoginVerification={hadleLoginVerification}
-              userinfo={userinfo}
+              getUserInfo={getUserInfo}
+              userInfo={userInfo}
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
               isLogin={isLogin}
             />
           }
         />
         <Route
+<<<<<<< HEAD
+          path="/createpost"
+          element={
+            <CreatePost
+              hadleLoginVerification={hadleLoginVerification}
+              userinfo={userinfo}
+              isLogin={isLogin}
+=======
+          path="/readpost"
+          element={
+            <ReadPost
+              getUserInfo={getUserInfo}
+              isLogin={isLogin}
+              userInfo={userInfo}
+              currentPost={currentPost}
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+            />
+          }
+        />
+        <Route
+<<<<<<< HEAD
           path="/readpost"
           element={
             <ReadPost
@@ -93,10 +154,20 @@ function App() {
               isLogin={isLogin}
               userinfo={userinfo}
               nowPost={nowPost}
+=======
+          path="/editpost"
+          element={
+            <EditPost
+              getUserInfo={getUserInfo}
+              isLogin={isLogin}
+              userInfo={userInfo}
+              currentPost={currentPost}
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
             />
           }
         />
         <Route
+<<<<<<< HEAD
           path="/editpost"
           element={
             <EditPost
@@ -108,12 +179,39 @@ function App() {
           }
         />
         <Route path="/mypage" element={<Mypage />} />
+=======
+          path="/mypage"
+          element={
+            <Mypage
+              getUserInfo={getUserInfo}
+              isLogin={isLogin}
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
+              currentPost={currentPost}
+              setCurrentPost={setCurrentPost}
+            />
+          }
+        />
+        <Route
+          path="/oauth/kakao"
+          element={
+            <OAuthKakao getUserInfo={getUserInfo} setIsLogin={setIsLogin} />
+          }
+        />
+        <Route
+          path="/oauth/google"
+          element={
+            <OAuthGoogle getUserInfo={getUserInfo} setIsLogin={setIsLogin} />
+          }
+        />
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+<<<<<<< HEAD
 
 /**
  * {
@@ -135,3 +233,5 @@ export default App;
     content:'1월 2일 도붕구 쌍문동 아침 9시에서 저녁 6시까지 편의점 대타 구합니다.'
   }
  */
+=======
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4

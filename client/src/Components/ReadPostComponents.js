@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import styled from "styled-components";
 import Login from "../Pages/login";
 import Signup from "../Pages/signup";
 import { RouteBtn } from "./RouteBtn";
+=======
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Login from '../Pages/Login';
+import Signup from '../Pages/Signup';
+import { RouteBtn } from './RouteBtn';
+>>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
 
 export const TitleWrapper = styled.div`
   width: 90%;

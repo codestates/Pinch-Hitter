@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Login from '../Pages/Login';
-import Signup from '../Pages/Signup';
+import Login from '../Pages/login';
+import Signup from '../Pages/signup';
 import { RouteBtn } from './RouteBtn';
 import { BiLogIn } from 'react-icons/bi';
 

@@ -1,5 +1,5 @@
 import { MainPosts } from './MainPost';
-import Header from '../Components/Header';
+import Header from '../Components/header';
 import { useEffect } from 'react';
 import axios from 'axios';
 

@@ -7,7 +7,7 @@ import {
   Link,
   useNavigate,
 } from 'react-router-dom';
-import Header from '../Components/Header';
+import Header from '../Components/header';
 import {
   WrapperDiv,
   Head,
@@ -27,7 +27,7 @@ import {
   ButtonDiv,
   TitleWrapper,
 } from '../Components/ReadPostComponents';
-import { Modal } from '../Components/Modal';
+import { Modal } from '../Components/modal';
 
 let url = 'https://localhost:4000';
 

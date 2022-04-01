@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-=======
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
 
 export const MenuListBack = styled.div`
   display: flex;
@@ -35,16 +30,11 @@ export const RouteBtn = ({ handleLogout, setIsLogin }) => {
   }
 
   function handleGoCreatePost() {
-    navigate("/createpost");
+    navigate('/createpost');
   }
 
   //로그아웃
   const handleLogoutBtnClick = () => {
-<<<<<<< HEAD
-    axios.post(`${process.env.PinchHitterUrl}/signout`).then((res) => {
-      handleLogout();
-    });
-=======
     axios
       .get(`${process.env.REACT_APP_SERVER_URI}/logout`)
       .then((res) => {
@@ -53,7 +43,6 @@ export const RouteBtn = ({ handleLogout, setIsLogin }) => {
         navigate('/');
       })
       .catch((err) => console.log(err, '로그아웃 err'));
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
   };
 
   return (

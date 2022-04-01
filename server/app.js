@@ -5,7 +5,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4040;
 
 app.use(express.json());
 const controllers = require("./controller");
@@ -13,7 +13,7 @@ const controllers = require("./controller");
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["https://localhost:3000", process.env.PINCH_HITTER_DOMAIN],
+    origin: ["https://localhost:3000", process.env.PinchHitterUrl],
     credentials: true,
     methods: ["GET", "POST", "PATCH", "OPTIONS", "DELETE"],
   })

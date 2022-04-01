@@ -18,7 +18,7 @@ import OAuthGoogle from './Components/oauth/OAuthGoogle';
 let url = 'https://localhost:4000';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState({
     id: 1,
     user_id: 'kimcoding1',

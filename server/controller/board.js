@@ -5,6 +5,7 @@ const {
     deleteBoard,
   } = require('./functions/board');
 const { isAuthorized } = require('./functions/user')
+const { participate, cancelParticipate } = require('./functions/applicant')
 const { Board } = require('../models');
 
 module.exports = {
@@ -59,5 +60,13 @@ module.exports = {
           }
         }
 
+    },
+    participate: async (req, res) => {
+      const resObject = await participate(req);
+      res.status(resObject.code).send(resObject.message);
+    },
+    cancelParticipate: async (req, res) => {
+      const resObject = await cancelParticipate(req);
+      res.status(resObject.code).send(resObject.message);
     },
 }

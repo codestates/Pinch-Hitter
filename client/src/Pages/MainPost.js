@@ -6,6 +6,9 @@ import styled from 'styled-components';
 
 import { CalendaMain } from '../Components/CreatePostComponents';
 
+//! git 소대문자 인식하라는 설정
+//https://papababo.tistory.com/entry/git-%EC%9D%80-%ED%8F%B4%EB%8D%94%ED%8C%8C%EC%9D%BC%EB%AA%85%EC%9D%98-%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90%EB%A5%BC-%EA%B0%9C%EB%AC%B4%EC%8B%9C%ED%95%9C%EB%8B%A4-%EA%B7%B8%EB%9F%BC-%EC%9A%B0%EC%A7%B8
+
 export const PostBackground = styled.div`
   margin: 30px;
   margin-top: 15px;

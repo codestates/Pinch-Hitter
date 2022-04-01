@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
+=======
+    "bcrypt": "^5.0.1",
+>>>>>>> acaeb5fa37f6f0e2e7450b6dff219493d098d075
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

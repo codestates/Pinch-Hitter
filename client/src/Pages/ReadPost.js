@@ -29,8 +29,6 @@ import {
 } from "../Components/ReadPostComponents";
 import { Modal } from "../Components/Modal";
 
-let url = "https://localhost:4000";
-
 export const ReadPost = (props) => {
   const navigate = useNavigate();
 

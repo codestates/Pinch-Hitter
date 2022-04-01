@@ -7,7 +7,9 @@ import {
   Link,
   useNavigate,
 } from 'react-router-dom';
+
 import Header from '../Components/header';
+
 import {
   WrapperDiv,
   Head,
@@ -28,8 +30,6 @@ import {
   TitleWrapper,
 } from '../Components/ReadPostComponents';
 import { Modal } from '../Components/modal';
-
-let url = 'https://localhost:4000';
 
 export const ReadPost = (props) => {
   const navigate = useNavigate();
@@ -121,7 +121,7 @@ export const ReadPost = (props) => {
               )}
             </>
           ) : (
-            <RModal
+            <Modal
               hadleLoginVerification={props.hadleLoginVerification}
               isLogin={props.isLogin}
             />

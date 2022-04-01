@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import styled from "styled-components";
-import Login from "../Pages/login";
-import Signup from "../Pages/signup";
-import { RouteBtn } from "./RouteBtn";
-=======
 import { useState } from 'react';
 import styled from 'styled-components';
 import Login from '../Pages/Login';
 import Signup from '../Pages/Signup';
 import { RouteBtn } from './RouteBtn';
 import { BiLogIn } from 'react-icons/bi';
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
 
 export const ModalBack = styled.div`
   position: fixed;
@@ -50,15 +42,8 @@ export const ModalButton = styled.div`
 `;
 
 //Login 모달창 open 시
-<<<<<<< HEAD
-export const ModalView = styled.div.attrs((props) => ({
-  role: "dialog",
-}))`
-  border-radius: 3px;
-=======
 export const ModalView = styled.div`
   border-radius: 10px;
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
   background-color: #ffffff;
   width: 350px;
   height: 320px;
@@ -84,15 +69,8 @@ export const ModalView = styled.div`
 `;
 
 //Signup 모달창 open 시
-<<<<<<< HEAD
-export const ModalSignupView = styled.div.attrs((props) => ({
-  role: "dialog",
-}))`
-  border-radius: 3px;
-=======
 export const ModalSignupView = styled.div`
   border-radius: 15px;
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
   background-color: #ffffff;
   width: 300px;
   height: 500px;

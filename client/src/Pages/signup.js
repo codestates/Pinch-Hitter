@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import axios from "axios";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../App.css";
-=======
-import axios from 'axios';
-import { useRef, useState } from 'react';
-import '../App.css';
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
   FaUserAlt,
   FaLock,
@@ -14,8 +9,7 @@ import {
   FaMobileAlt,
   FaAt,
   FaSearch,
-} from 'react-icons/fa';
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+} from "react-icons/fa";
 
 export const SignupBack = styled.div`
   display: flex;
@@ -189,21 +183,12 @@ export const MiniBtn = styled.div`
 
 function Signup({ openModal, setShowModal }) {
   const [signupInfo, setSignupInfo] = useState({
-<<<<<<< HEAD
     user_id: "",
     password: "",
     passwordConfirm: "",
-    name: "",
+    nickname: "",
     email: "",
     mobile: "",
-=======
-    user_id: '',
-    password: '',
-    passwordConfirm: '',
-    nickname: '',
-    email: '',
-    mobile: '',
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
   });
 
   //정보 유효성 검사
@@ -222,7 +207,7 @@ function Signup({ openModal, setShowModal }) {
   //아이디 중복체크 상태 및 미니모달창 상태
   const [isIdCheck, setIsIdCheck] = useState({
     isOverId: false,
-    miniMsg: '',
+    miniMsg: "",
     isSingup: false,
   });
   //정보 입력 함수
@@ -238,38 +223,25 @@ function Signup({ openModal, setShowModal }) {
       signupInfo.password === value ||
       signupInfo.passwordConfirm === value
     ) {
-<<<<<<< HEAD
-      setPasswordMsg("비밀번호가 일치합니다.");
-=======
-      setPasswordMsg('');
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+      setPasswordMsg("");
       setIsPasswordMsg(true);
     }
     setSignupInfo({ ...signupInfo, [key]: e.target.value });
   };
   const inputValueName = (key) => (e) => {
     const { value } = e.target;
-<<<<<<< HEAD
-    const only = value.replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, "");
-    if (value.length < 2) {
-      setNameMsg("두글자 이상 작성해주세요.");
-      setIsNameMsg(false);
-    } else {
-      setNameMsg("올바른 이름 형식입니다.");
-=======
 
     const nicknameReplace =
       /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\" | ㄱ-ㅎ | ㅏ-ㅣ]/;
 
     if (nicknameReplace.test(value)) {
-      setNameMsg('특수문자,자음,모음,띄어쓰기를 제외해주세요.');
+      setNameMsg("특수문자,자음,모음,띄어쓰기를 제외해주세요.");
       setIsNameMsg(false);
     } else if (value.length < 2) {
-      setNameMsg('2글자 이상 입력해주세요.');
+      setNameMsg("2글자 이상 입력해주세요.");
       setIsNameMsg(false);
     } else {
-      setNameMsg('');
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+      setNameMsg("");
       setIsNameMsg(true);
     }
     setSignupInfo({ ...signupInfo, [key]: value });
@@ -280,17 +252,10 @@ function Signup({ openModal, setShowModal }) {
     const only = value.replace(/[^0-9]/g, "");
     if (value.length < 8) {
       setIsMobileMsg(false);
-<<<<<<< HEAD
-      setMobileMsg("핸드폰 번호 8글자를 입력해주세요.");
+      setMobileMsg("ex) 12341234");
     } else {
       setIsMobileMsg(true);
-      setMobileMsg("올바른 핸드폰 번호 형식입니다.");
-=======
-      setMobileMsg('ex) 12341234');
-    } else {
-      setIsMobileMsg(true);
-      setMobileMsg('');
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+      setMobileMsg("");
     }
     setSignupInfo({ ...signupInfo, [key]: only });
   };
@@ -312,11 +277,7 @@ function Signup({ openModal, setShowModal }) {
       setEmailMsg("이메일 형식이 틀렸습니다.");
       setIsEmailMsg(false);
     } else {
-<<<<<<< HEAD
-      setEmailMsg("올바른 이메일 형식입니다.");
-=======
-      setEmailMsg('');
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+      setEmailMsg("");
       setIsEmailMsg(true);
     }
   };
@@ -333,9 +294,9 @@ function Signup({ openModal, setShowModal }) {
     }
   };
   const handleCheck = (value) => {
-    if (value === 'age15') {
+    if (value === "age15") {
       setIsAge15(!isAge15);
-    } else if (value === 'trems') {
+    } else if (value === "trems") {
       setIsTrms(!isTrms);
     } else {
       setIsInfo(!isInfo);
@@ -352,22 +313,22 @@ function Signup({ openModal, setShowModal }) {
           {
             user_id: signupInfo.user_id,
           },
-          { headers: { 'Content-Type': 'application/json' } }
+          { headers: { "Content-Type": "application/json" } }
         )
         .then((res) => {
           setIsSignupModal(true);
           setIsIdCheck({
             isOverId: true,
-            miniMsg: '사용 가능한 아이디 입니다.',
+            miniMsg: "사용 가능한 아이디 입니다.",
             isSingup: false,
           });
         })
         .catch((err) => {
-          console.log(err, 'ID 중복체크 err');
+          console.log(err, "ID 중복체크 err");
           setIsSignupModal(true);
           setIsIdCheck({
             isOverId: false,
-            miniMsg: '중복 아이디입니다.다시 입력해주세요.',
+            miniMsg: "중복 아이디입니다.다시 입력해주세요.",
             isSingup: false,
           });
         });
@@ -388,39 +349,28 @@ function Signup({ openModal, setShowModal }) {
       setIsSignupModal(true);
       setIsIdCheck({
         isOverId: false,
-        miniMsg: '입력창 및 약관동의를 확인 해주세요.',
+        miniMsg: "입력창 및 약관동의를 확인 해주세요.",
         isSingup: false,
       });
     } else if (!isIdCheck.isOverId) {
       setIsSignupModal(true);
       setIsIdCheck({
         isOverId: false,
-        miniMsg: '아이디 중복체크를 완료 해주세요.',
+        miniMsg: "아이디 중복체크를 완료 해주세요.",
         isSingup: false,
       });
     } else {
       axios
-<<<<<<< HEAD
-        .post(`${process.env.PinchHitterUrl}/signup`, signupInfo, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        })
-        .then((res) => {
-          console.log(res.data);
-          setIsSignupModal(false);
-          serverSuccessSignup();
-=======
         .post(`${process.env.REACT_APP_SERVER_URI}/signup`, signupInfo, {
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
         })
         .then((res) => {
           setIsSignupModal(true);
           setIsIdCheck({
             isOverId: true,
-            miniMsg: '회원가입을 완료하였습니다. 로그인을 해주세요.',
+            miniMsg: "회원가입을 완료하였습니다. 로그인을 해주세요.",
             isSingup: true,
           });
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
         })
         .catch((err) => {
           console.log(err);
@@ -438,26 +388,11 @@ function Signup({ openModal, setShowModal }) {
     }
   };
   return (
-<<<<<<< HEAD
-    <div className="signupBox">
-      <div>
-        <div
-          className="signupHeader"
-          style={{ fontSize: "25px", marginTop: "10px" }}
-        >
-          회원가입
-        </div>
-      </div>
-      <div>
-        <input
-          className="inputBox"
-=======
     <SignupBack>
-      <div style={{ fontSize: '20px', marginTop: '10px' }}>회원가입</div>
+      <div style={{ fontSize: "20px", marginTop: "10px" }}>회원가입</div>
       <InputRelative className="idInput">
         <FaUserAlt />
         <SignupInput
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
           type="id"
           className="idInput"
           placeholder="아이디"
@@ -485,70 +420,35 @@ function Signup({ openModal, setShowModal }) {
           value={signupInfo.passwordConfirm}
           onChange={inputValuePasswordC("passwordConfirm")}
         />
-<<<<<<< HEAD
-        <div className={isPasswordMsg ? "successMsg" : "faileMsg"}>
-          {PasswordMsg}
-        </div>
-      </div>
-      <div>
-        <input
-          className="inputBox"
-=======
       </InputRelative>
-      <Msg className={isPasswordMsg ? '' : 'faileMsg'}>{PasswordMsg}</Msg>
+      <Msg className={isPasswordMsg ? "" : "faileMsg"}>{PasswordMsg}</Msg>
       <InputRelative>
         <FaUserTag size={18} />
         <SignupInput
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
           type="text"
           value={signupInfo.nickname}
           placeholder="닉네임"
           maxLength="10"
-<<<<<<< HEAD
-          onChange={inputValueName("name")}
-        />
-        <div className={isNameMsg ? "successMsg" : "faileMsg"}>{nameMsg}</div>
-        <div className="mobileAllBox">
-          <input
-            className="mobile010box"
-            type="text"
-            placeholder="010"
-            disabled
-          />
-          <input
-            className="mobileBodyBox"
-            maxLength="8"
-            type="text"
-            placeholder="핸드폰 번호"
-            value={signupInfo.mobile}
-            onChange={inputValueMobile("mobile")}
-          />
-        </div>
-        <div className={isMobileMsg ? "successMsg" : "faileMsg"}>
-          {mobileMsg}
-        </div>
-=======
-          onChange={inputValueName('nickname')}
+          onChange={inputValueName("nickname")}
         />
       </InputRelative>
-      <Msg className={isNameMsg ? '' : 'faileMsg'}>{nameMsg}</Msg>
+      <Msg className={isNameMsg ? "" : "faileMsg"}>{nameMsg}</Msg>
 
       <MobileBox>
         <FaMobileAlt size={18} />
         <input className="header" type="text" placeholder="010" disabled />
 
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
         <input
           className="mobilebody"
           maxLength="8"
           type="text"
           placeholder="핸드폰 번호"
           value={signupInfo.mobile}
-          onChange={inputValueMobile('mobile')}
+          onChange={inputValueMobile("mobile")}
         />
       </MobileBox>
 
-      <Msg className={isMobileMsg ? '' : 'faileMsg'}>{mobileMsg}</Msg>
+      <Msg className={isMobileMsg ? "" : "faileMsg"}>{mobileMsg}</Msg>
       <InputRelative>
         <FaAt />
         <SignupInput
@@ -557,82 +457,40 @@ function Signup({ openModal, setShowModal }) {
           value={signupInfo.email}
           onChange={inputValueEmail("email")}
         />
-<<<<<<< HEAD
-        <div className={isEmailMsg ? "successMsg" : "faileMsg"}>{emailMsg}</div>
-      </div>
-      <div className="checkSignupMsg">
-        <div>
-          <input
-            type="checkbox"
-            className="checkboxSignup"
-            onChange={check15}
-          />
-          <span>만 15세 이상</span>
-        </div>
-        <div>
-          <input type="checkbox" className="checkboxSignup" onChange={checkS} />
-          <span>서비스 이용약관에 동의</span>
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            className="checkboxSignup"
-            onChange={checkInfo}
-          />
-          <span>개인정보 수집에 동의</span>
-        </div>
-      </div>
-      <div className="loginBtn signupBtn" onClick={handleSignupRequest}>
-        가입하기
-      </div>
-      {isSignupModal ? (
-        <div className="faileModalBack">
-          <div className="faileModal">
-            <div className="faileModalMsg">
-              정보입력 및 체크박스를 확인해주세요.
-            </div>
-            <span
-              className="close-SignupFailemodal"
-              onClick={signupRequestModal}
-            >
-              확인
-            </span>
-=======
       </InputRelative>
-      <Msg className={isEmailMsg ? '' : 'faileMsg'}>{emailMsg}</Msg>
+      <Msg className={isEmailMsg ? "" : "faileMsg"}>{emailMsg}</Msg>
       <CheckTerms>
-        <div style={{ fontSize: '15px' }}>약관동의</div>
-        <div style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ fontSize: "15px" }}>약관동의</div>
+        <div style={{ margin: "5px", display: "flex", alignItems: "center" }}>
           <input type="checkbox" onClick={() => handleAllCheck()} />
-          <div style={{ fontSize: '12px', marginBottom: '2px' }}>
+          <div style={{ fontSize: "12px", marginBottom: "2px" }}>
             [전체동의]
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
           </div>
         </div>
         <hr />
-        <div style={{ marginLeft: '10px' }}>
-          <div style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ marginLeft: "10px" }}>
+          <div style={{ margin: "5px", display: "flex", alignItems: "center" }}>
             <input
               type="checkbox"
-              onChange={() => handleCheck('age15')}
-              style={{ marginBottom: '2px' }}
+              onChange={() => handleCheck("age15")}
+              style={{ marginBottom: "2px" }}
               checked={isAge15}
             />
             <span>만 15세 이상(필수)</span>
           </div>
-          <div style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ margin: "5px", display: "flex", alignItems: "center" }}>
             <input
               type="checkbox"
               checked={isTrms}
-              onChange={() => handleCheck('trems')}
+              onChange={() => handleCheck("trems")}
             />
             <span>서비스 이용약관에 동의(필수)</span>
           </div>
-          <div style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ margin: "5px", display: "flex", alignItems: "center" }}>
             <input
               type="checkbox"
               checked={isInfo}
-              onChange={() => handleCheck('info')}
+              onChange={() => handleCheck("info")}
             />
             <span>개인정보 수집에 동의(필수)</span>
           </div>

@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { sign, verify } = require("jsonwebtoken");
 const { User } = require("../../models");
-// const bcrypt = require('bcrypt');
+const bcrypt = require("bcryptjs");
 
 const authorized = (accessToken) => {
   if (!accessToken) return null;

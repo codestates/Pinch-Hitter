@@ -197,7 +197,7 @@ export const MainPosts = ({ setCurrentPost }) => {
       user_id: 11,
       nickname: '김코딩',
       title: '테스트 제목입니다',
-      occupation: '일반식장',
+      occupation: '일반식당',
       wage: '10,000 원이상',
       work_date: '2022-04-14',
       work_place: '강서',

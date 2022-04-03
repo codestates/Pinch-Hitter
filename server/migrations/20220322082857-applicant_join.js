@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.addConstraint("applicants", {
+    await queryInterface.addConstraint("applicant", {
       fields: ["user_id"],
       type: "foreign key",
       references: {
@@ -12,7 +12,7 @@ module.exports = {
       onDelete: "cascade",
       onUpdate: "cascade",
     });
-    await queryInterface.addConstraint("applicants", {
+    await queryInterface.addConstraint("applicant", {
       fields: ["board_id"],
       type: "foreign key",
       references: {
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeColumn("applicants", "user_id");
-    await queryInterface.removeColumn("applicants", "board_id");
+    await queryInterface.removeColumn("applicant", "user_id");
+    await queryInterface.removeColumn("applicant", "board_id");
   },
 };

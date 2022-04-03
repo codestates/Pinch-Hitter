@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 import axios from "axios";
 import { useState } from "react";
 import "../App.css";
-
-function Login({ hadleLoginVerification, clickSignup, openModal }) {
-  const [loginInfo, setLoginInfo] = useState({ user_id: "", password: "" });
-  //아이디 비번 틀릴경우 메세지
-=======
-import axios from 'axios';
-import { useState } from 'react';
-import '../App.css';
-import styled, { keyframes } from 'styled-components';
-import { AiOutlineDoubleRight } from 'react-icons/ai';
+import styled, { keyframes } from "styled-components";
+import { AiOutlineDoubleRight } from "react-icons/ai";
 
 export const LoginBack = styled.div`
   display: flex;
@@ -59,7 +50,6 @@ export const LoginFailMsg = styled.div`
   font-size: 11px;
   width: 220px;
 `;
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
 
 export const LoginInputBox = styled.div`
   display: flex;
@@ -146,7 +136,7 @@ function Login({
   getUserInfo,
 }) {
   //입력 정보와 성공실패 메세지
-  const [loginInfo, setLoginInfo] = useState({ user_id: '', password: '' });
+  const [loginInfo, setLoginInfo] = useState({ user_id: "", password: "" });
   const [failureLoginMsg, setFailureLoginMsg] = useState(<br></br>);
 
   const inputValue = (key) => (e) => {
@@ -158,29 +148,18 @@ function Login({
       setFailureLoginMsg("아이디와 비밀번호를 입력해 주세요.");
     } else {
       axios
-<<<<<<< HEAD
-        .post(`${process.env.PinchHitterUrl}/login`, loginInfo, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-=======
         .post(`${process.env.REACT_APP_SERVER_URI}/login`, loginInfo, {
-          headers: { 'Content-Type': 'application/json' },
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
+          headers: { "Content-Type": "application/json" },
         })
         .then((res) => {
-          window.localStorage.setItem('IsRefresh', true);
+          window.localStorage.setItem("IsRefresh", true);
           setIsLogin(true);
           getUserInfo();
           openModal();
         })
         .catch((err) => {
-<<<<<<< HEAD
-          setFailureLoginMsg("입력하신 아이디 또는 비밀번호가 틀립니다.");
+          setFailureLoginMsg("아이디 또는 비밀번호가 일치하지 않습니다.");
           console.log("로그인 중 err");
-=======
-          setFailureLoginMsg('아이디 또는 비밀번호가 일치하지 않습니다.');
-          console.log('로그인 중 err');
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
         });
     }
   };
@@ -211,42 +190,17 @@ function Login({
       </div>
       <LoginInputBox>
         <div>
-<<<<<<< HEAD
-          <div className="loginId">
-            <input
-              className="inputBox"
-              type="id"
-              placeholder="아이디"
-              onChange={inputValue("user_id")}
-            />
-          </div>
-          <div className="loginPassword">
-            <input
-              className="inputBox"
-              type="password"
-              placeholder="비밀번호"
-              onChange={inputValue("password")}
-            />
-            <div className="faileMsg">{failureLoginMsg}</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="loginBtn" onClick={handleLogin}>
-          로그인
-=======
           <LoginInput
             type="id"
             placeholder="아이디"
-            onChange={inputValue('user_id')}
+            onChange={inputValue("user_id")}
           />
           <LoginInput
             type="password"
             placeholder="비밀번호"
-            onChange={inputValue('password')}
+            onChange={inputValue("password")}
           />
           <LoginFailMsg>{failureLoginMsg}</LoginFailMsg>
->>>>>>> f80d761b0d195f5fff677cdca816195b5cfcdee4
         </div>
         <div>
           <LoginBtn onClick={handleLogin}>로그인</LoginBtn>

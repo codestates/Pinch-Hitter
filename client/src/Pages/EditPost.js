@@ -21,7 +21,7 @@ import {
   ContentTextarea,
   CompleteButton,
 } from '../Components/CreatePostComponents';
-import Header from '../Components/header';
+import Header from '../Components/Header';
 
 export const EidtPost = (props) => {
   const navigate = useNavigate();

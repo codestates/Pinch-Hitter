@@ -7,9 +7,7 @@ import {
   Link,
   useNavigate,
 } from 'react-router-dom';
-
-import Header from '../Components/header';
-
+import Header from '../Components/Header';
 import {
   WrapperDiv,
   Head,
@@ -29,7 +27,7 @@ import {
   ButtonDiv,
   TitleWrapper,
 } from '../Components/ReadPostComponents';
-import { Modal } from '../Components/modal';
+import { Modal } from '../Components/Modal';
 
 export const ReadPost = (props) => {
   const navigate = useNavigate();

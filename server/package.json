@@ -9,8 +9,9 @@
     "pretest": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
-    "cookie-parser": "^1.4.5",
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

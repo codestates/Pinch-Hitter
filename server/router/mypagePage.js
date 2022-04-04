@@ -1,14 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const controller = require('../controller/mypage');
+const controller = require("../controller/mypage");
 
-router.get('/users', controller.getUserInfo)
-router.patch('/nickname', controller.updateNickname);
-router.patch('/mobile', controller.updateMobile);
-router.patch('/password', controller.updatePassword);
-router.delete('/signout', controller.unregister);
-router.get('/applicants', controller.getAllApplicant);
-router.get('/applicants/:userId', controller.getAppliedgBoard);
-
+router.get("/", (req, res) => {
+  res.status(200).send("hello world");
+});
+router.get("/users", controller.getUserInfo);
+router.patch("/nickname", controller.updateNickname);
+router.patch("/mobile", controller.updateMobile);
+router.patch("/password", controller.updatePassword);
+router.delete("/signout", controller.unregister);
+router.get("/applicants", controller.getAllApplicant);
+router.get("/applicants/:userId", controller.getAppliedgBoard);
 
 module.exports = router;

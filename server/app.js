@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 8080;
 
-// app.use(express.json());
+app.use(express.json());
 // const controllers = require("./controller");
 
 app.use(express.urlencoded({ extended: false }));
@@ -28,9 +28,9 @@ const boardPage = require("./router/boardPage");
 const authPage = require("./router/authPage");
 const applicantPage = require("./router/applicantPage");
 
-app.get("/", (req, res) => {
-  res.status(200).send("hello world");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send("hello world");
+// });
 app.use(cookieParser());
 
 app.use("/login", loginPage);

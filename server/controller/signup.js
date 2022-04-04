@@ -7,7 +7,7 @@ module.exports = {
     idCheck: (req, res) => {
         const { users_id } = req.body;
     
-        User.findOne({ where: { users_id: users_id } })
+        User.findOne({ where: { user_id: users_id } })
           .then((data) => {
             if (data) {
               console.log('400번대');
@@ -28,7 +28,7 @@ module.exports = {
       nicknameCheck: (req, res) => {
         const { nickname } = req.body;
     
-        User.findOne({ where: { name: nickname } })
+        User.findOne({ where: { nickname: nickname } })
           .then((data) => {
             if (data) {
               return res

@@ -361,7 +361,7 @@ function Signup({ openModal, setShowModal }) {
       });
     } else {
       axios
-        .post(`${process.env.PinchHitterUrl}/signup`, signupInfo, {
+        .post(`${process.env.REACT_APP_API_URL}/signup`, signupInfo, {
           headers: { "Content-Type": "application/json" },
         })
         .then((res) => {

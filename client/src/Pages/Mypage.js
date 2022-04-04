@@ -216,7 +216,7 @@ export const Mypage = (props) => {
   // 내가 쓴 게시물 리스트 불러오기
   useEffect(() => {
     axios({
-      url: `${process.env.PinchHitterUrl}/boards/${props.userInfo.id}`,
+      url: `${process.env.REACT_APP_API_URL}/boards/${props.userInfo.id}`,
       method: "get",
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -236,7 +236,7 @@ export const Mypage = (props) => {
   // 내가 신청한 게시물 리스트 불러오기
   useEffect(() => {
     axios({
-      url: `${process.env.PinchHitterUrl}/applicants/${props.userInfo.id}`,
+      url: `${process.env.REACT_APP_API_URL}/applicants/${props.userInfo.id}`,
       method: "get",
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -256,7 +256,7 @@ export const Mypage = (props) => {
   // 전체 신청자 리스트 불러오기
   useEffect(() => {
     axios({
-      url: `${process.env.PinchHitterUrl}/applicants`,
+      url: `${process.env.REACT_APP_API_URL}/applicants`,
       method: "get",
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -424,7 +424,7 @@ export const Mypage = (props) => {
     console.log("내가 신청한 게시물 클릭");
 
     axios({
-      url: `${process.env.PinchHitterUrl}/boards/${board.id}`,
+      url: `${process.env.REACT_APP_API_URL}/boards/${board.id}`,
       method: "get",
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -453,7 +453,7 @@ export const Mypage = (props) => {
 
     if (inputNickname.length > 0) {
       axios({
-        url: `${process.env.PinchHitterUrl}/nickname`,
+        url: `${process.env.REACT_APP_API_URL}/nickname`,
         method: "patch",
         headers: {
           // Authorization: `Bearer ${props.accessToken}`,
@@ -484,7 +484,7 @@ export const Mypage = (props) => {
 
     if (inputMobile.length > 0) {
       axios({
-        url: `${process.env.PinchHitterUrl}/mobile`,
+        url: `${process.env.REACT_APP_API_URL}/mobile`,
         method: "patch",
         headers: {
           // Authorization: `Bearer ${props.accessToken}`,
@@ -514,7 +514,7 @@ export const Mypage = (props) => {
     console.log("비밀번호 변경 완료 버튼 클릭");
 
     axios({
-      url: `${process.env.PinchHitterUrl}/password`,
+      url: `${process.env.REACT_APP_API_URL}/password`,
       method: "patch",
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
@@ -543,7 +543,7 @@ export const Mypage = (props) => {
     console.log("탈퇴확인 모달창에서 탈퇴버튼 눌림");
 
     axios({
-      url: `${process.env.PinchHitterUrl}/signout`,
+      url: `${process.env.REACT_APP_API_URL}/signout`,
       method: "delete",
       withCredentials: true,
     })

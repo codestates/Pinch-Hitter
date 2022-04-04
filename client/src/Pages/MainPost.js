@@ -363,7 +363,7 @@ export const MainPosts = ({ setCurrentPost }) => {
   //! 전체 게시물 요청
   useEffect(() => {
     axios
-      .get(`${process.env.PinchHitterUrl}/boards`, {
+      .get(`${process.env.REACT_APP_API_URL}/boards`, {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {

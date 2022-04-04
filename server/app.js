@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 app.use("/login", loginPage);
 app.use("/logout", logoutPage);
-// app.use("/", mypagePage);
+app.use("/", mypagePage);
 app.use("/oauth", oauthPage);
 app.use("/signup", signupPage);
 app.use("/boards", boardPage);

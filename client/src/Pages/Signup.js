@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useRef, useState } from "react";
-import "../App.css";
-import styled from "styled-components";
+import axios from 'axios';
+import { useRef, useState } from 'react';
+import '../App.css';
+import styled from 'styled-components';
 import {
   FaUserAlt,
   FaLock,
@@ -9,7 +9,7 @@ import {
   FaMobileAlt,
   FaAt,
   FaSearch,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 export const SignupBack = styled.div`
   display: flex;
@@ -183,22 +183,22 @@ export const MiniBtn = styled.div`
 
 function Signup({ openModal, setShowModal }) {
   const [signupInfo, setSignupInfo] = useState({
-    user_id: "",
-    password: "",
-    passwordConfirm: "",
-    nickname: "",
-    email: "",
-    mobile: "",
+    user_id: '',
+    password: '',
+    passwordConfirm: '',
+    nickname: '',
+    email: '',
+    mobile: '',
   });
 
   //정보 유효성 검사
-  const [PasswordMsg, setPasswordMsg] = useState("");
+  const [PasswordMsg, setPasswordMsg] = useState('');
   const [isPasswordMsg, setIsPasswordMsg] = useState(false);
-  const [nameMsg, setNameMsg] = useState("");
+  const [nameMsg, setNameMsg] = useState('');
   const [isNameMsg, setIsNameMsg] = useState(false);
-  const [mobileMsg, setMobileMsg] = useState("");
+  const [mobileMsg, setMobileMsg] = useState('');
   const [isMobileMsg, setIsMobileMsg] = useState(false);
-  const [emailMsg, setEmailMsg] = useState("");
+  const [emailMsg, setEmailMsg] = useState('');
   const [isEmailMsg, setIsEmailMsg] = useState(false);
   //체크박스 여부
   const [isAge15, setIsAge15] = useState(false);
@@ -217,13 +217,13 @@ function Signup({ openModal, setShowModal }) {
       (signupInfo.password !== value && signupInfo.passwordConfirm !== value) ||
       value.length === 0
     ) {
-      setPasswordMsg("비밀번호를 확인해주세요.");
+      setPasswordMsg('비밀번호를 확인해주세요.');
       setIsPasswordMsg(false);
     } else if (
       signupInfo.password === value ||
       signupInfo.passwordConfirm === value
     ) {
-      setPasswordMsg("");
+      setPasswordMsg('');
       setIsPasswordMsg(true);
     }
     setSignupInfo({ ...signupInfo, [key]: e.target.value });
@@ -241,7 +241,7 @@ function Signup({ openModal, setShowModal }) {
       setNameMsg("2글자 이상 입력해주세요.");
       setIsNameMsg(false);
     } else {
-      setNameMsg("");
+      setNameMsg('');
       setIsNameMsg(true);
     }
     setSignupInfo({ ...signupInfo, [key]: value });
@@ -249,13 +249,13 @@ function Signup({ openModal, setShowModal }) {
 
   const inputValueMobile = (key) => (e) => {
     const { value } = e.target;
-    const only = value.replace(/[^0-9]/g, "");
+    const only = value.replace(/[^0-9]/g, '');
     if (value.length < 8) {
       setIsMobileMsg(false);
-      setMobileMsg("ex) 12341234");
+      setMobileMsg('ex) 12341234');
     } else {
       setIsMobileMsg(true);
-      setMobileMsg("");
+      setMobileMsg('');
     }
     setSignupInfo({ ...signupInfo, [key]: only });
   };
@@ -263,7 +263,7 @@ function Signup({ openModal, setShowModal }) {
     const { value } = e.target;
     const only = value.replace(
       /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-      ""
+      ''
     );
     setSignupInfo({ ...signupInfo, [key]: only });
   };
@@ -274,10 +274,10 @@ function Signup({ openModal, setShowModal }) {
 
     setSignupInfo({ ...signupInfo, [key]: e.target.value });
     if (!emailReplace.test(email)) {
-      setEmailMsg("이메일 형식이 틀렸습니다.");
+      setEmailMsg('이메일 형식이 틀렸습니다.');
       setIsEmailMsg(false);
     } else {
-      setEmailMsg("");
+      setEmailMsg('');
       setIsEmailMsg(true);
     }
   };
@@ -397,7 +397,7 @@ function Signup({ openModal, setShowModal }) {
           className="idInput"
           placeholder="아이디"
           value={signupInfo.user_id}
-          onChange={inputValueId("user_id")}
+          onChange={inputValueId('user_id')}
         />
         <SignupIdOverlapBtn onClick={handleIdCheck}>
           중복 확인
@@ -409,7 +409,7 @@ function Signup({ openModal, setShowModal }) {
           type="password"
           placeholder="비밀번호"
           value={signupInfo.password}
-          onChange={inputValuePasswordC("password")}
+          onChange={inputValuePasswordC('password')}
         />
       </InputRelative>
       <InputRelative>
@@ -418,7 +418,7 @@ function Signup({ openModal, setShowModal }) {
           type="password"
           placeholder="비밀번호 확인"
           value={signupInfo.passwordConfirm}
-          onChange={inputValuePasswordC("passwordConfirm")}
+          onChange={inputValuePasswordC('passwordConfirm')}
         />
       </InputRelative>
       <Msg className={isPasswordMsg ? "" : "faileMsg"}>{PasswordMsg}</Msg>
@@ -429,7 +429,7 @@ function Signup({ openModal, setShowModal }) {
           value={signupInfo.nickname}
           placeholder="닉네임"
           maxLength="10"
-          onChange={inputValueName("nickname")}
+          onChange={inputValueName('nickname')}
         />
       </InputRelative>
       <Msg className={isNameMsg ? "" : "faileMsg"}>{nameMsg}</Msg>
@@ -455,7 +455,7 @@ function Signup({ openModal, setShowModal }) {
           type="email"
           placeholder="이메일"
           value={signupInfo.email}
-          onChange={inputValueEmail("email")}
+          onChange={inputValueEmail('email')}
         />
       </InputRelative>
       <Msg className={isEmailMsg ? "" : "faileMsg"}>{emailMsg}</Msg>

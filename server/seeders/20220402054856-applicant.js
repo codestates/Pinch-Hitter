@@ -15,7 +15,7 @@ module.exports = {
         user_id: 2,
         board_id: 1,
         createdAt: new Date(),
-        updatedAt: new Date(),        
+        updatedAt: new Date(),
       },
       {
         user_id: 3,

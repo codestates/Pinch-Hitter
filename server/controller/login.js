@@ -1,26 +1,26 @@
-require('dotenv').config();
-const bcrypt = require('bcrypt');
-const { User } = require('../models');
+require("dotenv").config();
+const bcrypt = require("bcryptjs");
+const { User } = require("../models");
 const {
   generateAccessToken,
   sendAccessToken,
   isAuthorized,
-} = require('./functions/user');
+} = require("./functions/user");
 
 module.exports = {
   login: async (req, res) => {
     console.log(req.body);
     const { user_id, password } = req.body;
     if (!user_id)
-      return res.json({ success: false, message: '아이디를 입력해주세요' });
+      return res.json({ success: false, message: "아이디를 입력해주세요" });
     if (!password)
-      return res.json({ success: false, message: '비밀번호를 입력해주세요' });
+      return res.json({ success: false, message: "비밀번호를 입력해주세요" });
     try {
       const userInfo = await User.findOne({ where: { user_id } });
       if (!userInfo) {
         return res.json({
           success: false,
-          message: '아이디 또는 비밀번호가 잘못되었습니다',
+          message: "아이디 또는 비밀번호가 잘못되었습니다",
         });
       }
       const match = await bcrypt.compare(
@@ -30,12 +30,12 @@ module.exports = {
       if (!match) {
         return res.json({
           success: false,
-          message: '아이디 또는 비밀번호가 잘못되었습니다',
+          message: "아이디 또는 비밀번호가 잘못되었습니다",
         });
       }
 
       if (userInfo.dataValues.expiredDatetime) {
-        return res.json({ success: false, message: '탈퇴한 회원입니다' });
+        return res.json({ success: false, message: "탈퇴한 회원입니다" });
       }
 
       delete userInfo.dataValues.password;
@@ -44,7 +44,7 @@ module.exports = {
 
       return res
         .status(201)
-        .json({ success: true, message: '로그인이 완료되었습니다' });
+        .json({ success: true, message: "로그인이 완료되었습니다" });
     } catch (err) {
       console.log(err);
     }
@@ -55,9 +55,9 @@ module.exports = {
       return res.json({
         success: false,
         loginId: null,
-        message: '로그아웃 상태입니다',
+        message: "로그아웃 상태입니다",
       });
     const loginId = accessToken.user_id;
-    res.json({ success: true, loginId: loginId, message: '로그인 상태입니다' });
+    res.json({ success: true, loginId: loginId, message: "로그인 상태입니다" });
   },
 };

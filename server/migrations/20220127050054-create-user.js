@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      users_id: {
+      user_id: {
         type: Sequelize.STRING,
       },
       password: {

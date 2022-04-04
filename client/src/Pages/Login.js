@@ -148,7 +148,7 @@ function Login({
       setFailureLoginMsg("아이디와 비밀번호를 입력해 주세요.");
     } else {
       axios
-        .post(`${process.env.REACT_APP_SERVER_URI}/login`, loginInfo, {
+        .post(`${process.env.PinchHitterUrl}/login`, loginInfo, {
           headers: { "Content-Type": "application/json" },
         })
         .then((res) => {

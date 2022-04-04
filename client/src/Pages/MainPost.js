@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-import { CalendaMain } from '../Components/CreatePostComponents';
+import { CalendaMain } from "../Components/CreatePostComponents";
 
 export const PostBackground = styled.div`
   margin: 30px;
@@ -98,9 +98,9 @@ export const MainPosts = ({ setCurrentPost }) => {
   let local = window.localStorage;
   const navigate = useNavigate();
   const handlePost = (post) => {
-    console.log('게시물 눌렀음');
+    console.log("게시물 눌렀음");
     setCurrentPost(post);
-    navigate('/readpost');
+    navigate("/readpost");
   };
 
   const [isFilterBox, setIsFilterBox] = useState(false);
@@ -111,143 +111,143 @@ export const MainPosts = ({ setCurrentPost }) => {
     {
       id: 0,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '패스트푸드점',
-      wage: '10,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강북',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "패스트푸드점",
+      wage: "10,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강북",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 1,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '패스트푸드점',
-      wage: '10,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강서',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "패스트푸드점",
+      wage: "10,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강서",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 2,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '주유소',
-      wage: '12,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강남',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "주유소",
+      wage: "12,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강남",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 3,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '운전',
-      wage: '10,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강동',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "운전",
+      wage: "10,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강동",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 4,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '편의점',
-      wage: '10,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강서',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "편의점",
+      wage: "10,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강서",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 5,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '패스트푸드점',
-      wage: '20,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강남',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "패스트푸드점",
+      wage: "20,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강남",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 6,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '카페',
-      wage: '15,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강남',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "카페",
+      wage: "15,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강남",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 7,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '일반식당',
-      wage: '10,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강서',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "일반식당",
+      wage: "10,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강서",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 8,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '마트',
-      wage: '20,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강남',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "마트",
+      wage: "20,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강남",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
     {
       id: 9,
       user_id: 11,
-      nickname: '김코딩',
-      title: '테스트 제목입니다',
-      occupation: '주유소',
-      wage: '15,000 원이상',
-      work_date: '2022-04-14',
-      work_place: '강남',
-      content: '테스트 내용입니다',
-      createdAt: '2022-03-03',
+      nickname: "김코딩",
+      title: "테스트 제목입니다",
+      occupation: "주유소",
+      wage: "15,000 원이상",
+      work_date: "2022-04-14",
+      work_place: "강남",
+      content: "테스트 내용입니다",
+      createdAt: "2022-03-03",
     },
   ];
   const list = {
     occupation: [
-      '카페',
-      '편의점',
-      '일반식당',
-      '마트',
-      '패스트푸드점',
-      '운전',
-      '전단지',
-      '주유소',
+      "카페",
+      "편의점",
+      "일반식당",
+      "마트",
+      "패스트푸드점",
+      "운전",
+      "전단지",
+      "주유소",
     ],
     wage: [
-      '9,160 원이상',
-      '10,000 원이상',
-      '12,000 원이상',
-      '15,000 원이상',
-      '20,000 원이상',
+      "9,160 원이상",
+      "10,000 원이상",
+      "12,000 원이상",
+      "15,000 원이상",
+      "20,000 원이상",
     ],
-    work_place: ['강남', '강서', '강동', '강북'],
+    work_place: ["강남", "강서", "강동", "강북"],
   };
   //전체 게시물 서버로부터 요청
   //state로 관리
@@ -258,8 +258,8 @@ export const MainPosts = ({ setCurrentPost }) => {
     occupation: [],
     wage: [],
     work_place: [],
-    startDay: '',
-    endDay: '',
+    startDay: "",
+    endDay: "",
   });
   //체크 박스 클릭시 필터요소 저장 함수
   const setFilter = (el, target) => {
@@ -274,18 +274,18 @@ export const MainPosts = ({ setCurrentPost }) => {
   };
   //체크 박스 클릭시 필터요소 저장
   const handleCheck = (e) => {
-    if (e.target.value === 'occupation') {
+    if (e.target.value === "occupation") {
       setFilter(filterPost.occupation, e.target);
-    } else if (e.target.value === 'wage') {
+    } else if (e.target.value === "wage") {
       setFilter(filterPost.wage, e.target);
-    } else if (e.target.value === 'work_place') {
+    } else if (e.target.value === "work_place") {
       setFilter(filterPost.work_place, e.target);
     }
   };
   //데이타 비교를위한 숫자타입으로 변경
   const setWageNum = (str) => {
     //9,160 원이상(문자열) -> 9160(숫자) 변경 함수
-    let split = str.split(' ')[0].split(',');
+    let split = str.split(" ")[0].split(",");
     return Number(split[0] + split[1]);
   };
   const handlePikerValue = (date) => {
@@ -297,18 +297,18 @@ export const MainPosts = ({ setCurrentPost }) => {
 
   //! 필터 가져오기 기능
   useEffect(() => {
-    if (local.getItem('occupation')) {
-      let parser = local.getItem('occupation');
+    if (local.getItem("occupation")) {
+      let parser = local.getItem("occupation");
       let arr = JSON.parse(parser);
       arr.forEach((el) => filterPost.occupation.push(el));
     }
-    if (local.getItem('wage')) {
-      let parser = local.getItem('wage');
+    if (local.getItem("wage")) {
+      let parser = local.getItem("wage");
       let arr = JSON.parse(parser);
       arr.forEach((el) => filterPost.wage.push(el));
     }
-    if (local.getItem('work_place')) {
-      let parser = local.getItem('work_place');
+    if (local.getItem("work_place")) {
+      let parser = local.getItem("work_place");
       let arr = JSON.parse(parser);
       arr.forEach((el) => filterPost.work_place.push(el));
     }
@@ -344,10 +344,10 @@ export const MainPosts = ({ setCurrentPost }) => {
   //  https://notefolio.net/heedesign/153651 여기 접속해보자
   //! 필터 저장 기능
   const filterMemory = () => {
-    console.log('필터 기억 눌렀니?', filterPost);
-    local.setItem('occupation', JSON.stringify(filterPost.occupation));
-    local.setItem('wage', JSON.stringify(filterPost.wage));
-    local.setItem('work_place', JSON.stringify(filterPost.work_place));
+    console.log("필터 기억 눌렀니?", filterPost);
+    local.setItem("occupation", JSON.stringify(filterPost.occupation));
+    local.setItem("wage", JSON.stringify(filterPost.wage));
+    local.setItem("work_place", JSON.stringify(filterPost.work_place));
   };
   //! 초기화
   const filterRemove = () => {
@@ -356,29 +356,29 @@ export const MainPosts = ({ setCurrentPost }) => {
       occupation: [],
       wage: [],
       work_place: [],
-      startDay: '',
-      endDay: '',
+      startDay: "",
+      endDay: "",
     });
   };
   //! 전체 게시물 요청
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URI}/boards`, {
-        headers: { 'Content-Type': 'application/json' },
+      .get(`${process.env.PinchHitterUrl}/boards`, {
+        headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
         //res.data.data -> state 담기
       })
       .catch((err) => {
-        console.log(err, '전체 게시물 불러오기 err');
+        console.log(err, "전체 게시물 불러오기 err");
       });
   }, []);
 
   return (
     <div
-      style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}
+      style={{ display: "flex", alignItems: "center", flexDirection: "column" }}
     >
-      <FilterBack className={isFilterBox ? 'on' : 'off'}>
+      <FilterBack className={isFilterBox ? "on" : "off"}>
         <FilterList>
           <FilterTitle>직종</FilterTitle>
           <FilterElementList>
@@ -437,7 +437,7 @@ export const MainPosts = ({ setCurrentPost }) => {
           <FilterTitle>날짜</FilterTitle>
           <FilterElementList>
             <div
-              style={{ display: 'flex', width: '130px', textAlign: 'center' }}
+              style={{ display: "flex", width: "130px", textAlign: "center" }}
             >
               <CalendaMain
                 className="main"
@@ -453,7 +453,7 @@ export const MainPosts = ({ setCurrentPost }) => {
             ></CalendaMain>
           </FilterElementList>
         </FilterList>
-        <div style={{ position: 'absolute', bottom: '5px', right: '30px' }}>
+        <div style={{ position: "absolute", bottom: "5px", right: "30px" }}>
           <button
             onClick={() => {
               filterMemory();
@@ -472,9 +472,9 @@ export const MainPosts = ({ setCurrentPost }) => {
       </FilterBack>
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'column',
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
         <button onClick={handleFilterBoxBtn}>버튼</button>
@@ -497,7 +497,7 @@ export const MainPosts = ({ setCurrentPost }) => {
                 </Post>
               );
             })
-          : '조건에 맞는 게시물이 없습니다. '}
+          : "조건에 맞는 게시물이 없습니다. "}
       </PostBackground>
     </div>
   );

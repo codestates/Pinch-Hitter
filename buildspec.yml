@@ -1,13 +1,6 @@
 version: 2.0
 
 phases:
-  install:
-    runtime-versions: 
-      nodejs: 14
-        commands:
-          - echo node version check
-          - node -v
-          - npm -v
   pre_build:
     commands:
       - cd client

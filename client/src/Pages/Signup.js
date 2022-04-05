@@ -309,7 +309,7 @@ function Signup({ openModal, setShowModal }) {
     if (signupInfo.user_id) {
       axios
         .post(
-          `${process.env.REACT_APP_SERVER_URI}/idcheck`,
+          `${process.env.REACT_APP_SERVER_URI}signup/idCheck`,
           {
             user_id: signupInfo.user_id,
           },
@@ -361,7 +361,7 @@ function Signup({ openModal, setShowModal }) {
       });
     } else {
       axios
-        .post(`${process.env.REACT_APP_API_URL}/signup`, signupInfo, {
+        .post(`${process.env.REACT_APP_SERVER_URI}signup/signup`, signupInfo, {
           headers: { "Content-Type": "application/json" },
         })
         .then((res) => {

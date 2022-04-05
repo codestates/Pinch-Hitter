@@ -148,8 +148,9 @@ function Login({
       setFailureLoginMsg("아이디와 비밀번호를 입력해 주세요.");
     } else {
       axios
-        .post(`${process.env.REACT_APP_API_URL}/login`, loginInfo, {
+        .post(`${process.env.REACT_APP_SERVER_URI}login`, loginInfo, {
           headers: { "Content-Type": "application/json" },
+          withCredentials: true,
         })
         .then((res) => {
           window.localStorage.setItem("IsRefresh", true);
@@ -159,6 +160,7 @@ function Login({
         })
         .catch((err) => {
           setFailureLoginMsg("아이디 또는 비밀번호가 일치하지 않습니다.");
+          console.log(err);
           console.log("로그인 중 err");
         });
     }

@@ -1,13 +1,9 @@
-import { useState } from "react";
-import styled from "styled-components";
-<<<<<<< HEAD:client/src/Components/Modal.js
-import Login from "../Pages/login";
-=======
-import Login from "../Pages/Login";
->>>>>>> d0acc4409a82bfb093fbfc71818807807583ed44:client/src/Components/modal.js
-import Signup from "../Pages/Signup";
-import { RouteBtn } from "./RouteBtn";
-import { BiLogIn } from "react-icons/bi";
+import { useState } from 'react';
+import styled from 'styled-components';
+import Login from '../Pages/Login';
+import Signup from '../Pages/Signup';
+import { RouteBtn } from './RouteBtn';
+import { BiLogIn } from 'react-icons/bi';
 
 export const ModalBack = styled.div`
   position: fixed;

@@ -4,6 +4,6 @@ const controller = require('../controller/signup');
 
 router.post('/idCheck', controller.idCheck);
 router.post('/nicknameCheck', controller.nicknameCheck);
-router.post('/signup', controller.signup);
+router.post('/', controller.signup);
 
 module.exports = router;

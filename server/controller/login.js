@@ -9,7 +9,6 @@ const {
 
 module.exports = {
   login: async (req, res) => {
-    console.log(req.body);
     const { user_id, password } = req.body;
     if (!user_id)
       return res.json({ success: false, message: '아이디를 입력해주세요' });

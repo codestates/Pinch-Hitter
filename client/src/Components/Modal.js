@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import { useState } from "react";
 import styled from "styled-components";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import { RouteBtn } from "./RouteBtn";
 import { BiLogIn } from "react-icons/bi";
+=======
+import { useState } from 'react';
+import styled from 'styled-components';
+import Login from '../Pages/Login';
+import Signup from '../Pages/Signup';
+import { RouteBtn } from './RouteBtn';
+import { BiLogIn } from 'react-icons/bi';
+>>>>>>> 8976069eb208a462f9cf5a5201557aed3e2fd673
 
 export const ModalBack = styled.div`
   position: fixed;

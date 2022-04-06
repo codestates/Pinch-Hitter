@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { Modal } from "./Modal";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import styled from "styled-components";
+=======
+import { Modal } from './Modal';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import styled from 'styled-components';
+>>>>>>> 8976069eb208a462f9cf5a5201557aed3e2fd673
 
 export const HeaderBack = styled.div`
   background-color: #d3dedc;
@@ -24,11 +31,11 @@ function Header({ setIsLogin, isLogin }) {
   let navigate = useNavigate();
 
   function handleGoHom() {
-    navigate("/");
+    navigate('/');
   }
 
   useEffect(() => {
-    if (window.localStorage.getItem("IsRefresh")) {
+    if (window.localStorage.getItem('IsRefresh')) {
       setIsLogin(true);
     }
   }, []);

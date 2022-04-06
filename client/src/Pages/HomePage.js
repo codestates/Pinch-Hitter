@@ -14,6 +14,7 @@ function HomePage({
   allPost,
   setAllPost,
   setCurrentPost,
+  getUserInfo,
 }) {
   return (
     <>
@@ -22,6 +23,7 @@ function HomePage({
         isLogin={isLogin}
         handleLogout={handleLogout}
         setIsLogin={setIsLogin}
+        getUserInfo={getUserInfo}
       />
       <MainPosts allPost={allPost} setCurrentPost={setCurrentPost} />
     </>

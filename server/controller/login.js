@@ -32,14 +32,11 @@ module.exports = {
           message: '아이디 또는 비밀번호가 잘못되었습니다',
         });
       }
-
       if (userInfo.dataValues.expiredDatetime) {
         return res.json({ success: false, message: '탈퇴한 회원입니다' });
       }
-
       delete userInfo.dataValues.password;
       const accessToken = generateAccessToken(userInfo.dataValues);
-      sendAccessToken(res, accessToken);
 
       return res.status(201);
       // .json({ success: true, message: '로그인이 완료되었습니다' });

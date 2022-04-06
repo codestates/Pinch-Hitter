@@ -171,6 +171,7 @@ function Login({
 
   //카카오 로그인
   const handleKakaoLogin = () => {
+    console.log('카카오 실행');
     window.location.assign(
       `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`
     );

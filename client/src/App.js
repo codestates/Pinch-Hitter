@@ -19,25 +19,19 @@ let url = 'https://localhost:4000';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    id: 1,
-    user_id: 'kimcoding1',
-    name: '김코딩',
-    email: 'kimcoding1@naver.com',
-    mobile: '01012341234',
-  });
+  const [userInfo, setUserInfo] = useState({});
   const [currentPost, setCurrentPost] = useState('');
 
   // 로그인 성공 후 유저정보 불러오기
   const getUserInfo = () => {
     axios
-      .get(url + '/users', {
+      .get(`${process.env.REACT_APP_SERVER_URI}users`, {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       })
       .then((res) => {
         //유저 데이타
-        console.log(res.data);
+        console.log(res);
         setUserInfo(res.data);
       })
       .catch((err) => console.log(err));

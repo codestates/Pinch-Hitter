@@ -9,14 +9,13 @@ const {
 
 module.exports = {
   login: async (req, res) => {
-    console.log(req.body);
-    const { users_id, password } = req.body;
-    if (!users_id)
+    const { user_id, password } = req.body;
+    if (!user_id)
       return res.json({ success: false, message: '아이디를 입력해주세요' });
     if (!password)
       return res.json({ success: false, message: '비밀번호를 입력해주세요' });
     try {
-      const userInfo = await User.findOne({ where: { users_id } });
+      const userInfo = await User.findOne({ where: { user_id } });
       if (!userInfo) {
         return res.json({
           success: false,
@@ -33,18 +32,15 @@ module.exports = {
           message: '아이디 또는 비밀번호가 잘못되었습니다',
         });
       }
-
       if (userInfo.dataValues.expiredDatetime) {
         return res.json({ success: false, message: '탈퇴한 회원입니다' });
       }
-
       delete userInfo.dataValues.password;
       const accessToken = generateAccessToken(userInfo.dataValues);
-      sendAccessToken(res, accessToken);
 
-      return res
-        .status(201)
-        .json({ success: true, message: '로그인이 완료되었습니다' });
+      sendAccessToken(res, accessToken);
+      return res.status(201);
+      //.json({ success: true, message: '로그인이 완료되었습니다' });
     } catch (err) {
       console.log(err);
     }

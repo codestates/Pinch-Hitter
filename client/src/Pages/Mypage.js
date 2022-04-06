@@ -63,7 +63,7 @@ import {
   DeleteAlertModalButton,
 } from '../Components/MypageComponents';
 
-import Header from '../Components/header';
+import Header from '../Components/Header';
 // import { removeCookie } from '../components/Cookie';
 
 let url = 'https://localhost:8080';

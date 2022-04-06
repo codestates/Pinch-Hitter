@@ -6,7 +6,7 @@ const {
   } = require('./functions/board');
 const { isAuthorized } = require('./functions/user')
 const { participate, cancelParticipate } = require('./functions/applicant')
-const { Board } = require('../models');
+const { Board, User } = require('../models');
 
 module.exports = {
     createBoard: async (req, res) => {
@@ -23,7 +23,13 @@ module.exports = {
     },
     getAllBoard: async (req, res) => {
         try{
-            const boardList = await Board.findAll({});
+            const boardList = await Board.findAll({
+              // include: [{
+              //   model : User,
+              //   required : true,
+              //   attributes: ['nickname']
+              // }]
+            });
             res.status(200).json({boardList});
         } catch (err) {
             res.status(400).json({ message: '잘못된 요청입니다' });
@@ -36,6 +42,10 @@ module.exports = {
         } else {
           try {
             const boardList = await Board.findAll({
+              // include: [{
+              //   model : User,
+              //   attributes: ['nickname']
+              // }],
               where: { user_id: userInfo.id },
             });
             res.status(200).json({ boardList });

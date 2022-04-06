@@ -15,6 +15,7 @@ const authorized = (accessToken) => {
 
 module.exports = {
   generateAccessToken: (data) => {
+    console.log('액세스토큰생성부분');
     return sign(data, process.env.ACCESS_SECRET, { expiresIn: '2h' });
   },
 

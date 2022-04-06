@@ -48,9 +48,11 @@ module.exports = {
           }
     
           const userData = await User.create({
+            user_id : email,
             email,
             nickname: uniqueNickname,
             password: '',
+            mobile: '',
           });
     
           const accessToken = generateAccessToken(userData.dataValues);
@@ -101,9 +103,11 @@ module.exports = {
           }
     
           const userData = await User.create({
+            user_id : email,
             email,
             nickname: uniqueNickname,
             password: '',
+            mobile: ''
           });
     
           const accessToken = generateAccessToken(userData.dataValues);

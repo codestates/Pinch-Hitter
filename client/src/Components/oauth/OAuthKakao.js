@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 function OAuthKakao({ setIsLogin, getUserInfo }) {
   const navigate = useNavigate();
   let code = new URL(window.location.href).searchParams.get('code');
-
+  console.log(code, '코드~~~~~~~~~');
   useEffect(() => {
     axios
       .post(
-        `${process.env.REACT_APP_SERVER_URI}/oauth/kakao`,
+        `${process.env.REACT_APP_SERVER_URI}oauth/kakao`,
         { data: code },
         {
           headers: { 'Content-Type': 'application/json' },

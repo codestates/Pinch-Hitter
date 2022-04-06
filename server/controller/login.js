@@ -38,9 +38,8 @@ module.exports = {
       delete userInfo.dataValues.password;
       const accessToken = generateAccessToken(userInfo.dataValues);
 
-      sendAccessToken(res, accessToken);
       return res.status(201);
-      //.json({ success: true, message: '로그인이 완료되었습니다' });
+      // .json({ success: true, message: '로그인이 완료되었습니다' });
     } catch (err) {
       console.log(err);
     }

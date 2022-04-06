@@ -1,43 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter,
   Routes,
   Route,
   Link,
   useNavigate,
-} from "react-router-dom";
-import axios from "axios";
-import HomePage from "./Pages/HomePage";
-import CreatePost from "./Pages/CreatePost";
-import ReadPost from "./Pages/ReadPost";
-import EditPost from "./Pages/EditPost";
-import Mypage from "./Pages/Mypage";
-import OAuthKakao from "./Components/oauth/OAuthKakao";
-import OAuthGoogle from "./Components/oauth/OAuthGoogle";
+} from 'react-router-dom';
+import axios from 'axios';
+import HomePage from './Pages/HomePage';
+import CreatePost from './Pages/CreatePost';
+import ReadPost from './Pages/ReadPost';
+import EditPost from './Pages/EditPost';
+import Mypage from './Pages/Mypage';
+import OAuthKakao from './Components/oauth/OAuthKakao';
+import OAuthGoogle from './Components/oauth/OAuthGoogle';
 
-let url = "https://localhost:4000";
+let url = 'https://localhost:4000';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    id: 1,
-    user_id: "kimcoding1",
-    name: "김코딩",
-    email: "kimcoding1@naver.com",
-    mobile: "01012341234",
-  });
-  const [currentPost, setCurrentPost] = useState("");
+  const [userInfo, setUserInfo] = useState({});
+  const [currentPost, setCurrentPost] = useState('');
 
   // 로그인 성공 후 유저정보 불러오기
   const getUserInfo = () => {
     axios
-      .get(url + "/users", {
-        headers: { "Content-Type": "application/json" },
+      .get(`${process.env.REACT_APP_SERVER_URI}users`, {
+        headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       })
       .then((res) => {
         //유저 데이타
-        console.log(res.data);
+        console.log(res);
         setUserInfo(res.data);
       })
       .catch((err) => console.log(err));
@@ -53,6 +47,7 @@ function App() {
               getUserInfo={getUserInfo}
               isLogin={isLogin}
               setCurrentPost={setCurrentPost}
+              setIsLogin={setIsLogin}
             />
           }
         />

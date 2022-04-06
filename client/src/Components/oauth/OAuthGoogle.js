@@ -11,7 +11,7 @@ function OAuthGoogle({ setIsLogin, getUserInfo }) {
 
     axios
       .post(
-        `${process.env.REACT_APP_SERVER_URI}/oauth/google`,
+        `${process.env.REACT_APP_SERVER_URI}oauth/google`,
         { data: code },
         {
           headers: { 'Content-Type': 'application/json' },

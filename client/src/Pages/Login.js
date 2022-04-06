@@ -160,6 +160,7 @@ function Login({
         })
         .catch((err) => {
           setFailureLoginMsg('아이디 또는 비밀번호가 일치하지 않습니다.');
+          console.log(err);
           console.log('로그인 중 err');
         });
     }
@@ -170,6 +171,7 @@ function Login({
 
   //카카오 로그인
   const handleKakaoLogin = () => {
+    console.log('카카오 실행');
     window.location.assign(
       `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`
     );

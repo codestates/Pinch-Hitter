@@ -8,11 +8,13 @@ let url = 'https://localhost:4000';
 function HomePage({
   hadleLoginVerification,
   isLogin,
+  setIsLogin,
   handleLogout,
   postClickNav,
   allPost,
   setAllPost,
   setCurrentPost,
+  getUserInfo,
 }) {
   return (
     <>
@@ -20,6 +22,8 @@ function HomePage({
         hadleLoginVerification={hadleLoginVerification}
         isLogin={isLogin}
         handleLogout={handleLogout}
+        setIsLogin={setIsLogin}
+        getUserInfo={getUserInfo}
       />
       <MainPosts allPost={allPost} setCurrentPost={setCurrentPost} />
     </>

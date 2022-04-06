@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import { Modal } from "./Modal";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import styled from "styled-components";
-=======
 import { Modal } from './Modal';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import styled from 'styled-components';
->>>>>>> 8976069eb208a462f9cf5a5201557aed3e2fd673
 
 export const HeaderBack = styled.div`
   background-color: #d3dedc;
@@ -27,7 +20,7 @@ export const HeaderBack = styled.div`
   }
 `;
 
-function Header({ setIsLogin, isLogin }) {
+function Header({ setIsLogin, isLogin, getUserInfo }) {
   let navigate = useNavigate();
 
   function handleGoHom() {
@@ -44,7 +37,11 @@ function Header({ setIsLogin, isLogin }) {
     <div>
       <HeaderBack>
         <img src="img/pinchLog_remove.png" onClick={handleGoHom} />
-        <Modal setIsLogin={setIsLogin} isLogin={isLogin} />
+        <Modal
+          setIsLogin={setIsLogin}
+          isLogin={isLogin}
+          getUserInfo={getUserInfo}
+        />
       </HeaderBack>
     </div>
   );

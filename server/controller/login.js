@@ -5,7 +5,7 @@ const {
   generateAccessToken,
   sendAccessToken,
   isAuthorized,
-} = require('./functions/user');
+} = require("./functions/user");
 
 module.exports = {
   login: async (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
       if (!userInfo) {
         return res.status(400).json({
           success: false,
-          message: '아이디 또는 비밀번호가 잘못되었습니다',
+          message: "아이디 또는 비밀번호가 잘못되었습니다",
         });
       }
 
@@ -35,7 +35,7 @@ module.exports = {
       if (!match) {
         return res.status(400).json({
           success: false,
-          message: '아이디 또는 비밀번호가 잘못되었습니다',
+          message: "아이디 또는 비밀번호가 잘못되었습니다",
         });
       }
       if (userInfo.dataValues.expiredDatetime) {
@@ -60,9 +60,9 @@ module.exports = {
       return res.json({
         success: false,
         loginId: null,
-        message: '로그아웃 상태입니다',
+        message: "로그아웃 상태입니다",
       });
     const loginId = accessToken.user_id;
-    res.json({ success: true, loginId: loginId, message: '로그인 상태입니다' });
+    res.json({ success: true, loginId: loginId, message: "로그인 상태입니다" });
   },
 };

@@ -19,7 +19,7 @@ module.exports = {
   },
 
   updatePassword: async (req, res) => {
-    console.log('0');
+    console.log('비번변경 서버에서 받음');
     const resObject = await updatePassword(req);
     res.status(resObject.code).send(resObject.message);
   },

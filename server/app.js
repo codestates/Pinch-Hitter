@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 80;
+const { User, Board, applicant } = require("./models");
 
 app.use(express.json());
 const controllers = require("./controller");
@@ -28,8 +29,15 @@ const boardPage = require("./router/boardPage");
 const authPage = require("./router/authPage");
 const applicantPage = require("./router/applicantPage");
 
-app.get("/", (req, res) => {
-  res.status(200).send("hello world");
+app.get("/", async (req, res) => {
+  const user = await applicant.findAll({
+    include: {
+      model: User,
+      required: true,
+      attributes: ["nickname"],
+    },
+  });
+  res.status(200).send(user);
 });
 app.use(cookieParser());
 

@@ -119,7 +119,7 @@ export const ReadPost = (props) => {
               )}
             </>
           ) : (
-            <RModal
+            <Modal
               hadleLoginVerification={props.hadleLoginVerification}
               isLogin={props.isLogin}
             />

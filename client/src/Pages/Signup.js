@@ -305,7 +305,7 @@ function Signup({ openModal, setShowModal }) {
 
   //아이디 중복체크
   const handleIdCheck = () => {
-    //console.log(signupInfo.user_id);
+    console.log(signupInfo.user_id);
     if (signupInfo.user_id) {
       axios
         .post(
@@ -361,8 +361,13 @@ function Signup({ openModal, setShowModal }) {
       });
     } else {
       axios
+<<<<<<< HEAD
         .post(`${process.env.REACT_APP_SERVER_URI}signup/signup`, signupInfo, {
           headers: { "Content-Type": "application/json" },
+=======
+        .post(`${process.env.REACT_APP_SERVER_URI}signup`, signupInfo, {
+          headers: { 'Content-Type': 'application/json' },
+>>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
         })
         .then((res) => {
           setIsSignupModal(true);

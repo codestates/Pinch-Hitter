@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import styled from 'styled-components';
 
 export const MenuListBack = styled.div`
   display: flex;
@@ -26,23 +26,27 @@ export const RouteBtn = ({ handleLogout, setIsLogin }) => {
   let navigate = useNavigate();
 
   function handleGoMypage() {
-    navigate("/mypage");
+    navigate('/mypage');
   }
 
   function handleGoCreatePost() {
-    navigate("/createpost");
+    navigate('/createpost');
   }
 
   //로그아웃
   const handleLogoutBtnClick = () => {
     axios
+<<<<<<< HEAD
       .get(`${process.env.REACT_APP_API_URL}/logout`)
+=======
+      .get(`${process.env.REACT_APP_SERVER_URI}logout`)
+>>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
       .then((res) => {
-        window.localStorage.removeItem("IsRefresh");
+        window.localStorage.removeItem('IsRefresh');
         setIsLogin(false);
-        navigate("/");
+        navigate('/');
       })
-      .catch((err) => console.log(err, "로그아웃 err"));
+      .catch((err) => console.log(err, '로그아웃 err'));
   };
 
   return (

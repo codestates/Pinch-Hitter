@@ -71,19 +71,11 @@ let url = "https://localhost:8080";
 export const Mypage = (props) => {
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-  const [inputNickname, setInputNickname] = useState("kimcoding");
-  const [inputMobile, setInputMobile] = useState("01012341234");
-  const [inputCurrentPassword, setInputCurrentPassword] = useState("");
-  const [inputNewPassword, setInputNewPassword] = useState("");
-  const [inputNewPasswordConfirm, setInputNewPasswordConfirm] = useState("");
-=======
   const [inputNickname, setInputNickname] = useState(props.userInfo.nickname);
   const [inputMobile, setInputMobile] = useState(props.userInfo.mobile);
   const [inputCurrentPassword, setInputCurrentPassword] = useState('');
   const [inputNewPassword, setInputNewPassword] = useState('');
   const [inputNewPasswordConfirm, setInputNewPasswordConfirm] = useState('');
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
   const [validityCheck, setValidityCheck] = useState({
     isNewPassword: false,
     msgNewPassword: "비밀번호를 입력해주세요.",
@@ -225,13 +217,8 @@ export const Mypage = (props) => {
   useEffect(() => {
     console.log(props.userInfo);
     axios({
-<<<<<<< HEAD
       url: `${process.env.REACT_APP_API_URL}/boards/${props.userInfo.id}`,
       method: "get",
-=======
-      url: `${process.env.REACT_APP_SERVER_URI}boards/${props.userInfo.id}`,
-      method: 'get',
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
         "Content-Type": "application/json",
@@ -247,47 +234,6 @@ export const Mypage = (props) => {
       });
   }, []);
 
-<<<<<<< HEAD
-  // 내가 신청한 게시물 리스트 불러오기
-  useEffect(() => {
-    axios({
-      url: `${process.env.REACT_APP_API_URL}/applicants/${props.userInfo.id}`,
-      method: "get",
-      headers: {
-        // Authorization: `Bearer ${props.accessToken}`,
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
-      .then((res) => {
-        console.log(res);
-        setMyApplyBoardList(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  // 전체 신청자 리스트 불러오기
-  useEffect(() => {
-    axios({
-      url: `${process.env.REACT_APP_API_URL}/applicants`,
-      method: "get",
-      headers: {
-        // Authorization: `Bearer ${props.accessToken}`,
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
-      .then((res) => {
-        console.log(res);
-        setAllApplicantList(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-=======
   // // 내가 신청한 게시물 리스트 불러오기
   // useEffect(() => {
   //   axios({
@@ -327,7 +273,6 @@ export const Mypage = (props) => {
   //       console.log(err);
   //     });
   // }, []);
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
 
   // 닉네임 또는 모바일 input창 입력값 변경
   const handleInputValue = (e) => {
@@ -480,13 +425,8 @@ export const Mypage = (props) => {
     console.log("내가 신청한 게시물 클릭");
 
     axios({
-<<<<<<< HEAD
       url: `${process.env.REACT_APP_API_URL}/boards/${board.id}`,
       method: "get",
-=======
-      url: `${process.env.REACT_APP_SERVER_URI}boards/${board.id}`,
-      method: 'get',
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
         "Content-Type": "application/json",
@@ -514,13 +454,8 @@ export const Mypage = (props) => {
 
     if (inputNickname.length > 0) {
       axios({
-<<<<<<< HEAD
         url: `${process.env.REACT_APP_API_URL}/nickname`,
         method: "patch",
-=======
-        url: `${process.env.REACT_APP_SERVER_URI}nickname`,
-        method: 'patch',
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
         headers: {
           // Authorization: `Bearer ${props.accessToken}`,
           "Content-Type": "application/json",
@@ -550,13 +485,8 @@ export const Mypage = (props) => {
 
     if (inputMobile.length > 0) {
       axios({
-<<<<<<< HEAD
         url: `${process.env.REACT_APP_API_URL}/mobile`,
         method: "patch",
-=======
-        url: `${process.env.REACT_APP_SERVER_URI}mobile`,
-        method: 'patch',
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
         headers: {
           // Authorization: `Bearer ${props.accessToken}`,
           "Content-Type": "application/json",
@@ -585,13 +515,8 @@ export const Mypage = (props) => {
     console.log("비밀번호 변경 완료 버튼 클릭");
 
     axios({
-<<<<<<< HEAD
       url: `${process.env.REACT_APP_API_URL}/password`,
       method: "patch",
-=======
-      url: `${process.env.REACT_APP_SERVER_URI}password`,
-      method: 'patch',
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
       headers: {
         // Authorization: `Bearer ${props.accessToken}`,
         "Content-Type": "application/json",
@@ -619,13 +544,8 @@ export const Mypage = (props) => {
     console.log("탈퇴확인 모달창에서 탈퇴버튼 눌림");
 
     axios({
-<<<<<<< HEAD
       url: `${process.env.REACT_APP_API_URL}/signout`,
       method: "delete",
-=======
-      url: `${process.env.REACT_APP_SERVER_URI}signout`,
-      method: 'delete',
->>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
       withCredentials: true,
     })
       .then((res) => {

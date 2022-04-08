@@ -92,7 +92,7 @@ export const ModalSignupView = styled.div`
   }
 `;
 
-export const Modal = ({ setIsLogin, isLogin, getUserInfo }) => {
+export const Modal = ({ setIsLogin, isLogin }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -147,7 +147,6 @@ export const Modal = ({ setIsLogin, isLogin, getUserInfo }) => {
                   setIsLogin={setIsLogin}
                   openModal={openModal}
                   setShowModal={setShowModal}
-                  getUserInfo={getUserInfo}
                 />
               </ModalView>
             </ModalBack>

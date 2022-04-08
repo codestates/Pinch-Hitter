@@ -20,7 +20,7 @@ export const HeaderBack = styled.div`
   }
 `;
 
-function Header({ setIsLogin, isLogin, getUserInfo }) {
+function Header({ setIsLogin, isLogin }) {
   let navigate = useNavigate();
 
   function handleGoHom() {
@@ -37,11 +37,7 @@ function Header({ setIsLogin, isLogin, getUserInfo }) {
     <div>
       <HeaderBack>
         <img src="img/pinchLog_remove.png" onClick={handleGoHom} />
-        <Modal
-          setIsLogin={setIsLogin}
-          isLogin={isLogin}
-          getUserInfo={getUserInfo}
-        />
+        <Modal setIsLogin={setIsLogin} isLogin={isLogin} />
       </HeaderBack>
     </div>
   );

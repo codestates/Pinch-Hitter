@@ -9,9 +9,9 @@ const {
 
 module.exports = {
   login: async (req, res) => {
-    const { user_id, password } = req.body;
+    const { userId, password } = req.body;
 
-    if (!user_id)
+    if (!userId)
       return res
         .status(400)
         .json({ success: false, message: '아이디를 입력해주세요' });
@@ -20,7 +20,7 @@ module.exports = {
         .status(400)
         .json({ success: false, message: '비밀번호를 입력해주세요' });
     try {
-      const userInfo = await User.findOne({ where: { user_id } });
+      const userInfo = await User.findOne({ where: { userId } });
       if (!userInfo) {
         return res.status(400).json({
           success: false,
@@ -62,7 +62,7 @@ module.exports = {
         loginId: null,
         message: "로그아웃 상태입니다",
       });
-    const loginId = accessToken.user_id;
+    const loginId = accessToken.userId;
     res.json({ success: true, loginId: loginId, message: "로그인 상태입니다" });
   },
 };

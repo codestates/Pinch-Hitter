@@ -36,7 +36,11 @@ export const RouteBtn = ({ handleLogout, setIsLogin }) => {
   //로그아웃
   const handleLogoutBtnClick = () => {
     axios
+<<<<<<< HEAD
+      .get(`${process.env.REACT_APP_API_URL}/logout`)
+=======
       .get(`${process.env.REACT_APP_SERVER_URI}logout`)
+>>>>>>> 2035af7e73d4304431cecbc9e7034e30462dcb50
       .then((res) => {
         window.localStorage.removeItem('IsRefresh');
         setIsLogin(false);

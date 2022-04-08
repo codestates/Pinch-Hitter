@@ -1,6 +1,5 @@
 require('dotenv').config();
 const { sign, verify } = require('jsonwebtoken');
-const { hashPassword } = require('./functions/security');
 const { User } = require('../../models');
 const bcrypt = require('bcryptjs');
 const { hashPassword } = require('./security');

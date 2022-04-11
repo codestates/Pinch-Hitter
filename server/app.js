@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 80;
-const { User, Board, applicant } = require("./models");
 
 app.use(express.json());
 // const controllers = require('./controller');
@@ -14,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["https://localhost:3000", process.env.PinchHitterUrl],
+    origin: ["https://localhost:3000", process.env.REACT_APP_SERVER_URI],
     credentials: true,
     methods: ["GET", "POST", "PATCH", "OPTIONS", "DELETE"],
   })

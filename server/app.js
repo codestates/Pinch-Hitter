@@ -19,8 +19,6 @@ app.use(
   })
 );
 
-console.log("app.js 들어옴");
-
 const loginPage = require("./router/loginPage");
 const logoutPage = require("./router/logoutPage");
 const mypagePage = require("./router/mypagePage");

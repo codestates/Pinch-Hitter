@@ -4,7 +4,6 @@ const { hashPassword } = require('./functions/security');
 
 module.exports = {
   idCheck: (req, res) => {
-    console.log(req.body);
     const { user_id } = req.body;
 
     User.findOne({ where: { userId: user_id } })
@@ -26,8 +25,6 @@ module.exports = {
   },
 
   nicknameCheck: (req, res) => {
-    console.log(req);
-
     const { nickname } = req.body;
 
     User.findOne({ where: { nickname: nickname } })
@@ -46,13 +43,11 @@ module.exports = {
   },
 
   signup: async (req, res) => {
-    console.log(req);
-
     const { user_id, password, nickname, email, mobile } = req.body;
     const hashPw = await hashPassword(password);
 
     User.findOrCreate({
-      where: { userId : user_id },
+      where: { userId: user_id },
       defaults: { password: hashPw, nickname, email, mobile },
     }).then((data) => {
       return res

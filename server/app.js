@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["https://localhost:3000", process.env.REACT_APP_SERVER_URI],
+    origin: ["https://localhost:3000", process.env.PinchHitterUrl],
     credentials: true,
     methods: ["GET", "POST", "PATCH", "OPTIONS", "DELETE"],
   })

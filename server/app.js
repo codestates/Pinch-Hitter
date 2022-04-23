@@ -1,5 +1,3 @@
-// const fs = require("fs");
-// const https = require("https");
 require("dotenv").config();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -49,22 +47,3 @@ app.use("/", mypagePage);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
-// const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
-// let server;
-
-// if (fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")) {
-//   const privateKey = fs.readFileSync(__dirname + "/key.pem", "utf8");
-//   const certificate = fs.readFileSync(__dirname + "/cert.pem", "utf8");
-//   const credentials = { key: privateKey, cert: certificate };
-
-//   server = https.createServer(credentials, app);
-//   server.listen(HTTPS_PORT, () =>
-//     console.log("https server runnning", HTTPS_PORT)
-//   );
-// } else {
-//   server = app.listen(HTTPS_PORT, () =>
-//     console.log("http server runnning", HTTPS_PORT)
-//   );
-// }
-// module.exports = server;
